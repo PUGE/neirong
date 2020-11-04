@@ -1,0 +1,73 @@
+<template lang="pug">
+.home
+  .title-bar
+    .button(o-tap="check") 检查
+  .conn-box.clear
+    pre(contenteditable="true")
+    //- pre.fr
+</template>
+
+<script>
+  module.exports = {
+    check: function () {
+      const value = this.query('pre').innerText
+      console.log(Base64.encode(value))
+
+      fetch("https://service-av4bqxjd-1251887489.bj.apigw.tencentcs.com/release/neirong", {
+        method: 'POST',
+        body: JSON.stringify({"content": Base64.encode(value)})
+      })
+        .then(response => response.json())
+        .then(result => {
+          let htmlData = this.query('pre').innerHTML
+          console.log(result)
+          result.content.Keywords.forEach(key => {
+            htmlData = htmlData.replace(new RegExp(key,"gm"), `<span class="nrsh">${key}</span>`)
+          });
+          this.query('pre').innerHTML = htmlData
+          
+        })
+        .catch(error => console.log('error', error));
+    }
+  }
+</script>
+
+
+<style lang="less">
+pre, textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.fl {
+  background-color: aliceblue;
+}
+.title-bar {
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.conn-box {
+  height: calc(100% - 41px);
+  overflow: auto;
+}
+.button {
+  background-color: #009fe9;
+  width: 70px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  border-radius: 5px;
+  display: block;
+  height: 30px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.nrsh {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+}
+</style>

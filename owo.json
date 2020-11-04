@@ -1,0 +1,126 @@
+{
+	"basePath": "./",
+	"root": "/src",
+	"scheme": [],
+	"outFolder": "./dist",
+	"container": "",
+	"resourceFolder": "./src/resource",
+	"headList": [
+		{
+			"http-equiv": "content-type",
+			"content": "text/html; charset=UTF-8"
+		},
+		{
+			"name": "viewport",
+			"content": "width=1000, user-scalable=yes"
+		},
+		{
+			"name": "format-detection",
+			"content": "telephone=no, email=no"
+		},
+		{
+			"name": "apple-mobile-web-app-capable",
+			"content": "yes"
+		},
+		{
+			"name": "apple-mobile-web-app-status-bar-style",
+			"content": "white"
+		},
+		{
+			"name": "renderer",
+			"content": "webkit"
+		},
+		{
+			"http-equiv": "X-UA-Compatible",
+			"content": "IE=edge,chrome=1"
+		},
+		{
+			"name": "filetype",
+			"content": "1"
+		},
+		{
+			"name": "publishedtype",
+			"content": "1"
+		},
+		{
+			"name": "pagetype",
+			"content": "2"
+		},
+		{
+			"name": "description",
+			"content": "{TAG_59447_TAG}"
+		},
+		{
+			"name": "keywords",
+			"content": "{TAG_59446_TAG}"
+		},
+		{
+			"name": "catalogs",
+			"content": "{TAG_83943_TAG}"
+		}
+	],
+	"scriptList": [
+		{
+			"name": "base64.js",
+			"src": "./src/base64.js"
+		},
+		{
+			"name": "main",
+			"src": "./src/main.js",
+			"resource": true
+		}
+	],
+	"styleList": [
+		{
+			"name": "main",
+			"src": "./src/main.css",
+			"resource": true
+		}
+	],
+	"pageList": [
+		{
+			"name": "page",
+			"src": "./src/page/page.owo",
+			"type": "page"
+		}
+	],
+	"mode": {
+		"dev": {
+			"basePath": "./",
+			"debug": true,
+			"watcherEnable": true,
+			"watcherIgnored": "./dist/*",
+			"watcherdepth": 99,
+			"merge": true,
+			"minifyCss": false,
+			"minifyJs": false,
+			"addVersion": false,
+			"allAnimate": false,
+			"serverPort": 8000,
+			"server": true,
+			"autoReload": true,
+			"remoteDebug": false,
+			"title": "测试预览页面"
+		},
+		"build": {
+			"debug": false,
+			"basePath": "./",
+			"alertLink": true,
+			"startAtHome": false,
+			"minifyCss": false,
+			"minifyJs": false,
+			"addVersion": true,
+			"embedSize": 0,
+			"merge": false,
+			"allAnimate": false,
+			"title": "{TAG_14226_TAG}",
+			"handleLink": true,
+			"scriptList": [
+				{
+					"name": "jquery1.11.0",
+					"src": "https://cunchu.site/owo/script/jquery-1.11.1.min.js"
+				}
+			]
+		}
+	}
+}
