@@ -68,6 +68,11 @@
 			"name": "main",
 			"src": "./src/main.js",
 			"resource": true
+		},
+		{
+			"name": "remind",
+			"afterbody": true,
+			"src": "./owo_modules/remind.js"
 		}
 	],
 	"styleList": [

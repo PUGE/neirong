@@ -54,46 +54,88 @@ li {
   list-style: none;
 }
 
-pre,
-textarea {
-  width: 100%;
-  height: 100%;
+.check pre,
+.check textarea {
+  width: calc(100% - 270px);
+  height: calc(100% - 20px);
   border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 26px;
+  overflow: auto;
+  white-space: normal;
 }
 
-.fl {
+.check .fl {
   background-color: aliceblue;
 }
 
-.title-bar {
-  height: 40px;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.check .right-bar {
+  height: 100%;
+  width: 250px;
+  position: relative;
+  background-color: #f7f8fa;
 }
 
-.conn-box {
+.check .conn-box {
   height: calc(100% - 41px);
   overflow: auto;
 }
 
-.button {
+.check .button {
   background-color: #009fe9;
-  width: 70px;
+  width: 100%;
   text-align: center;
-  line-height: 30px;
+  line-height: 40px;
   color: white;
-  border-radius: 5px;
   display: block;
-  height: 30px;
-  margin: 0 5px;
+  height: 40px;
   cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
 }
 
-.nrsh {
+.check .nrsh {
   background-color: red;
   color: white;
   border-radius: 3px;
+}
+
+.check {
+  display: flex;
+}
+
+.check .check-box {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  display: flex;
+}
+
+.check .check-box input {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+.conn {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.left {
+  width: 250px;
+  background-color: #272f3e;
+}
+
+.router {
+  width: calc(100% - 250px);
+  height: 100%;
+}
+
+.router-item {
+  width: 100%;
+  height: 100%;
 }
 

@@ -1,0 +1,159 @@
+<template lang="pug">
+.check
+  pre(contenteditable="true")
+    p 一片“烂泥渡”，能生长什么？　　答案是，长出了摩天入云的楼群，刷新了上海的天际线；长出了活力四射的金融中心，刷新了国际金融格局。　　浦东，是一个传奇。　　30年前，站在外滩东望浦东，举目是阡陌纵横的郊野。　　30年后，这里奇迹般地崛起一座现代化新城，以全国1/8000的土地面积，创造了全国1/80的国内生产总值、1/15的外贸进出口总额。　　浦东，更是一个象征。　　30年前，党中央、国务院宣布开发开放浦东，向世界宣示中国坚定不移推动改革开放的决心和信心。那一年，从浦东传来的桩机轰鸣声，令全世界期待。　　7年前，以习近平同志为核心的党中央经过缜密调研和深邃思考，果断决策启动了上海自由贸易试验区这一牵一发而动全身的重大改革举措。从浦东传来的新一轮改革开放的先声，被全世界倾听。　　因改革开放而生，因改革开放而兴，浦东书写了改革开放的传奇。“浦东发展的意义在于窗口作用、示范意义，在于敢闯敢试、先行先试，在于排头兵的作用。”2010年，习近平同志在浦东调研时如是强调。　　行走在浦东这片热土，感受深切的是沧桑巨变，是敢闯敢试，是排头兵、先行者的担当，是“我们的道路必将越走越宽广”的坚定自信。　　奇 迹　　从阡陌纵横的郊野到现代化国际大都市的核心区　　姚建良是土生土长的浦东人。每年，他都要在东方明珠塔上的同一角度按下快门，记录陆家嘴的点滴变化。这组始于1994年的俯瞰图，如今被收进浦东30周年艺术展，吸引了无数关注的目光。　　第一张照片里，陆家嘴还满是低矮的房屋和青褐色顶棚，一眼望去“如同紧贴地面的苔藓”。姚建良心中也曾嘀咕：“在这里建国际金融城，能不能行？”　　如今走进陆家嘴金融城，在高耸入云的摩天大楼间穿梭，能感受到无时差配置全球资产的活力。面积不过31.78平方公里的陆家嘴金融城，云集了10余家国家级要素市场和功能性金融基础设施、6000多家各类金融机构、30多万名金融人才。永不眠歇的资本在这里汇聚流转，经济密度“寸土寸金”：285幢商务楼宇中，税收过亿的有102幢，超10亿的30幢，超50亿元的4幢。　　现在的陆家嘴，已是全球金融要素市场最丰富、金融机构最集聚、金融交易最活跃的地区之一。可管理者关注的，仍是如何继续提升金融资源配置功能。　　“我们对标的是国际一流金融中心，是纽约华尔街，是伦敦金融城。”上海自贸试验区管委会陆家嘴管理局局长张宇祥说。　　看似开发开放启动稍晚，浦东却在更高起点上起跳——它在起步之初就习惯于“地球仪旁思考”，胸怀广袤太平洋，瞄准的是“与世界从容西晋平地经济
+  .right-bar
+    .check-box
+      input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
+      span 启用关键词匹配
+    .check-box
+      input(type="checkbox" o-value="this.data.sendData.pinyin")
+      span 启用拼音纠错
+    .check-box
+      input(type="checkbox" o-value="this.data.sendData.network")
+      span 启用云词库匹配
+    .button(o-tap="check") 检查
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      sendData: {
+        network: false,
+        pinyin: true,
+        base: true
+      },
+      findList: {
+
+      }
+    },
+    baseHandle: function (htmlData, data) {
+      // console.log(data)
+      data.forEach(item => {
+        if (!this.data.findList[item['text']]) {
+          this.data.findList[item['text']] = item
+          htmlData = htmlData.replace(new RegExp(item['text'],"gm"), `<span class="nrsh">${item['text']}</span>`)
+        }
+      })
+      return htmlData
+    },
+    pinyinHandle: function (htmlData, data) {
+      // console.log(data)
+      data.forEach(item => {
+        if (!this.data.findList[item['like']]) {
+          this.data.findList[item['like']] = item
+          htmlData = htmlData.replace(new RegExp(item['like'],"gm"), `<span class="nrsh">${item['like']}</span>`)
+        }
+      })
+      return htmlData
+    },
+    networkHandle: function (htmlData, data) {
+      // console.log(data)
+      data.forEach(item => {
+        if (!this.data.findList[item['HitInfo']]) {
+          this.data.findList[item['text']] = item
+          htmlData = htmlData.replace(new RegExp(item['HitInfo'],"gm"), `<span class="nrsh">${item['HitInfo']}</span>`)
+        } else {
+          console.log(`${item['HitInfo']} 已被找出，跳过词语!`)
+        }
+      })
+      return htmlData
+    },
+    check: function () {
+      // console.log(this.data.sendData)
+      const value = this.query('pre').innerText
+      if (value == '') {
+        owo.tool.remind('检查文本不能为空!', 2000)
+        return
+      }
+      // console.log(Base64.encode(value))
+
+      fetch("http://127.0.0.1:8006/check", {
+        method: 'POST',
+        body: JSON.stringify({
+          "config": this.data.sendData,
+          // "content": Base64.encode(value)
+          "content": value
+        })
+      })
+        .then(response => response.json())
+        .then(result => {
+          let htmlData = this.query('pre').innerHTML
+          
+          const data = result['data']
+          // 先进行基础审查
+          htmlData = this.baseHandle(htmlData, data['base'])
+          if (data['network']) {
+            console.log('使用云词库!')
+            htmlData = this.networkHandle(htmlData, data['network'])
+          }
+          if (data['pinyin']) {
+            console.log('使用拼音匹配!')
+            htmlData = this.pinyinHandle(htmlData, data['pinyin'])
+          }
+          this.query('pre').innerHTML = htmlData
+          
+        })
+        .catch(error => console.log('error', error));
+    }
+  }
+</script>
+
+
+<style lang="less">
+pre, textarea {
+  width: calc(100% - 270px);
+  height: calc(100% - 20px);
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 26px;
+  overflow: auto;
+  white-space: normal;
+}
+.fl {
+  background-color: aliceblue;
+}
+.right-bar {
+  height: 100%;
+  width: 250px;
+  position: relative;
+  background-color: #f7f8fa;
+}
+.conn-box {
+  height: calc(100% - 41px);
+  overflow: auto;
+}
+.button {
+  background-color: #009fe9;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  display: block;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+}
+.nrsh {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+}
+.check {
+  display: flex;
+}
+.check-box {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  display: flex;
+  input {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+  }
+}
+</style>
