@@ -64,6 +64,7 @@ li {
   font-size: 26px;
   overflow: auto;
   white-space: normal;
+  line-height: 34px;
 }
 
 .check .fl {
@@ -97,9 +98,28 @@ li {
 }
 
 .check .nrsh {
+  background-color: #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.check .nrsh.like {
+  background-color: chocolate;
+  color: white;
+}
+
+.check .nrsh.Polity {
+  background-color: yellow;
+}
+
+.check .nrsh.Abuse {
+  background-color: cadetblue;
+  color: white;
+}
+
+.check .error.nrsh {
   background-color: red;
   color: white;
-  border-radius: 3px;
 }
 
 .check {
@@ -117,6 +137,74 @@ li {
   width: 20px;
   height: 20px;
   margin: 10px;
+}
+
+.check .info-right {
+  display: none;
+}
+
+.check .info-right .title {
+  line-height: 35px;
+  padding: 0 10px;
+  border-bottom: 1px dashed #ccc;
+  position: relative;
+  color: #333;
+  font-size: 16px;
+}
+
+.check .info-right .title span {
+  display: inline-block;
+}
+
+.check .info-right .title .block {
+  display: block;
+}
+
+.check .info-right .title .block-show {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.check .info-right .block-show {
+  display: inline-block;
+  background-color: darkgoldenrod;
+  padding: 0 10px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 5px;
+  color: white;
+  margin: 5px;
+}
+
+.check .block-show-box {
+  margin-top: 5px;
+}
+
+.check .button-item {
+  width: 200px;
+  display: block;
+  margin: 10px auto;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px #ccc;
+}
+
+.check .fix-button {
+  background-color: darkkhaki;
+}
+
+.check .clear-button {
+  background-color: teal;
 }
 .conn {
   display: flex;
