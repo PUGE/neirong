@@ -1,0 +1,11 @@
+<template lang="pug">
+.check-url
+</template>
+
+<script>
+  module.exports = {}
+</script>
+
+<style lang="less">
+
+</style>

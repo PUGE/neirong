@@ -1,0 +1,11 @@
+<template lang="pug">
+.word
+</template>
+
+<script>
+  module.exports = {}
+</script>
+
+<style lang="less">
+
+</style>

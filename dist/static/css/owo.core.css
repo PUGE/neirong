@@ -54,8 +54,12 @@ li {
   list-style: none;
 }
 
-.check pre,
-.check textarea {
+.check-page {
+  height: 100%;
+}
+
+.check-page pre,
+.check-page textarea {
   width: calc(100% - 270px);
   height: calc(100% - 20px);
   border: none;
@@ -67,23 +71,23 @@ li {
   line-height: 34px;
 }
 
-.check .fl {
+.check-page .fl {
   background-color: aliceblue;
 }
 
-.check .right-bar {
+.check-page .right-bar {
   height: 100%;
   width: 250px;
   position: relative;
   background-color: #f7f8fa;
 }
 
-.check .conn-box {
+.check-page .conn-box {
   height: calc(100% - 41px);
   overflow: auto;
 }
 
-.check .button {
+.check-page .button {
   background-color: #009fe9;
   width: 100%;
   text-align: center;
@@ -97,53 +101,58 @@ li {
   bottom: 0;
 }
 
-.check .nrsh {
+.check-page .nrsh {
   background-color: #ccc;
-  border-radius: 3px;
   cursor: pointer;
 }
 
-.check .nrsh.like {
+.check-page .nrsh.like {
   background-color: chocolate;
   color: white;
+  border-radius: 3px;
 }
 
-.check .nrsh.Polity {
+.check-page .nrsh.Polity {
   background-color: yellow;
+  border-radius: 3px;
 }
 
-.check .nrsh.Abuse {
+.check-page .nrsh.Abuse {
   background-color: cadetblue;
   color: white;
+  border-radius: 3px;
 }
 
-.check .error.nrsh {
+.check-page .error.nrsh,
+.check-page .regexp-like.nrsh {
   background-color: red;
   color: white;
+  border-radius: 3px;
 }
 
-.check {
+.check-page .check {
   display: flex;
+  height: 100%;
 }
 
-.check .check-box {
+.check-page .check-box {
   height: 40px;
   line-height: 40px;
   font-size: 16px;
   display: flex;
 }
 
-.check .check-box input {
+.check-page .check-box input {
   width: 20px;
   height: 20px;
   margin: 10px;
 }
 
-.check .info-right {
+.check-page .info-right {
   display: none;
 }
 
-.check .info-right .title {
+.check-page .info-right .title {
   line-height: 35px;
   padding: 0 10px;
   border-bottom: 1px dashed #ccc;
@@ -152,15 +161,15 @@ li {
   font-size: 16px;
 }
 
-.check .info-right .title span {
+.check-page .info-right .title span {
   display: inline-block;
 }
 
-.check .info-right .title .block {
+.check-page .info-right .title .block {
   display: block;
 }
 
-.check .info-right .title .block-show {
+.check-page .info-right .title .block-show {
   position: absolute;
   right: 10px;
   top: 0;
@@ -171,7 +180,7 @@ li {
   font-size: 16px;
 }
 
-.check .info-right .block-show {
+.check-page .info-right .block-show {
   display: inline-block;
   background-color: darkgoldenrod;
   padding: 0 10px;
@@ -182,11 +191,11 @@ li {
   margin: 5px;
 }
 
-.check .block-show-box {
+.check-page .block-show-box {
   margin-top: 5px;
 }
 
-.check .button-item {
+.check-page .button-item {
   width: 200px;
   display: block;
   margin: 10px auto;
@@ -199,13 +208,20 @@ li {
   box-shadow: 1px 1px 4px #ccc;
 }
 
-.check .fix-button {
+.check-page .fix-button {
   background-color: darkkhaki;
 }
 
-.check .clear-button {
+.check-page .clear-button {
   background-color: teal;
 }
+
+.check-page .chengyu-base {
+  background-color: transparent;
+  border-bottom: 2px solid #7bb582;
+}
+
+
 .conn {
   display: flex;
   width: 100%;
@@ -225,5 +241,39 @@ li {
 .router-item {
   width: 100%;
   height: 100%;
+}
+
+.logo {
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  font-size: 22px;
+}
+
+.menu-box .menu-box-item {
+  display: flex;
+  height: 45px;
+  line-height: 45px;
+  cursor: pointer;
+}
+
+.menu-box .icon {
+  width: 45px;
+  height: 45px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  line-height: 45px;
+}
+
+.menu-box span {
+  color: #ccc;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.menu-box .active {
+  background-color: teal;
+  color: white;
 }
 

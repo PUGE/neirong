@@ -2,12 +2,32 @@
 .home
   .conn
     .left
+      .logo 内容审核系统
+      .menu-box
+        .menu-box-item(go="/view-content=checkText" o-class-active="this.view.content._activeName == 'checkText'")
+          .icon &#xe74b;
+          span 内容智能审查
+        .menu-box-item(go="/view-content=word" o-class-active="this.view.content._activeName == 'word'")
+          .icon &#xe601;
+          span 关键词管理
+        .menu-box-item(go="/view-content=checkUrl" o-class-active="this.view.content._activeName == 'checkUrl'")
+          .icon &#xe755;
+          span 网址内容监控
     view.router.conn-box.right.clear(name="content")
       .router-item(route="checkText" src="./src/route/checkText.owo")
+      .router-item(route="word" src="./src/route/word.owo")
+      .router-item(route="checkUrl" src="./src/route/checkUrl.owo")
 </template>
 
 <script>
   module.exports = {
+    created: function () {
+      // 路由器被改变事件
+      owo.onViewChange = () => {
+        console.log('路由被改变!')
+        this.handleEvent(this, this.query('.menu-box'))
+      }
+    }
   }
 </script>
 
@@ -29,5 +49,36 @@
 .router-item {
   width: 100%;
   height: 100%;
+}
+.logo {
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  font-size: 22px;
+}
+.menu-box {
+  .menu-box-item {
+    display: flex;
+    height: 45px;
+    line-height: 45px;
+    cursor: pointer;
+  }
+  .icon {
+    width: 45px;
+    height: 45px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 45px;
+  }
+  span {
+    color: #ccc;
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  .active {
+    background-color: teal;
+    color: white;
+  }
 }
 </style>

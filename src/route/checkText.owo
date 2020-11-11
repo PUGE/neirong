@@ -1,55 +1,65 @@
 <template lang="pug">
-.check
-  pre(contenteditable="true")
-    p 一片“烂泥渡”，能生长什么？　　答案是，长出了摩天入云的楼群，刷新了上海的天际线；长出了活力四射的金融中心，刷新了国际金融格局。　　浦东，是一个传奇。　　30年前，站在外滩东望浦东，举目是阡陌纵横的郊野。　　30年后，这里奇迹般地崛起一座现代化新城，以全国1/8000的土地面积，创造了全国1/80的国内生产总值、1/15的外贸进出口总额。　　浦东，更是一个象征。　　30年前，党中央、国务院宣布开发开放浦东，向世界宣示中国坚定不移推动改革开放的决心和信心。那一年，从浦东传来的桩机轰鸣声，令全世界期待。　　7年前，以习近平同志为核心的党中央经过缜密调研和深邃思考，果断决策启动了上海自由贸易试验区这一牵一发而动全身的重大改革举措。从浦东传来的新一轮改革开放的先声，被全世界倾听。　　因改革开放而生，因改革开放而兴，浦东书写了改革开放的传奇。“浦东发展的意义在于窗口作用、示范意义，在于敢闯敢试、先行先试我草，在于排头兵的作用。”2010年，习近平同志在浦东调研时如是强调。　　行走在浦东这片热土，感受深切的是沧桑巨变，是敢闯敢试，是排头兵、先行者的担当，是“我们的道路必将越走越宽广”的坚定自信。　　奇 迹　　从阡陌纵横的郊野到现代化国际大都市的核心区　　姚建良是土生土长的浦东人。每年，他都要在东方明珠塔上的同一角度按下快门，记录陆家嘴的点滴变化。这组始于1994年的俯瞰图，如今被收进浦东30周年艺术展，吸引了无数关注的目光。　　第一张照片里，陆家嘴还满是低矮的房屋和青褐色顶棚，一眼望去“如同紧贴地面的苔藓”。姚建良心中也曾嘀咕：“在这里建国际金融城，能不能行？”　　如今走进陆家嘴金融城，在高耸入云的摩天大楼间穿梭，能感受到无时差配置全球资产的活力。面积不过31.78平方公里的陆家嘴金融城，云集了10余家国家级要素市场和功能性金融基础设施、6000多家各类金融机构、30多万名金融人才。永不眠歇的资本在这里汇聚流转，经济密度“寸土寸金”：285幢商务楼宇中，税收过亿的有102幢，超10亿的30幢，超50亿元的4幢。　　现在的陆家嘴，已是全球金融要素市场最丰富、金融机构最集聚、金融交易最活跃的地区之一。可管理者关注的，仍是如何继续提升金融资源配置功能。　　“我们对标的是国际一流金融中心，是纽约华尔街，是伦敦金融城。”上海自贸试验区管委会陆家嘴管理局局长张宇祥说。　　看似开发开放启动稍晚，浦东却在更高起点上起跳——它在起步之初就习惯于“地球仪旁思考”，胸怀广袤太平洋，瞄准的是“与世界从容西晋平地经济
-  .right-bar
-    .info-right
-      .title.clear
-        span.block 关键词标签：
-      .block-show-box.clear
-        .block-show(o-value="this.data.infoData.type")
-      .title.clear
-        span.block 关键词拼音：
-      .block-show-box.clear
-        .block-show(o-for="this.data.infoData.pinyin") {value}
-      .title.clear
-        span 重点关键词：
-        .block-show(o-value="this.data.infoData.major")
-      .title.clear
-        span 模糊匹配级别：
-        .block-show(o-value="this.data.infoData.vague")
-      .title.clear
-        span 错误严重性：
-        .block-show(o-value="this.data.infoData.severity")
-      .title.clear(o-if="this.data.infoData.tips")
-        span.block 其他信息：
-        .block-show(o-value="this.data.infoData.tips")
-      .fix-box(o-if="this.data.infoData.like")
+.check-page
+  .check
+    pre(contenteditable="true")
+      p 一片“烂泥渡”，能生长什么？　　答案是，长出了摩天入云的楼群，刷新了上海的天际线；长出了活力四射的金融中心，刷新了国际金融格局。　　浦东，是一个传奇。　　30年前，站在外滩东望浦东，举目是阡陌纵横的郊野。　　30年后，这里奇迹般地崛起一座现代化新城，以全国1/8000的土地面积，创造了全国1/80的国内生产总值、1/15的外贸进出口总额。　　浦东，更是一个象征。　　30年前，党中央、国务院宣布开发开放浦东，向世界宣示中国坚定不移推动改革开放的决心和信心。那一年，从浦东传来的桩机轰鸣声，令全世界期待。　　7年前，以习近平同志为核心的党中央经过缜密调研和深邃思考，果断决策启动了上海自由贸易试验区这一牵一发而动全身的重大改革举措。从浦东传来的新一轮改革开放的先声，被全世界倾听。　　因改革开放而生，因改革开放而兴，浦东书写了改革开放的传奇。“浦东发展的意义在于窗口作用、示范意义，在于敢闯敢试、先行先试我草，在于排头兵的作用。”2010年，习近平同志在浦东调研时如是强调。　　行走在浦东这片热土，感受深切的是沧桑巨变，是敢闯敢试，是排头兵、先行者的担当，是“我们的道路必将越走越宽广”的坚定自信。　　奇 迹　　从阡陌纵横的郊野到现代化国际大都市的核心区　　姚建良是土生土长的浦东人。每年，他都要在东方明珠塔上的同一角度按下快门，记录陆家嘴的点滴变化。这组始于1994年的俯瞰图，如今被收进浦东30周年艺术展，吸引了无数关注的目光。　　第一张照片里，陆家嘴还满是低矮的房屋和青褐色顶棚，一眼望去“如同紧贴地面的苔藓”。姚建良心中也曾嘀咕：“在这里建国际金融城，能不能行？”　　如今走进陆家嘴金融城，在高耸入云的摩天大楼间穿梭，能感受到无时差配置全球资产的活力。面积不过31.78平方公里的陆家嘴金融城，云集了10余家国家级要素市场和功能性金融基础设施、6000多家各类金融机构、30多万名金融人才。永不眠歇的资本在这里汇聚流转，经济密度“寸土寸金”：285幢商务楼宇中，税收过亿的有102幢，超10亿的30幢，超50亿元的4幢。胡锦秀山河涛　　现在的陆家嘴，已是全球金融要素市场最丰富、金融机构最集聚、金融交易最活跃的地区之一。可管理者关注的，仍是如何继续提升金融资源配置功能。　　“我们对标的是国际一流金融中心，是纽约华尔街，是伦敦金融城。”上海自贸试验区管委会陆家嘴管理局局长张宇祥说。　　看似开发开放启动稍晚，浦东却在更高起点上起跳——它在起步之初就习惯于“地球仪旁思考”，胸怀广袤太平洋，瞄准的是“与世界从容西晋平地经济
+    .right-bar
+      .info-right
         .title.clear
-          span 正确的文字可能为?
+          span.block 关键词标签：
         .block-show-box.clear
-          .block-show(o-value="this.data.infoData.text")
-        .fix-button.button-item(o-tap="autoFix")
-          span (F)一键修复为 
-          soan(o-value="this.data.infoData.text")
-      .clear-box
-        .clear-button.button-item(o-tap="clear") 清除此关键词标记
-      .type-box
-      .button(o-tap="hideInfoRight") 返回审核
-    .check-right
-      .check-box
-        input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
-        span 启用关键词匹配
-      .check-box
-        input(type="checkbox" o-value="this.data.sendData.pinyin")
-        span 启用拼音纠错
-      .check-box
-        input(type="checkbox" o-value="this.data.sendData.yange")
-        span 启用严格模式
-      .check-box
-        input(type="checkbox" o-value="this.data.sendData.network")
-        span 启用云词库匹配
-      .button(o-tap="check") 智能审核
+          .block-show(o-value="this.data.infoData.type")
+        .title.clear
+          span.block 关键词拼音：
+        .block-show-box.clear
+          .block-show(o-for="this.data.infoData.pinyin") {value}
+        .title.clear
+          span 重点关键词：
+          .block-show(o-value="this.data.infoData.major")
+        .title.clear(o-if="this.data.infoData.vague")
+          span 模糊匹配级别：
+          .block-show(o-value="this.data.infoData.vague")
+        .title.clear(o-if="this.data.infoData.severity")
+          span 关键词重要度：
+          .block-show(o-value="this.data.infoData.severity")
+        .title.clear(o-if="this.data.infoData.tips")
+          span.block 其他信息：
+          .info-show(o-value="this.data.infoData.tips")
+        .fix-box(o-if="this.data.infoData.like")
+          .title.clear
+            span 正确的文字可能为?
+          .block-show-box.clear
+            .block-show(o-value="this.data.infoData.text")
+          .fix-button.button-item(o-tap="autoFix")
+            span (F)一键修复为 
+            soan(o-value="this.data.infoData.text")
+        .clear-box
+          .clear-button.button-item(o-tap="clear") 清除此关键词标记
+        .type-box
+        .button(o-tap="hideInfoRight") 返回审核
+      .check-right
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
+          span 启用关键词匹配
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.pinyin")
+          span 启用拼音纠错
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.yange")
+          span 启用严格模式
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.network")
+          span 启用云词库匹配
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.chengyuBase")
+          span 启用成语匹配
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.chengyuPinyin")
+          span 启用成语纠错
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.mohu")
+          span 启用模糊纠错
+        .button(o-tap="check") 智能审核
 </template>
 
 <script>
@@ -57,9 +67,12 @@
     data: {
       sendData: {
         network: false,
-        pinyin: true,
+        pinyin: false,
         base: true,
-        yange: false
+        yange: false,
+        chengyuBase: false,
+        chengyuPinyin: false,
+        mohu: true
       },
       findList: {},
       findListArr: [],
@@ -150,7 +163,7 @@
               // 生成关键词标签
               this.data.infoData = this.data.findList[element.innerText]
               this.data.activeDom = element
-              console.log(this.data.infoData)
+              // console.log(this.data.infoData)
               // 对数据进行可视化处理
               this.data.infoData.type = this.getErrorTypeText(this.data.infoData.type)
               this.data.infoData.major = (this.data.infoData.major == 1 || this.data.infoData.major == '是') ? '是':'否'
@@ -170,43 +183,56 @@
       
     },
     check: function () {
-      // console.log(this.data.sendData)
+      // 先清理自己的标记
+      this.queryAll('.nrsh').forEach(element => {
+        element.outerHTML = element.innerText
+      });
+      this.data.findList = {}
+      this.data.findListArr = []
       const value = this.query('pre').innerText
       if (value == '') {
         owo.tool.remind('检查文本不能为空!', 2000)
         return
       }
-      // console.log(Base64.encode(value))
+      // console.log(value)
 
       fetch("http://127.0.0.1:8006/check", {
         method: 'POST',
-        body: JSON.stringify({
-          "config": this.data.sendData,
-          // "content": Base64.encode(value)
-          "content": value
-        })
+        body: JSON.stringify({"config": this.data.sendData,"content": value})
+      }).then(response => response.json()).then(result => {
+        let htmlData = this.query('pre').innerHTML
+        
+        const data = result['data']
+        // console.log(htmlData)
+        // 先进行基础审查
+        htmlData = this.baseHandle(htmlData, data['base'])
+        if (data['network']) {
+          console.log('使用云词库!')
+          htmlData = this.networkHandle(htmlData, data['network'])
+        }
+        if (data['pinyin']) {
+          console.log('使用拼音匹配!')
+          htmlData = this.pinyinHandle(htmlData, data['pinyin'])
+        }
+        if (data['chengyuBase']) {
+          console.log('使用成语匹配!')
+          htmlData = chengyuBaseHandle(htmlData, data['chengyuBase'])
+        }
+        if (data['chengyuPinyin'] && data['chengyuPinyin'].length > 0) {
+          console.log('使用成语拼音纠错!')
+          htmlData = chengyuPinyinHandle(htmlData, data['chengyuPinyin'])
+        }
+        if (data['regexp'] && data['regexp'].length > 0) {
+          console.log('使用正则纠错!')
+          htmlData = regexpHandle(htmlData, data['regexp'])
+        }
+        // console.log(htmlData)
+        this.query('pre').innerHTML = htmlData
+        setTimeout(() => {
+          this.reHandleEvent()
+        }, 100);
       })
-        .then(response => response.json())
-        .then(result => {
-          let htmlData = this.query('pre').innerHTML
-          
-          const data = result['data']
-          // 先进行基础审查
-          htmlData = this.baseHandle(htmlData, data['base'])
-          if (data['network']) {
-            console.log('使用云词库!')
-            htmlData = this.networkHandle(htmlData, data['network'])
-          }
-          if (data['pinyin']) {
-            console.log('使用拼音匹配!')
-            htmlData = this.pinyinHandle(htmlData, data['pinyin'])
-          }
-          this.query('pre').innerHTML = htmlData
-          setTimeout(() => {
-            this.reHandleEvent()
-          }, 100);
-        })
-        .catch(error => console.log('error', error));
+      .catch(error => console.log('error', error));
     },
     // 智能修复
     autoFix: function () {
@@ -229,6 +255,9 @@
 
 
 <style lang="less">
+.check-page {
+  height: 100%;
+}
 pre, textarea {
   width: calc(100% - 270px);
   height: calc(100% - 20px);
@@ -268,27 +297,31 @@ pre, textarea {
 }
 .nrsh {
   background-color: #ccc;
-  border-radius: 3px;
   cursor: pointer;
 }
 // 相似
 .nrsh.like {
   background-color: chocolate;
   color: white;
+  border-radius: 3px;
 }
 .nrsh.Polity {
   background-color: yellow;
+  border-radius: 3px;
 }
 .nrsh.Abuse {
   background-color: cadetblue;
   color: white;
+  border-radius: 3px;
 }
-.error.nrsh {
+.error.nrsh, .regexp-like.nrsh {
   background-color: red;
   color: white;
+  border-radius: 3px;
 }
 .check {
   display: flex;
+  height: 100%;
 }
 .check-box {
   height: 40px;
@@ -359,5 +392,9 @@ pre, textarea {
 }
 .clear-button {
   background-color: teal;
+}
+.chengyu-base {
+  background-color: transparent;
+  border-bottom: 2px solid #7bb582;
 }
 </style>

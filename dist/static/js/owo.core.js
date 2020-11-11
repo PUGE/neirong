@@ -1,4 +1,4 @@
-// Tue Nov 10 2020 15:56:49 GMT+0800 (GMT+08:00)
+// Wed Nov 11 2020 18:07:49 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -196,6 +196,18 @@ _owo.addEvent = function (tempDom, moudleScript) {
             break
           }   
           default: {
+            
+            if (attribute.name.slice(0, 8) == 'o-class-') {
+              var bindClassName = attribute.name.slice(8)
+              if (bindClassName) {
+                var value = shaheRun.apply(moudleScript, [eventFor])
+                if (Boolean(value)) {
+                  tempDom.classList.add(bindClassName)
+                } else {
+                  tempDom.classList.remove(bindClassName)
+                }
+              }
+            }
             
             _owo.bindEvent(eventName, eventFor, tempDom, moudleScript)
           }
@@ -618,7 +630,11 @@ function View(routeList, viewName, entryDom, pageScript) {
   }
 }
 
+owo.state.routeBusy = false
+
 View.prototype.showIndex = function (ind) {
+  if (owo.state.routeBusy) return
+  owo.state.routeBusy = true
   // 防止来回快速切换页面出问题
   if (owo.state[this._viewName + '_changeing']) return
   owo.state[this._viewName + '_changeing'] = true
@@ -628,6 +644,7 @@ View.prototype.showIndex = function (ind) {
   if (this._activeIndex == ind) {
     oldRoute.$el.setAttribute('route-active', 'true')
     owo.state[this._viewName + '_changeing'] = false
+    owo.state.routeBusy = false
     return
   }
   var newRoute = this._list[ind]
@@ -657,6 +674,8 @@ View.prototype.showIndex = function (ind) {
 }
 
 View.prototype.showName = function (name) {
+  if (owo.state.routeBusy) return
+  owo.state.routeBusy = true
   // 防止来回快速切换页面出问题
   if (owo.state[this._viewName + '_changeing']) return
   owo.state[this._viewName + '_changeing'] = true
@@ -689,9 +708,11 @@ View.prototype.showName = function (name) {
     setTimeout(() => {
       owo.state[this._viewName + '_changeing'] = false
       oldRoute.$el.setAttribute('route-active', 'false')
+      owo.state.routeBusy = false
     }, 800);
   } else {
     owo.state[this._viewName + '_changeing'] = false
+    owo.state.routeBusy = false
   }
   newRoute.$el.setAttribute('route-active', 'true')
   owo.onViewChange()
@@ -811,6 +832,15 @@ owo.go = function (aniStr) {
   }
 }
 
+
+// 待修复 跳转返回没有了
+var toList = document.querySelectorAll('[go]')
+for (var index = 0; index < toList.length; index++) {
+  var element = toList[index]
+  element.onclick = function () {
+    owo.go(this.attributes['go'].value)
+  }
+}
 
 // 沙盒运行
 function shaheRun (code) {

@@ -83,3 +83,18 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .pc .no-pc, .phone .no-phone {
   display: none;
 }
+
+.icon {
+  cursor: pointer;
+  font-family: "iconfont";
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 2188977 */
+  src: url('//at.alicdn.com/t/font_2188977_ewodsg18ok9.eot');
+  src: url('//at.alicdn.com/t/font_2188977_ewodsg18ok9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2188977_ewodsg18ok9.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2188977_ewodsg18ok9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2188977_ewodsg18ok9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2188977_ewodsg18ok9.svg#iconfont') format('svg');
+}
