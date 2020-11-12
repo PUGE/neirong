@@ -71,6 +71,12 @@ li {
   line-height: 34px;
 }
 
+.check-page pre p,
+.check-page textarea p {
+  text-indent: 2em;
+  margin-top: 5px;
+}
+
 .check-page .fl {
   background-color: aliceblue;
 }
@@ -124,7 +130,8 @@ li {
 }
 
 .check-page .error.nrsh,
-.check-page .regexp-like.nrsh {
+.check-page .regexp-like.nrsh,
+.check-page .chengyu-like.nrsh {
   background-color: red;
   color: white;
   border-radius: 3px;
@@ -220,7 +227,86 @@ li {
   background-color: transparent;
   border-bottom: 2px solid #7bb582;
 }
+.word-box {
+  height: 100%;
+}
 
+.word-box .db-left-bar {
+  width: 200px;
+  background-color: #efd9d9;
+  height: 100%;
+}
+
+.word-box .db-left-bar .db-item {
+  display: flex;
+  line-height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.word-box .db-left-bar .db-item .icon {
+  width: 45px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.word-box .word {
+  display: flex;
+  height: 100%;
+}
+
+.word-box .right-bar {
+  width: 250px;
+  background-color: cornsilk;
+}
+
+.word-box .cent-bar {
+  width: calc(100% - 450px);
+}
+
+.word-box .cent-bar .table-box {
+  width: 100%;
+  height: calc(100% - 30px);
+  overflow: auto;
+}
+
+.word-box .cent-bar .pagination-box {
+  height: 30px;
+  background-color: lavenderblush;
+}
+
+.word-box th {
+  line-height: 22px;
+}
+
+.word-box td span {
+  margin: 0 5px;
+  background-color: #009fe9;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.word-box textarea {
+  width: 100%;
+  height: 400px;
+  display: block;
+  background-color: azure;
+}
+
+.word-box .button {
+  background-color: #009fe9;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  box-shadow: 1px 1px 3px #9c7f7f;
+}
 
 .conn {
   display: flex;
@@ -229,12 +315,12 @@ li {
 }
 
 .left {
-  width: 250px;
+  width: 200px;
   background-color: #272f3e;
 }
 
 .router {
-  width: calc(100% - 250px);
+  width: calc(100% - 200px);
   height: 100%;
 }
 

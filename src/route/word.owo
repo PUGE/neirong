@@ -1,11 +1,191 @@
 <template lang="pug">
-.word
+.word-box
+  .word
+    //- 左侧数据集选择
+    .db-left-bar
+      .db-item
+        .icon &#xe61b;
+        span 关键词数据库
+    .cent-bar
+      .table-box
+      .pagination-box
+    .right-bar
+      .word-edit-box
+        .word-edit-item
+          .title 关键词
+          input(type="text" o-value="this.data.edit.text")
+        .word-edit-item
+          .title 关键词类型
+          select(o-value="this.data.edit.type")
+            option(value ="Polity") 政治
+            option(value ="Porn") 色情
+            option(value ="Abuse") 粗俗
+            option(value ="Terror") 恐怖
+            option(value ="Ad") 广告
+        .word-edit-item
+          .title 重要性
+          select(o-value="this.data.edit.major")
+            option(value ="0") 普通
+            option(value ="1") 重要
+        .word-edit-item
+          .title 提示信息
+          textarea(o-value="this.data.edit.tips")
+        .button(o-tap="addWord") 添加关键词
 </template>
 
 <script>
-  module.exports = {}
+  module.exports = {
+    data: {
+      get18n: {
+        id: '编号',
+        major: '重要标识',
+        relation: '对应文字',
+        text: '关键词',
+        tips: '提示信息',
+        type: '性质',
+      },
+      activeTableName: '',
+      edit: {
+        text: '',
+        type: 'Polity',
+        major: 0,
+        tips: ''
+      }
+    },
+    created: function () {
+      this.getData('word')
+    },
+    getData: function (name) {
+      this.data.activeTableName = name
+      const get18n = this.data.get18n
+      fetch(`http://127.0.0.1:8006/getData?name=${name}`, {
+        method: 'GET',
+        redirect: 'follow'
+      }).then(response => response.json()).then(result => {
+          // console.log(result)
+          if (result.err == 0) {
+            // 取出列
+            let newHTML = `<table><thead><tr>`
+            let keyList = []
+            for (const key in result.data[0]) {
+              if (result.data[0].hasOwnProperty(key) && get18n[key]) {
+                keyList.push(key)
+                newHTML += `<th>${get18n[key]}</th>`
+              }
+            }
+            // 添加工具条
+            keyList.push('操作')
+            newHTML += `<th>操作</th>`
+            newHTML += `</tr></thead><tbody>`
+            result.data.forEach(element => {
+              newHTML += `<tr>`
+              keyList.forEach(key => {
+                // 如果是type需要做特殊处理
+                if (key == 'type') {
+                  newHTML += `<td>${getErrorTypeText(element[key])}</td>`
+                } else if (key == '操作') {
+                  newHTML += `<td><span>修改</span><span o-tap="delete(${element['id']}, '${element['text']}')">删除</span></td>`
+                } else {
+                  newHTML += `<td>${element[key]}</td>`
+                }
+                
+              })
+              newHTML += `</tr>`
+            });
+            newHTML += `</tbody></table>`
+            // console.log(newHTML)
+            this.query('.table-box').innerHTML = newHTML
+            setTimeout(() => {
+              this.handleEvent(this, this.query('.info-right'))
+            }, 500);
+          }
+      }).catch(error => console.log('error', error));
+    },
+    delete: function (id, name) {
+      if (confirm(`确定删除关键词“${name}”吗？`)) {
+        fetch(`http://127.0.0.1:8006/getData?name=${this.data.activeTableName}&id=${id}`, {
+          method: 'GET'
+        }).then(response => response.json()).then(result => {
+          if (result.err == 0) {
+            this.getData(this.data.activeTableName)
+            alert(`关键词 [${name}] 已经被删除!`)
+          }
+        }).catch(error => console.log('error', error));
+      }
+    },
+    addWord: function () {
+      console.log(this.data.edit)
+    }
+  }
 </script>
 
 <style lang="less">
-
+.word-box {
+  height: 100%;
+}
+.db-left-bar {
+  width: 200px;
+  background-color: #efd9d9;
+  height: 100%;
+  .db-item {
+    display: flex;
+    line-height: 40px;
+    padding: 0 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    .icon {
+      width: 45px;
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+    }
+  }
+}
+.word {
+  display: flex;
+  height: 100%;
+}
+.right-bar {
+  width: 250px;
+  background-color: cornsilk;
+}
+.cent-bar {
+  width: calc(100% - 450px);
+  .table-box {
+    width: 100%;
+    height: calc(100% - 30px);
+    overflow: auto;
+  }
+  .pagination-box {
+    height: 30px;
+    background-color: lavenderblush;
+  }
+}
+th {
+  line-height: 22px;
+}
+td span {
+  margin: 0 5px;
+  background-color: #009fe9;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+textarea {
+  width: 100%;
+  height: 400px;
+  display: block;
+  background-color: azure;
+}
+.button {
+  background-color: #009fe9;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  box-shadow: 1px 1px 3px #9c7f7f;
+}
 </style>

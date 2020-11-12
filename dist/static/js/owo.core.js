@@ -1,4 +1,4 @@
-// Wed Nov 11 2020 18:07:49 GMT+0800 (GMT+08:00)
+// Thu Nov 12 2020 18:00:53 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -177,6 +177,16 @@ _owo.addEvent = function (tempDom, moudleScript) {
                     }
                     break;
                   
+                }
+                break;
+              case 'TEXTAREA':
+                if (value == undefined) value = ''
+                tempDom.value = value
+                tempDom.onchange = function (e) {
+                  var eventFor = e.target.getAttribute('o-value')
+                  var value = e.target.value
+                  if (value == '') value = '""'
+                  shaheRun.apply(moudleScript, [eventFor + '="' + value + '"'])
                 }
                 break;
               case 'SELECT':

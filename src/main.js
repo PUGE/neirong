@@ -12,6 +12,12 @@ function getErrorTypeText (errorCode) {
     case 'Abuse':
       return '粗俗'
       break;
+    case 'Terror':
+      return '恐怖'
+      break;
+    case 'Ad':
+      return '广告'
+      break;
     default:
       return errorCode
       break;
@@ -34,7 +40,7 @@ function chengyuBaseHandle (htmlData, data) {
 }
 
 function chengyuPinyinHandle (htmlData, data) {
-  console.log(htmlData)
+  // console.log(htmlData)
   const pageData = owo.script.page.view.content.checkText.data
   data.forEach(item => {
     if (!pageData.findList[item['like']]) {
@@ -50,7 +56,7 @@ function chengyuPinyinHandle (htmlData, data) {
 }
 
 function regexpHandle (htmlData, data) {
-  console.log(htmlData)
+  // console.log(htmlData)
   const pageData = owo.script.page.view.content.checkText.data
   data.forEach(item => {
     if (!pageData.findList[item['like']]) {

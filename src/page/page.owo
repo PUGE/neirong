@@ -39,11 +39,11 @@
   height: 100%;
 }
 .left {
-  width: 250px;
+  width: 200px;
   background-color: #272f3e;
 }
 .router {
-  width: calc(100% - 250px);
+  width: calc(100% - 200px);
   height: 100%;
 }
 .router-item {
