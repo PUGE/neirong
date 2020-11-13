@@ -1,4 +1,4 @@
-// Thu Nov 12 2020 18:00:53 GMT+0800 (GMT+08:00)
+// Fri Nov 13 2020 16:52:36 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -185,7 +185,9 @@ _owo.addEvent = function (tempDom, moudleScript) {
                 tempDom.onchange = function (e) {
                   var eventFor = e.target.getAttribute('o-value')
                   var value = e.target.value
-                  if (value == '') value = '""'
+                  value = value.replace(/\"/g, '\\"')
+                  value = value.replace(/\r/g, '')
+                  value = value.replace(/\n/g, '')
                   shaheRun.apply(moudleScript, [eventFor + '="' + value + '"'])
                 }
                 break;

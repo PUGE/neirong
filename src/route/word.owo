@@ -16,12 +16,17 @@
           input(type="text" o-value="this.data.edit.text")
         .word-edit-item
           .title 关键词类型
-          select(o-value="this.data.edit.type")
+          select(o-change="typeChange")
             option(value ="Polity") 政治
+            option(value ="Standard") 错误表述
+            option(value ="XiYu") 习语
             option(value ="Porn") 色情
             option(value ="Abuse") 粗俗
             option(value ="Terror") 恐怖
             option(value ="Ad") 广告
+        .word-edit-item(o-if="this.data.edit.type == 'Standard'")
+          .title 对应的正确表述
+          input(type="text" o-value="this.data.edit.relation")
         .word-edit-item
           .title 重要性
           select(o-value="this.data.edit.major")
@@ -48,12 +53,20 @@
       edit: {
         text: '',
         type: 'Polity',
-        major: 0,
-        tips: ''
+        major: "0",
+        tips: '',
+        relation: ''
       }
     },
     created: function () {
       this.getData('word')
+    },
+    typeChange: function (value) {
+      console.log(this.$target.value)
+      this.data.edit.type = this.$target.value
+      setTimeout(() => {
+        this.handleEvent(this, this.query('.right-bar'))
+      }, 100);
     },
     getData: function (name) {
       this.data.activeTableName = name
@@ -84,7 +97,7 @@
                 if (key == 'type') {
                   newHTML += `<td>${getErrorTypeText(element[key])}</td>`
                 } else if (key == '操作') {
-                  newHTML += `<td><span>修改</span><span o-tap="delete(${element['id']}, '${element['text']}')">删除</span></td>`
+                  newHTML += `<td><span o-tap="delete(${element['id']}, '${element['text']}')">删除</span></td>`
                 } else {
                   newHTML += `<td>${element[key]}</td>`
                 }
@@ -103,18 +116,49 @@
     },
     delete: function (id, name) {
       if (confirm(`确定删除关键词“${name}”吗？`)) {
-        fetch(`http://127.0.0.1:8006/getData?name=${this.data.activeTableName}&id=${id}`, {
+        fetch(`http://127.0.0.1:8006/delete?name=${this.data.activeTableName}&id=${id}`, {
           method: 'GET'
         }).then(response => response.json()).then(result => {
           if (result.err == 0) {
-            this.getData(this.data.activeTableName)
             alert(`关键词 [${name}] 已经被删除!`)
+            this.getData(this.data.activeTableName)
+            
           }
         }).catch(error => console.log('error', error));
       }
     },
     addWord: function () {
       console.log(this.data.edit)
+      if (!this.data.edit.text) {
+        owo.tool.remind('关键词不能为空!', 2000)
+        return
+      }
+      if (this.data.edit.type == 'Standard' && !this.data.edit.relation) {
+        owo.tool.remind('关联词不能为空!', 2000)
+        return
+      }
+      fetch(`http://127.0.0.1:8006/addWord`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.data.edit),
+      }).then(response => response.json()).then(result => {
+        console.log(result)
+        if (result.err !== 0) {
+          alert(result.message)
+        } else {
+          owo.tool.remind('关键词添加成功!', 2000)
+          this.data.edit = {
+            text: '',
+            type: this.data.edit.type,
+            major: "0",
+            tips: '',
+            relation: ''
+          }
+          this.handleEvent(this, this.query('.info-right'))
+        }
+      }).catch(error => console.log('error', error));
     }
   }
 </script>
@@ -187,5 +231,6 @@ textarea {
   border-radius: 3px;
   font-size: 16px;
   box-shadow: 1px 1px 3px #9c7f7f;
+  cursor: pointer;
 }
 </style>

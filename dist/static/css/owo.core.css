@@ -129,6 +129,12 @@ li {
   border-radius: 3px;
 }
 
+.check-page .nrsh.Standard {
+  background-color: salmon;
+  border-radius: 3px;
+  color: white;
+}
+
 .check-page .error.nrsh,
 .check-page .regexp-like.nrsh,
 .check-page .chengyu-like.nrsh {
@@ -227,6 +233,11 @@ li {
   background-color: transparent;
   border-bottom: 2px solid #7bb582;
 }
+
+.check-page .nrsh.XiYu {
+  background-color: transparent;
+  border-bottom: 2px solid #b5b539;
+}
 .word-box {
   height: 100%;
 }
@@ -306,6 +317,7 @@ li {
   border-radius: 3px;
   font-size: 16px;
   box-shadow: 1px 1px 3px #9c7f7f;
+  cursor: pointer;
 }
 
 .conn {

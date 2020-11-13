@@ -15,6 +15,9 @@ function getErrorTypeText (errorCode) {
     case 'Terror':
       return '恐怖'
       break;
+    case 'Standard':
+      return '错误表述'
+      break;
     case 'Ad':
       return '广告'
       break;

@@ -11,7 +11,8 @@
       p 闭幕会前，国家发展改革委党组成员、国家粮食和物资储备局局长张务锋应邀作了题为“解决好中国人自己的‘饭碗’问题——我国粮食生产与粮食安全”学习讲座。
       p 全国政协副主席张庆黎、刘奇葆、董建华、万钢、卢展工、王正伟、马飚、陈晓光、梁振英、夏宝龙、李斌、巴特尔、汪永清、苏辉、郑建邦、辜胜阻、刘新成、何维、邵鸿、高云龙出席会议。
       p 洗金瓶 金瓶子 洗金子 习斤平 李克勤 锦秀山河 姗姗来迟 李x强 李xx 李33强 张克强 李xxxxx克强 王宝强 李/克/强 老李新买的手机仅500克很强！
-      p 王洋 汪洋 台独 态度 台堵 全国政协 全国正邪 邪不压正 正邪不两立 总书记 宗书记 同书记 书记处书记
+      p 王洋 汪洋 台独 态度 台堵 全国政协 全国正邪 邪不压正 正邪不两立 总书记 宗书记 同书记 书记处书记 武汉病毒 新馆病毒 新冠病毒
+      p 习近平说过“发展决不能以牺牲人的生命为代价，这必须作为一条不可逾越的红线”还是“发展决不能以牺牲人的生命为代价，这必须得作为一条不可逾越的红线”反正肯定没有说过“发展能以牺牲人的生命为代价，这不用作为一条不可逾越的红线”。
     .right-bar
       .info-right
         .title.clear
@@ -42,6 +43,14 @@
           .fix-button.button-item(o-tap="autoFix")
             span (F)一键修复为 
             soan(o-value="this.data.infoData.text")
+        .fix-box(o-if="this.data.infoData.relation")
+          .title.clear
+            span 正确的文字可能为?
+          .block-show-box.clear
+            .block-show(o-value="this.data.infoData.relation")
+          .fix-button.button-item(o-tap="autoFix")
+            span (F)一键修复为 
+            soan(o-value="this.data.infoData.relation")
         .clear-box
           .clear-button.button-item(o-tap="clear") 清除此关键词标记
         .type-box
@@ -50,6 +59,9 @@
         .check-box
           input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
           span 启用关键词匹配
+        .check-box
+          input(type="checkbox" checked disabled="true")
+          span 启用习语匹配
         .check-box
           input(type="checkbox" o-value="this.data.sendData.pinyin")
           span 启用拼音纠错
@@ -68,6 +80,9 @@
         .check-box
           input(type="checkbox" o-value="this.data.sendData.mohu")
           span 启用模糊纠错
+        .check-box
+          input(type="checkbox" o-value="this.data.sendData.xiyu")
+          span 启用习语纠错
         .button(o-tap="check") 智能审核
 </template>
 
@@ -76,12 +91,13 @@
     data: {
       sendData: {
         network: false,
-        pinyin: true,
+        pinyin: false,
         base: true,
         yange: false,
-        chengyuBase: true,
-        chengyuPinyin: true,
-        mohu: true
+        chengyuBase: false,
+        chengyuPinyin: false,
+        mohu: false,
+        xiyu: true
       },
       findList: {},
       findListArr: [],
@@ -122,7 +138,11 @@
         if (!this.data.findList[item['text']]) {
           this.data.findList[item['text']] = item
           this.data.findListArr.push(item)
-          htmlData = htmlData.replace(new RegExp(item['text'],"gm"), `<span data-ind="${this.data.findListArr.length}" title="关键词类型: ${this.getErrorTypeText(item.type)}" class="nrsh base ${item.type}">${item['text']}</span>`)
+          if (item.type === 'Standard') {
+            htmlData = htmlData.replace(new RegExp(item['text'], "gm"), `<span data-ind="${this.data.findListArr.length}" title="是否应该写成: ${item.relation}?" class="nrsh base Standard">${item['text']}</span>`)
+          } else {
+            htmlData = htmlData.replace(new RegExp(item['text'],"gm"), `<span data-ind="${this.data.findListArr.length}" title="关键词类型: ${this.getErrorTypeText(item.type)}" class="nrsh base ${item.type}">${item['text']}</span>`)
+          }
         }
       })
       return htmlData
@@ -246,7 +266,7 @@
     // 智能修复
     autoFix: function () {
       console.log(this.data)
-      this.data.activeDom.innerText = this.data.infoData.text
+      this.data.activeDom.innerText = this.data.infoData.relation || this.data.infoData.text
     },
     clear: function () {
       this.data.activeDom.outerHTML = this.data.activeDom.innerText
@@ -326,6 +346,11 @@ pre, textarea {
   background-color: cadetblue;
   color: white;
   border-radius: 3px;
+}
+.nrsh.Standard {
+  background-color: salmon;
+  border-radius: 3px;
+  color: white;
 }
 .error.nrsh, .regexp-like.nrsh, .chengyu-like.nrsh {
   background-color: red;
@@ -409,5 +434,9 @@ pre, textarea {
 .chengyu-base {
   background-color: transparent;
   border-bottom: 2px solid #7bb582;
+}
+.nrsh.XiYu {
+  background-color: transparent;
+  border-bottom: 2px solid #b5b539;
 }
 </style>
