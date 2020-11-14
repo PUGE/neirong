@@ -1,7 +1,7 @@
 <template lang="pug">
 .check-page
   .check
-    pre(contenteditable="true")
+    .text-edit(contenteditable="true")
       p 报北京11月11日电  （记者冯春梅）全国政协十三届常委会第十四次会议11日在京闭幕。中共中央政治局常委、全国政协主席汪洋主持会议并讲话。
       p 全国政协常委们高度评价“十三五”时期我国经济社会发展取得的巨大成就，完全赞成和拥护习近平总书记在中共十九届五中全会上的重要讲话和全会审议通过的规划建议，一致认为规划建议擘画蓝图鼓舞人心、制定目标实事求是、部署举措务实精准，是今后5年乃至更长时期我国经济社会发展的行动指南。大家表示，要自觉学习贯彻全会精神、对标对表全会要求，切实担负起政协委员的政治责任。
       p 汪洋指出，深入学习宣传贯彻五中全会精神，是当前和今后一个时期人民政协的首要政治任务。要深入研究和深刻把握全面建设社会主义现代化国家的精髓要义，紧紧围绕中国式现代化人口规模巨大、全体人民共同富裕、物质文明和精神文明相协调、人与自然和谐共生、走和平发展道路等重要特征，发挥人民政协人才荟萃优势，深化对相关重大理论和实践问题的研究，更好为制定实施“十四五”规划纲要精准建言、凝心聚力。
@@ -15,47 +15,47 @@
       p 习近平说过“发展决不能以牺牲人的生命为代价，这必须作为一条不可逾越的红线”还是“发展决不能以牺牲人的生命为代价，这必须得作为一条不可逾越的红线”反正肯定没有说过“发展能以牺牲人的生命为代价，这不用作为一条不可逾越的红线”。
     .right-bar
       .info-right
-        .title.clear
-          span.block 关键词标签：
-        .block-show-box.clear
-          .block-show(o-value="this.data.infoData.type")
-        .title.clear
-          span.block 关键词拼音：
-        .block-show-box.clear
-          .block-show(o-for="this.data.infoData.pinyin") {value}
-        .title.clear
-          span 重点关键词：
-          .block-show(o-value="this.data.infoData.major")
-        .title.clear(o-if="this.data.infoData.vague")
-          span 模糊匹配级别：
-          .block-show(o-value="this.data.infoData.vague")
-        .title.clear(o-if="this.data.infoData.severity")
-          span 关键词重要度：
-          .block-show(o-value="this.data.infoData.severity")
-        .title.clear(o-if="this.data.infoData.tips")
-          span.block 其他信息：
-          .info-show(o-value="this.data.infoData.tips")
+        .top-title-bar 关键词详情
+        .card
+          .title.clear
+            span.block 关键词标签：
+          .block-show-box.clear
+            .block-show(o-value="this.data.infoData.type")
+        .card
+          .title.clear
+            span.block 关键词拼音：
+          .block-show-box.clear
+            .block-show(o-for="this.data.infoData.pinyin") {value}
+        .card
+          .title.clear
+            span 重点关键词：
+            .block-show(o-value="this.data.infoData.major")
+        .card
+          .title.clear(o-if="this.data.infoData.vague")
+            span 模糊匹配级别：
+            .block-show(o-value="this.data.infoData.vague")
+        .card
+          .title.clear(o-if="this.data.infoData.severity")
+            span 关键词重要度：
+            .block-show(o-value="this.data.infoData.severity")
+        .card
+          .title.clear(o-if="this.data.infoData.tips")
+            span.block 其他信息:
+            .info-show(o-value="this.data.infoData.tips")
         .fix-box(o-if="this.data.infoData.like")
           .title.clear
-            span 正确的文字可能为?
-          .block-show-box.clear
-            .block-show(o-value="this.data.infoData.text")
-          .fix-button.button-item(o-tap="autoFix")
-            span (F)一键修复为 
-            soan(o-value="this.data.infoData.text")
-        .fix-box(o-if="this.data.infoData.relation")
+            span 智能修改关键词为:
+          .auto-fix-button(o-value="this.data.infoData.text" o-tap="autoFix")
+        .fix-box.card(o-if="this.data.infoData.relation")
           .title.clear
             span 正确的文字可能为?
-          .block-show-box.clear
-            .block-show(o-value="this.data.infoData.relation")
-          .fix-button.button-item(o-tap="autoFix")
-            span (F)一键修复为 
-            soan(o-value="this.data.infoData.relation")
+          .auto-fix-button(o-value="this.data.infoData.relation" o-tap="autoFix")
         .clear-box
           .clear-button.button-item(o-tap="clear") 清除此关键词标记
         .type-box
         .button(o-tap="hideInfoRight") 返回审核
       .check-right
+        .top-title-bar 审查选项
         .check-box
           input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
           span 启用关键词匹配
@@ -218,7 +218,7 @@
       });
       this.data.findList = {}
       this.data.findListArr = []
-      const value = this.query('pre').innerText
+      const value = this.query('.text-edit').innerText
       if (value == '') {
         owo.tool.remind('检查文本不能为空!', 2000)
         return
@@ -229,7 +229,7 @@
         method: 'POST',
         body: JSON.stringify({"config": this.data.sendData,"content": value})
       }).then(response => response.json()).then(result => {
-        let htmlData = this.query('pre').innerHTML
+        let htmlData = this.query('.text-edit').innerHTML
         
         const data = result['data']
         // console.log(htmlData)
@@ -256,9 +256,10 @@
           htmlData = regexpHandle(htmlData, data['regexp'])
         }
         // console.log(htmlData)
-        this.query('pre').innerHTML = htmlData
+        this.query('.text-edit').innerHTML = htmlData
         setTimeout(() => {
           this.reHandleEvent()
+          owo.tool.remind('点击高亮的关键词显示对应信息!', 2000)
         }, 100);
       })
       .catch(error => console.log('error', error));
@@ -287,7 +288,7 @@
 .check-page {
   height: 100%;
 }
-pre, textarea {
+.text-edit, textarea {
   width: calc(100% - 270px);
   height: calc(100% - 20px);
   border: none;
@@ -310,6 +311,8 @@ pre, textarea {
   width: 250px;
   position: relative;
   background-color: #f7f8fa;
+  border-left: 1px solid #ddd;
+  box-sizing: border-box;
 }
 .conn-box {
   height: calc(100% - 41px);
@@ -374,13 +377,18 @@ pre, textarea {
 }
 .info-right {
   display: none;
+  .card {
+    border-bottom: 1px dashed #ddd;
+    background-color: white;
+    margin-bottom: 5px;
+  }
   .title {
     line-height: 35px;
     padding: 0 10px;
-    border-bottom: 1px dashed #ccc;
     position: relative;
     color: #333;
     font-size: 16px;
+    font-weight: bold;
     span {
       display: inline-block;
     }
@@ -438,5 +446,24 @@ pre, textarea {
 .nrsh.XiYu {
   background-color: transparent;
   border-bottom: 2px solid #b5b539;
+}
+.top-title-bar {
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+.auto-fix-button {
+  margin: 10px;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 3px 5px #d0c5c5;
+  background-color: cornsilk;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
 }
 </style>

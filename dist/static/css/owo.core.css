@@ -58,7 +58,7 @@ li {
   height: 100%;
 }
 
-.check-page pre,
+.check-page .text-edit,
 .check-page textarea {
   width: calc(100% - 270px);
   height: calc(100% - 20px);
@@ -71,7 +71,7 @@ li {
   line-height: 34px;
 }
 
-.check-page pre p,
+.check-page .text-edit p,
 .check-page textarea p {
   text-indent: 2em;
   margin-top: 5px;
@@ -86,6 +86,8 @@ li {
   width: 250px;
   position: relative;
   background-color: #f7f8fa;
+  border-left: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .check-page .conn-box {
@@ -165,13 +167,19 @@ li {
   display: none;
 }
 
+.check-page .info-right .card {
+  border-bottom: 1px dashed #ddd;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
 .check-page .info-right .title {
   line-height: 35px;
   padding: 0 10px;
-  border-bottom: 1px dashed #ccc;
   position: relative;
   color: #333;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .check-page .info-right .title span {
@@ -237,6 +245,27 @@ li {
 .check-page .nrsh.XiYu {
   background-color: transparent;
   border-bottom: 2px solid #b5b539;
+}
+
+.check-page .top-title-bar {
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.check-page .auto-fix-button {
+  margin: 10px;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 3px 5px #d0c5c5;
+  background-color: cornsilk;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
 }
 .word-box {
   height: 100%;
