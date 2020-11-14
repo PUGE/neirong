@@ -270,16 +270,37 @@ li {
 
 .word-box .right-bar {
   width: 250px;
-  background-color: cornsilk;
+  background-color: whitesmoke;
+  border-left: 1px solid #ccc;
+}
+
+.word-box .right-bar input[type="text"],
+.word-box .right-bar select {
+  height: 35px;
+  width: 100%;
+  border: 1px solid #ccc;
+  outline: none;
+  border-left: none;
+  border-right: none;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.word-box .right-bar textarea {
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-size: 16px;
 }
 
 .word-box .cent-bar {
-  width: calc(100% - 450px);
+  width: calc(100% - 251px);
 }
 
 .word-box .cent-bar .table-box {
   width: 100%;
-  height: calc(100% - 30px);
+  height: calc(100% - 70px);
   overflow: auto;
 }
 
@@ -318,6 +339,50 @@ li {
   font-size: 16px;
   box-shadow: 1px 1px 3px #9c7f7f;
   cursor: pointer;
+}
+
+.word-box .title {
+  line-height: 35px;
+  font-size: 16px;
+  padding: 0 5px;
+  color: #333;
+}
+
+.word-box .title-info {
+  font-size: 12px;
+  color: #999;
+  line-height: 20px;
+  padding: 0 5px;
+}
+
+.word-box .type-bar {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.word-box .type-bar .type-item {
+  text-align: center;
+  background-color: gainsboro;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.word-box .type-bar .active {
+  background-color: burlywood;
+  color: white;
+}
+
+.word-box table {
+  width: 100%;
 }
 
 .conn {

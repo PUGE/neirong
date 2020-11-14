@@ -1,4 +1,4 @@
-// Fri Nov 13 2020 16:52:36 GMT+0800 (GMT+08:00)
+// Sat Nov 14 2020 12:13:09 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -683,6 +683,7 @@ View.prototype.showIndex = function (ind) {
   }
   newRoute.$el.setAttribute('route-active', 'true')
   owo.onViewChange()
+  owo.state.routeBusy = false
 }
 
 View.prototype.showName = function (name) {
