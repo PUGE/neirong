@@ -1,4 +1,4 @@
-// Sun Nov 15 2020 22:17:13 GMT+0800 (GMT+08:00)
+// Mon Nov 16 2020 00:19:36 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -185,9 +185,7 @@ _owo.addEvent = function (tempDom, moudleScript) {
                 tempDom.onchange = function (e) {
                   var eventFor = e.target.getAttribute('o-value')
                   var value = e.target.value
-                  value = value.replace(/\"/g, '\\"')
-                  value = value.replace(/\r/g, '')
-                  value = value.replace(/\n/g, '')
+                  if (value == '') value = '""'
                   shaheRun.apply(moudleScript, [eventFor + '="' + value + '"'])
                 }
                 break;
@@ -628,7 +626,6 @@ View.prototype.showIndex = function (ind) {
   }
   newRoute.$el.setAttribute('route-active', 'true')
   owo.onViewChange()
-  owo.state.routeBusy = false
 }
 
 View.prototype.showName = function (name) {
