@@ -61,10 +61,6 @@
 	],
 	"scriptList": [
 		{
-			"name": "base64.js",
-			"src": "./src/base64.js"
-		},
-		{
 			"name": "main",
 			"src": "./src/main.js",
 			"resource": true
@@ -73,6 +69,14 @@
 			"name": "remind",
 			"afterbody": true,
 			"src": "./owo_modules/remind.js"
+		},
+		{
+			"name": "ace.js",
+			"src": "./src/ace.js"
+		},
+		{
+			"name": "ace-diff.min.js",
+			"src": "./src/ace-diff.min.js"
 		}
 	],
 	"styleList": [
@@ -80,6 +84,10 @@
 			"name": "main",
 			"src": "./src/main.css",
 			"resource": true
+		},
+		{
+			"name": "ace-diff.min",
+			"src": "./src/ace-diff.min.css"
 		}
 	],
 	"pageList": [

@@ -1,0 +1,31 @@
+<template lang="pug">
+.acediff
+</template>
+
+<script>  
+  module.exports = {
+    created: function () {
+      var aceDiffer = new AceDiff({
+        element: '.acediff',
+        left: {
+          content: `左侧文本框
+          
+在这里输入文本1
+
+即可对比两篇文本的不同`,
+        },
+        right: {
+          content: `右侧文本框
+
+右面输入文本2
+
+即可对比两篇文本的不同`,
+        },
+      });
+    }
+  }
+</script>
+
+<style lang="less">
+
+</style>

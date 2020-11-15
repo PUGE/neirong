@@ -21,6 +21,9 @@ function getErrorTypeText (errorCode) {
     case 'Ad':
       return '广告'
       break;
+    case 'XiYu':
+      return '习语'
+      break;
     default:
       return errorCode
       break;
@@ -66,7 +69,7 @@ function regexpHandle (htmlData, data) {
       pageData.findList[item['like']] = item
       pageData.findListArr.push(item)
       item.type = '疑似错误'
-      htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span title="是否应该写成: ${item.text}?" data-ind="${pageData.findListArr.length}" title="${item.interpretation}" class="nrsh regexp regexp-like">${item['like']}</span>`)
+      htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${pageData.findListArr.length}" class="nrsh regexp regexp-like">${item['like']}</span>`)
     }
   })
   return htmlData

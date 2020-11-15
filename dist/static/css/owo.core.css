@@ -112,6 +112,7 @@ li {
 .check-page .nrsh {
   background-color: #ccc;
   cursor: pointer;
+  display: inline;
 }
 
 .check-page .nrsh.like {
@@ -212,10 +213,6 @@ li {
   margin: 5px;
 }
 
-.check-page .block-show-box {
-  margin-top: 5px;
-}
-
 .check-page .button-item {
   width: 200px;
   display: block;
@@ -264,8 +261,50 @@ li {
   box-shadow: 1px 3px 5px #d0c5c5;
   background-color: cornsilk;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 22px;
   cursor: pointer;
+}
+
+.check-page .info-show {
+  margin: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.check-page .info-text {
+  margin: 0 10px;
+  color: #666;
+}
+
+.check-page .pinyin-show {
+  display: inline;
+}
+
+.check-page .like-num {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  color: mediumseagreen;
+  padding-bottom: 5px;
+}
+
+.check-page .loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 9;
+  display: none;
+}
+
+.check-page .loading img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 .word-box {
   height: 100%;
@@ -413,6 +452,7 @@ li {
 .word-box table {
   width: 100%;
 }
+
 
 .conn {
   display: flex;

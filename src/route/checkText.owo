@@ -1,15 +1,33 @@
 <template lang="pug">
 .check-page
+  .loading
+    img(src="@|loading.svg|")
   .check
     .text-edit(contenteditable="true")
-      p 报北京11月11日电  （记者冯春梅）全国政协十三届常委会第十四次会议11日在京闭幕。中共中央政治局常委、全国政协主席汪洋主持会议并讲话。
-      p 全国政协常委们高度评价“十三五”时期我国经济社会发展取得的巨大成就，完全赞成和拥护习近平总书记在中共十九届五中全会上的重要讲话和全会审议通过的规划建议，一致认为规划建议擘画蓝图鼓舞人心、制定目标实事求是、部署举措务实精准，是今后5年乃至更长时期我国经济社会发展的行动指南。大家表示，要自觉学习贯彻全会精神、对标对表全会要求，切实担负起政协委员的政治责任。
-      p 汪洋指出，深入学习宣传贯彻五中全会精神，是当前和今后一个时期人民政协的首要政治任务。要深入研究和深刻把握全面建设社会主义现代化国家的精髓要义，紧紧围绕中国式现代化人口规模巨大、全体人民共同富裕、物质文明和精神文明相协调、人与自然和谐共生、走和平发展道路等重要特征，发挥人民政协人才荟萃优势，深化对相关重大理论和实践问题的研究，更好为制定实施“十四五”规划纲要精准建言、凝心聚力。
-      p 汪洋强调，要按照五中全会部署要求，坚持制度引领，推动贯彻中央政协工作会议精神走深走实。要以制定政协协商工作规则为牵引，进一步提高专门协商机构协商履职水平；以实施加强和促进人民政协凝聚共识工作的意见为基础，进一步增强凝心聚力的实效；以强化委员责任担当为抓手，加强正向激励和纪律约束，进一步推动作风之实和履职之能有机结合。
-      p 会议审议通过了关于举办辛亥革命110周年纪念活动的决定、全国政协关于强化政协委员责任担当的意见，审议通过了修订后的政协全国委员会专门委员会通则等。
-      p 会议经过表决，增补王尔乘、李宝善、蔡名照为第十三届全国政协委员，李宝善、蔡名照为教科卫体委员会副主任，王尔乘为社会和法制委员会副主任；增补高波为第十三届全国政协副秘书长，不再担任人口资源环境委员会驻会副主任；接受蓝天立同志因工作原因请辞第十三届全国政协委员。
-      p 闭幕会前，国家发展改革委党组成员、国家粮食和物资储备局局长张务锋应邀作了题为“解决好中国人自己的‘饭碗’问题——我国粮食生产与粮食安全”学习讲座。
-      p 全国政协副主席张庆黎、刘奇葆、董建华、万钢、卢展工、王正伟、马飚、陈晓光、梁振英、夏宝龙、李斌、巴特尔、汪永清、苏辉、郑建邦、辜胜阻、刘新成、何维、邵鸿、高云龙出席会议。
+      p “法者，治之端也”，全面依法治国是国家治理领域一场广泛而深刻的革命。
+      p 党的十八大以来，以习近平同志为核心的党中央从坚持和发展中国特色社会主义的全局和战略高度定位法治、布局法治、厉行法治，坚持依法治国、依法执政、依法行政共同推进，法治国家、法治政府、法治社会一体建设，法治中国建设取得了令人瞩目的成就，中国人民在中国特色社会主义法治道路上阔步前行。
+      p 法治国家：以良法谋善治
+      p 2020年5月28日，人民大会堂响起经久不息的掌声，十三届全国人大三次会议审议通过《中华人民共和国民法典》，中国的民事权利保障迎来了一个全新时代。
+      p 这部新中国成立以来第一部以法典命名的法律来之不易。2014年10月，党的十八届四中全会决定“编纂民法典”。民法典编纂过程中，先后10次通过中国人大网公开征求意见，累计收到42.5万人提出的102万条意见建议。“在全面建成小康社会的重要节点上，编纂一部符合中国国情、体现时代特色、反映人民意愿的民法典，是推进全面依法治国、推进国家治理体系和治理能力现代化的重大举措。”全国人大常委会法工委民法室主任黄薇说。
+      p 法律是治国之重器，法治是国家治理体系和治理能力的重要依托。
+      p 设立国家宪法日，建立宪法宣誓制度，实施宪法规定的特赦制度、国家勋章和国家荣誉称号制度、法律解释制度……党的十八大以来，保证宪法实施的法律制度不断健全。从制定外商投资法到编纂民法典，从修改环境保护法到修改食品安全法，聚焦重要领域开展法律法规立改废释，以宪法为核心的中国特色社会主义法律体系进一步完善。
+      p 法律的生命力在于实施。党的十八大以来，全面加强严格执法、公正司法，“努力让人民群众在每一项法律制度、每一个执法决定、每一宗司法案件中都感受到公平正义。”严格规范公正文明执法大力推进，司法责任制改革全面推开，全面落实司法责任制，入额办案、办案担责、有责追究的司法权运行机制正在形成。通过深化体制机制改革，提高执法司法能力和公信力，制约执法司法能力、影响执法司法公正的深层次、体制性问题逐步解决。
+      p 法治政府：严格执法，刀刃向内
+      p 日前，国办印发《关于加快推进政务服务“跨省通办”的指导意见》，提出了140项全国高频政务服务“跨省通办”事项清单。据介绍，这140项高频的“跨省通办”事项是在6.3万余条网络投票、留言基础上梳理出来的。
+      p 让异地办事更方便，是“放管服”改革的一个缩影。党的十八大以来，各级政府着力推进职能转变，从“简政放权”入手，进而推动“放管结合”和“优化服务”，形成了放、管、服三管齐下、互为支撑的改革局面，成效令人瞩目。
+      p “徒法不足以自行”。我国大约80%的法律、90%的地方性法规和几乎所有行政法规，都是由行政机关来实施。法治政府建设的成效，关系到法治能否落到实处。
+      p 党的十八大以来，法治政府建设步履铿锵有力。2015年底，《法治政府建设实施纲要（2015—2020年）》印发实施，法治政府建设取得重大进展和明显成效。
+      p 没有严格执法，就没有法治政府。中央依法治国办先后部署开展了法治政府建设督察和第一批全国法治政府建设示范创建活动，督察和示范创建“两手抓”的推进机制初步形成。行政执法体制改革深入推进，行政执法“三项制度”全面推行得到全面加强，落实行政执法责任制，严格规范公正文明执法。行政复议化解行政争议主渠道作用有力彰显，各级行政机关依法行政水平不断提升。
+      p 我国宪法明确规定，实行依法治国，建设社会主义法治国家。党的十八大以来，我国坚持依法治国和依规治党有机统一，国家监察体制改革扎实推进，完善反腐败基础性制度框架。从将所有行使公权力的公职人员纳入国家监察范围到逐步形成“四个全覆盖”格局，从大力推动“有形覆盖”到走向“有效覆盖”，构建起党统一领导、全面覆盖、权威高效的监督体系，真正走出了一条中国特色的监督之路。
+      p 法治社会：法润人心，强基固本
+      p 法律的权威源自人民的真诚信仰。
+      p 2018年4月27日，十三届全国人大常委会第二次会议全票表决通过了英雄烈士保护法，以法律形式明确了捍卫英雄的责任和义务，为捍卫英雄提供了强有力的法律保障。随着这部法律的实施，“崇尚英雄，捍卫英雄，学习英雄，关爱英雄”的风尚已经深入人心。以法治承载核心价值观，将社会主义核心价值观融入法治建设，使之贯穿立法、执法、司法、守法各环节，这在法治社会的建设中，发挥了法润人心及强基固本的独特作用。
+      p 党的十八大以来，法治社会建设迈入新阶段。
+      p 今年是“七五”普法规划的收官之年，随着“七五”普法规划全面实施，宪法学习宣传教育扎实开展，覆盖50多家单位的《中央国家机关普法责任清单》印发实施，“谁执法谁普法”的普法责任制逐步落实，法治文化阵地建设不断加强，全社会法治意识明显提升。
+      p 越来越多的人享受到高效便捷的公共法律服务。为打通贫困地区公共法律服务“最后一公里”，许多地方发挥律师参与基层治理的作用，截至今年6月，全国有近20万名律师担任村居法律顾问，为当地群众提供及时有效的法律服务。现在，公共法律服务网络平台、热线平台全面建成并不断完善，省市县乡四级公共法律服务实体平台达4.1万余个。
+      p 建设法治社会，重在夯实基层基础。如今，“最多跑一次”的改革理念、做法正延伸到社会治理领域，社会矛盾纠纷多元预防调处化解综合机制更加健全，人民调解、行政调解、行业性专业性调解、司法调解协调联动的大调解工作格局逐步建立，通过法定渠道解决矛盾纠纷的比率大幅提升。
+      p 《 人民日报 》（ 2020年11月15日 02 版）
+
       p 洗金瓶 金瓶子 洗金子 习斤平 李克勤 锦秀山河 姗姗来迟 李x强 李xx 李33强 张克强 李xxxxx克强 王宝强 李/克/强 老李新买的手机仅500克很强！
       p 王洋 汪洋 台独 态度 台堵 全国政协 全国正邪 邪不压正 正邪不两立 总书记 宗书记 同书记 书记处书记 武汉病毒 新馆病毒 新冠病毒
       p 习近平说过“发展决不能以牺牲人的生命为代价，这必须作为一条不可逾越的红线”还是“发展决不能以牺牲人的生命为代价，这必须得作为一条不可逾越的红线”反正肯定没有说过“发展能以牺牲人的生命为代价，这不用作为一条不可逾越的红线”。
@@ -21,11 +39,11 @@
             span.block 关键词标签：
           .block-show-box.clear
             .block-show(o-value="this.data.infoData.type")
-        .card
-          .title.clear
-            span.block 关键词拼音：
-          .block-show-box.clear
-            .block-show(o-for="this.data.infoData.pinyin") {value}
+        //- .card
+        //-   .title.clear
+        //-     span.block 关键词拼音：
+        //-   .block-show-box.clear
+        //-     span.pinyin-show(o-for="this.data.infoData.pinyin") {value}
         .card
           .title.clear
             span 重点关键词：
@@ -34,26 +52,31 @@
           .title.clear(o-if="this.data.infoData.vague")
             span 模糊匹配级别：
             .block-show(o-value="this.data.infoData.vague")
-        .card
-          .title.clear(o-if="this.data.infoData.severity")
-            span 关键词重要度：
-            .block-show(o-value="this.data.infoData.severity")
-        .card
-          .title.clear(o-if="this.data.infoData.tips")
-            span.block 其他信息:
-            .info-show(o-value="this.data.infoData.tips")
+        //- .card
+        //-   .title.clear(o-if="this.data.infoData.severity")
+        //-     span 关键词重要度：
+        //-     .block-show(o-value="this.data.infoData.severity")
         .fix-box(o-if="this.data.infoData.like")
           .title.clear
-            span 智能修改关键词为:
-          .auto-fix-button(o-value="this.data.infoData.text" o-tap="autoFix")
+            span 与下列关键词构成类似:
+          .info-text 提示：点击下方关键词可自动替换
+          .auto-fix-button
+            .like-num(o-if="this.data.infoData.likeNumber")
+              span 关键词相似度：
+              psan(o-value="this.data.infoData.likeNumber")
+            .auto-fix(o-value="this.data.infoData.text" o-tap="autoFix")
         .fix-box.card(o-if="this.data.infoData.relation")
           .title.clear
             span 正确的文字可能为?
           .auto-fix-button(o-value="this.data.infoData.relation" o-tap="autoFix")
+        .card(o-if="this.data.infoData.tips")
+          .title.clear
+            span.block 其他信息:
+          .info-show(o-value="this.data.infoData.tips")
         .clear-box
           .clear-button.button-item(o-tap="clear") 清除此关键词标记
         .type-box
-        .button(o-tap="hideInfoRight") 返回审核
+        .button(o-tap="hideInfoRight") 重新审核
       .check-right
         .top-title-bar 审查选项
         .check-box
@@ -91,12 +114,12 @@
     data: {
       sendData: {
         network: false,
-        pinyin: false,
+        pinyin: true,
         base: true,
         yange: false,
-        chengyuBase: false,
-        chengyuPinyin: false,
-        mohu: false,
+        chengyuBase: true,
+        chengyuPinyin: true,
+        mohu: true,
         xiyu: true
       },
       findList: {},
@@ -212,6 +235,7 @@
       
     },
     check: function () {
+      this.query('.loading').style.display = 'block'
       // 先清理自己的标记
       this.queryAll('.nrsh').forEach(element => {
         element.outerHTML = element.innerText
@@ -235,6 +259,10 @@
         // console.log(htmlData)
         // 先进行基础审查
         htmlData = this.baseHandle(htmlData, data['base'])
+        if (data['regexp'] && data['regexp'].length > 0) {
+          console.log('使用正则纠错!')
+          htmlData = regexpHandle(htmlData, data['regexp'])
+        }
         if (data['network']) {
           console.log('使用云词库!')
           htmlData = this.networkHandle(htmlData, data['network'])
@@ -251,14 +279,11 @@
           console.log('使用成语拼音纠错!')
           htmlData = chengyuPinyinHandle(htmlData, data['chengyuPinyin'])
         }
-        if (data['regexp'] && data['regexp'].length > 0) {
-          console.log('使用正则纠错!')
-          htmlData = regexpHandle(htmlData, data['regexp'])
-        }
-        // console.log(htmlData)
+        console.log(htmlData)
         this.query('.text-edit').innerHTML = htmlData
         setTimeout(() => {
           this.reHandleEvent()
+          this.query('.loading').style.display = 'none'
           owo.tool.remind('点击高亮的关键词显示对应信息!', 2000)
         }, 100);
       })
@@ -334,6 +359,7 @@
 .nrsh {
   background-color: #ccc;
   cursor: pointer;
+  display: inline;
 }
 // 相似
 .nrsh.like {
@@ -418,7 +444,6 @@
   }
 }
 .block-show-box {
-  margin-top: 5px;
 }
 .button-item {
   width: 200px;
@@ -463,7 +488,43 @@
   box-shadow: 1px 3px 5px #d0c5c5;
   background-color: cornsilk;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 22px;
   cursor: pointer;
+}
+.info-show {
+  margin: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  max-height: 400px;
+  overflow: auto;
+}
+.info-text {
+  margin: 0 10px;
+  color: #666;
+}
+.pinyin-show {
+  display: inline;
+}
+.like-num {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  color: mediumseagreen;
+  padding-bottom: 5px;
+}
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 9;
+  display: none;
+  img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
 }
 </style>
