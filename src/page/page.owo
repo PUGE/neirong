@@ -10,12 +10,12 @@
         .menu-box-item(go="/view-content=word" o-class-active="this.view.content._activeName == 'word'")
           .icon &#xe601;
           span 关键词管理
-        //- .menu-box-item(go="/view-content=checkUrl" o-class-active="this.view.content._activeName == 'checkUrl'")
-        //-   .icon &#xe755;
-        //-   span 网址内容监控
+        .menu-box-item(go="/view-content=checkUrl" o-class-active="this.view.content._activeName == 'checkUrl'")
+          .icon &#xe755;
+          span 网址内容监控
         .menu-box-item(go="/view-content=diff" o-class-active="this.view.content._activeName == 'diff'")
           .icon &#xe6c2;
-          span 差异比对
+          span 文章差异比对
     view.router.conn-box.right.clear(name="content")
       .router-item(route="checkText" src="./src/route/checkText.owo")
       .router-item(route="word" src="./src/route/word.owo")

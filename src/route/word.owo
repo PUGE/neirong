@@ -11,7 +11,7 @@
         .labe 关键词分类：
         .type-item.Polity.active(o-tap="getData('Polity')") 政治
         .type-item.Standard(o-tap="getData('Standard')") 错误表述
-        .type-item.XiYu(o-tap="getData('XiYu')") 习语
+        .type-item.XiYu(o-tap="getData('XiYu')") 习语/重要句子
         .type-item.Porn(o-tap="getData('Porn')") 色情
         .type-item.Abuse(o-tap="getData('Abuse')") 粗俗
         .type-item.Terror(o-tap="getData('Terror')") 恐怖
@@ -26,7 +26,7 @@
           select(o-change="typeChange")
             option(value ="Polity") 政治
             option(value ="Standard") 错误表述
-            option(value ="XiYu") 习语
+            option(value ="XiYu") 习语/重要句子
             option(value ="Porn") 色情
             option(value ="Abuse") 粗俗
             option(value ="Terror") 恐怖
@@ -93,7 +93,7 @@
       this.query(`.type-bar .${type}`).classList.add('active')
       this.data.selectType = type
       const get18n = this.data.get18n
-      fetch(`http://127.0.0.1:8006/getData?name=${name}&type=${type}`, {
+      fetch(serverIP + `getData?name=${name}&type=${type}`, {
         method: 'GET',
         redirect: 'follow'
       }).then(response => response.json()).then(result => {
@@ -142,7 +142,7 @@
     },
     delete: function (id, name) {
       if (confirm(`确定删除关键词“${name}”吗？`)) {
-        fetch(`http://127.0.0.1:8006/delete?name=${this.data.activeTableName}&id=${id}`, {
+        fetch(serverIP + `delete?name=${this.data.activeTableName}&id=${id}`, {
           method: 'GET'
         }).then(response => response.json()).then(result => {
           if (result.err == 0) {
@@ -154,7 +154,8 @@
       }
     },
     addWord: function () {
-      console.log(this.data.edit)
+      console.log('去除前后空格')
+      this.data.edit.text = this.data.edit.text.trim()
       if (!this.data.edit.text) {
         owo.tool.remind('关键词不能为空!', 2000)
         return
@@ -163,7 +164,11 @@
         owo.tool.remind('关联词不能为空!', 2000)
         return
       }
-      fetch(`http://127.0.0.1:8006/addWord`, {
+      if (this.data.edit.type == 'XiYu' && this.data.edit.text.length < 8) {
+        alert('小于8个字的习语请添加至政治分类!')
+        return
+      }
+      fetch(serverIP + `addWord`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -217,6 +222,8 @@
 }
 .right-bar {
   width: 250px;
+  height: 100%;
+  overflow: auto;
   background-color: whitesmoke;
   border-left: 1px solid #ccc;
   input[type="text"], select {
@@ -262,7 +269,7 @@ td span {
 }
 textarea {
   width: 100%;
-  height: 400px;
+  height: 200px;
   display: block;
   background-color: azure;
 }

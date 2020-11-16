@@ -156,15 +156,15 @@
       this.query('.info-right').style.display = 'none'
     },
     baseHandle: function (htmlData, data) {
-      console.log(htmlData)
+      // console.log(htmlData)
       data.forEach(item => {
         if (!this.data.findList[item['text']]) {
           this.data.findList[item['text']] = item
           this.data.findListArr.push(item)
           if (item.type === 'Standard') {
-            htmlData = htmlData.replace(new RegExp(item['text'], "gm"), `<span data-ind="${this.data.findListArr.length}" title="是否应该写成: ${item.relation}?" class="nrsh base Standard">${item['text']}</span>`)
+            htmlData = htmlData.replace(new RegExp(item['text'], "gm"), `<span data-ind="${this.data.findListArr.length}" class="nrsh base Standard">${item['text']}</span>`)
           } else {
-            htmlData = htmlData.replace(new RegExp(item['text'],"gm"), `<span data-ind="${this.data.findListArr.length}" title="关键词类型: ${this.getErrorTypeText(item.type)}" class="nrsh base ${item.type}">${item['text']}</span>`)
+            htmlData = htmlData.replace(new RegExp(item['text'],"gm"), `<span data-ind="${this.data.findListArr.length}" class="nrsh base ${item.type}">${item['text']}</span>`)
           }
         }
       })
@@ -178,9 +178,9 @@
           this.data.findListArr.push(item)
           // 如果词的类型为政治词语，不一致为错误，其他类型不一致为对应类型
           if (item.type === 'Polity') {
-            htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${this.data.findListArr.length}" title="是否应该写成: ${item.text}?" class="nrsh like error">${item['like']}</span>`)
+            htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${this.data.findListArr.length}" class="nrsh like error">${item['like']}</span>`)
           } else {
-            htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${this.data.findListArr.length}" title="关键词类型: ${this.getErrorTypeText(item.type)}" class="nrsh like ${item.type}">${item['like']}</span>`)
+            htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${this.data.findListArr.length}" class="nrsh like ${item.type}">${item['like']}</span>`)
           }
         }
       })
@@ -249,7 +249,7 @@
       }
       // console.log(value)
 
-      fetch("http://127.0.0.1:8006/check", {
+      fetch(serverIP + "check", {
         method: 'POST',
         body: JSON.stringify({"config": this.data.sendData,"content": value})
       }).then(response => response.json()).then(result => {
@@ -258,11 +258,12 @@
         const data = result['data']
         // console.log(htmlData)
         // 先进行基础审查
-        htmlData = this.baseHandle(htmlData, data['base'])
         if (data['regexp'] && data['regexp'].length > 0) {
           console.log('使用正则纠错!')
           htmlData = regexpHandle(htmlData, data['regexp'])
         }
+        htmlData = this.baseHandle(htmlData, data['base'])
+        
         if (data['network']) {
           console.log('使用云词库!')
           htmlData = this.networkHandle(htmlData, data['network'])
@@ -279,7 +280,7 @@
           console.log('使用成语拼音纠错!')
           htmlData = chengyuPinyinHandle(htmlData, data['chengyuPinyin'])
         }
-        console.log(htmlData)
+        // console.log(htmlData)
         this.query('.text-edit').innerHTML = htmlData
         setTimeout(() => {
           this.reHandleEvent()
@@ -319,7 +320,7 @@
   border: none;
   outline: none;
   padding: 10px;
-  font-size: 26px;
+  font-size: 20px;
   overflow: auto;
   white-space: normal;
   line-height: 34px;
@@ -485,11 +486,11 @@
   color: black;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 1px 3px 5px #d0c5c5;
-  background-color: cornsilk;
-  font-size: 16px;
+  background-color: seashell;
+  font-size: 14px;
   line-height: 22px;
   cursor: pointer;
+  border: 1px solid #ccc;
 }
 .info-show {
   margin: 10px;
