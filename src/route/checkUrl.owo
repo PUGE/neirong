@@ -1,11 +1,99 @@
 <template lang="pug">
 .check-url
+  .query-bar
+    input(type="text" value="http://www.people.com.cn/")
+    .search-button(o-tap="check") 查询
+  ul.history
+  .log-box
+    .title 日志：
+    .log
 </template>
 
 <script>
-  module.exports = {}
+  module.exports = {
+    check: function () {
+      this.query('.history').innerHTML = ''
+        this.query('.log').innerHTML = ''
+      urlData = this.query('input').value
+      fetch(serverIP + `checkURL`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"url": urlData}),
+      }).then(response => response.json()).then(result => {
+        console.log(result)
+        if (result.err == 0) {
+          const data = result['data']
+          let newHtml = ''
+          data['pinyin'].forEach(element => {
+            newHtml += `<li>文章中存在关键词：<span>${element.like}</span> 类似于关键词：<span>${element.text}</span></li>`
+          })
+          data['regexp'].forEach(element => {
+            newHtml += `<li>文章中存在关键句：<span>${element.like}</span> 类似于关键句：<span>${element.text}</span> 相似度 <span>${element.likeNumber}</span></li>`
+          })
+          console.log(newHtml)
+          this.query('.history').innerHTML = newHtml
+          this.query('.log').innerHTML = data['log']
+        } else {
+          alert(result.message)
+        }
+      }).catch(error => console.log('error', error));
+    }
+  }
 </script>
 
 <style lang="less">
-
+.query-bar {
+  display: flex;
+  input {
+    border: none;
+    background-color: gainsboro;
+    width: calc(100% - 120px);
+    padding: 0 10px;
+  }
+  .search-button {
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #009fe9;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+}
+.history {
+  li {
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    margin: 0 10px;
+    span {
+      background-color: steelblue;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+  }
+}
+.history {
+  height: calc(100% - 300px);
+}
+.log-box {
+  height: 260px;
+  background-color: #f9e1e1;
+}
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 35px;
+  margin: 0 10px;
+  border-bottom: 1px solid #ccc;
+}
+.log {
+  height: 205px;
+  overflow: auto;
+  padding: 10px;
+  line-height: 22px;
+}
 </style>

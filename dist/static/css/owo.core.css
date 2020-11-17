@@ -454,7 +454,64 @@ li {
 .word-box table {
   width: 100%;
 }
+.check-url .query-bar {
+  display: flex;
+}
 
+.check-url .query-bar input {
+  border: none;
+  background-color: gainsboro;
+  width: calc(100% - 120px);
+  padding: 0 10px;
+}
+
+.check-url .query-bar .search-button {
+  height: 40px;
+  width: 100px;
+  text-align: center;
+  line-height: 40px;
+  background-color: #009fe9;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.check-url .history li {
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+  margin: 0 10px;
+}
+
+.check-url .history li span {
+  background-color: steelblue;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+
+.check-url .history {
+  height: calc(100% - 300px);
+}
+
+.check-url .log-box {
+  height: 260px;
+  background-color: #f9e1e1;
+}
+
+.check-url .title {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 35px;
+  margin: 0 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.check-url .log {
+  height: 205px;
+  overflow: auto;
+  padding: 10px;
+  line-height: 22px;
+}
 
 .conn {
   display: flex;

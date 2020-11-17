@@ -12,7 +12,7 @@
           span 关键词管理
         .menu-box-item(go="/view-content=checkUrl" o-class-active="this.view.content._activeName == 'checkUrl'")
           .icon &#xe755;
-          span 网址内容监控
+          span 网址内容检查
         .menu-box-item(go="/view-content=diff" o-class-active="this.view.content._activeName == 'diff'")
           .icon &#xe6c2;
           span 文章差异比对
