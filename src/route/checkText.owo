@@ -39,7 +39,7 @@
           .title.clear
             span.block 关键词标签：
           .block-show-box.clear
-            .block-show(o-value="this.data.infoData.type")
+            .block-show(o-value="this.data.infoData.typeName")
         //- .card
         //-   .title.clear
         //-     span.block 关键词拼音：
@@ -57,20 +57,22 @@
         //-   .title.clear(o-if="this.data.infoData.severity")
         //-     span 关键词重要度：
         //-     .block-show(o-value="this.data.infoData.severity")
-        .fix-box(o-if="this.data.infoData.like")
+        .fix-box(o-if="this.data.autoFixArr.length > 0")
           .title.clear
             span 与下列关键词构成类似:
           .info-text 提示：点击下方关键词可自动替换
-          .auto-fix-button
-            .like-num(o-if="this.data.infoData.likeNumber")
-              span 关键词相似度：
-              psan(o-value="this.data.infoData.likeNumber")
-            .auto-fix(o-value="this.data.infoData.text" o-tap="autoFix")
+          .auto-fix-button(o-for="this.data.autoFixArr")
+            .like-num 关键词相似度：{value.likeNumber}
+            .auto-fix {value.text}
+            .tips {value.tips}
+            .fix-button(o-tap="autoFixXiYu({key})")
+              span.icon &#xe607;
+              span 一键修正
         .fix-box.card(o-if="this.data.infoData.relation")
           .title.clear
             span 正确的文字可能为?
           .auto-fix-button(o-value="this.data.infoData.relation" o-tap="autoFix")
-        .card(o-if="this.data.infoData.tips")
+        .card(o-if="this.data.infoData.type != 'XiYu' && this.data.infoData.tips")
           .title.clear
             span.block 其他信息:
           .info-show(o-value="this.data.infoData.tips")
@@ -92,9 +94,9 @@
         .check-box
           input(type="checkbox" o-value="this.data.sendData.yange")
           span 启用严格模式
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.network")
-          span 启用云词库匹配
+        //- .check-box
+        //-   input(type="checkbox" o-value="this.data.sendData.network")
+        //-   span 启用云词库匹配
         .check-box
           input(type="checkbox" o-value="this.data.sendData.chengyuBase")
           span 启用成语匹配
@@ -127,28 +129,10 @@
         xiyu: true,
         likeAlertNumber: 60
       },
+      autoFixArr: [],
       isSwitchRight: false,
       infoData: {},
       activeDom: null
-    },
-    getErrorTypeText: function (errorCode) {
-      switch (errorCode) {
-        case 'Polity':
-          return '政治'
-          break;
-        case 'Illegal':
-          return '违法'
-          break;
-        case 'Porn':
-          return '色情'
-          break;
-        case 'Abuse':
-          return '粗俗'
-          break;
-        default:
-          return errorCode
-          break;
-      }
     },
     showInfoRight: function () {
       this.query('.info-right').style.display = 'block'
@@ -166,28 +150,32 @@
       setTimeout(() => {
         this.queryAll('.nrsh').forEach(element => {
           element.addEventListener("click", (e) => {
-            var btnNum = event.button;
-            if (btnNum==2) {
-              console.log('清理')
+            
+            // console.log(element)
+            // 生成关键词标签
+            this.data.infoData = findList[element.innerText]
+            this.data.activeDom = element
+            const likeStr = this.data.infoData['like'] || this.data.infoData['text']
+            console.log(likeStr)
+            // 对习语进行特殊处理
+            if (this.data.infoData.type == 'XiYu') {
+              this.data.autoFixArr = xiyuLike[likeStr]
             } else {
-              // console.log(element)
-              // 生成关键词标签
-              this.data.infoData = findList[element.innerText]
-              this.data.activeDom = element
-              // console.log(this.data.infoData)
-              // 对数据进行可视化处理
-              this.data.infoData.type = this.getErrorTypeText(this.data.infoData.type)
-              this.data.infoData.major = (this.data.infoData.major == 1 || this.data.infoData.major == '是') ? '是':'否'
-              if (typeof this.data.infoData.pinyin == 'string') {
-                this.data.infoData.pinyin = this.data.infoData.pinyin.split('|')
-              }
-              setTimeout(() => {
-                this.handleEvent(this, this.query('.info-right'))
-                setTimeout(() => {
-                  this.showInfoRight()
-                }, 100);
-              }, 100);
+              this.data.autoFixArr = []
             }
+            console.log(this.data.autoFixArr)
+            // 对数据进行可视化处理
+            this.data.infoData.typeName = getErrorTypeText(this.data.infoData.type)
+            this.data.infoData.major = (this.data.infoData.major == 1 || this.data.infoData.major == '是') ? '是':'否'
+            if (typeof this.data.infoData.pinyin == 'string') {
+              this.data.infoData.pinyin = this.data.infoData.pinyin.split('|')
+            }
+            setTimeout(() => {
+              this.handleEvent(this, this.query('.info-right'))
+              setTimeout(() => {
+                this.showInfoRight()
+              }, 100);
+            }, 100);
           }, false)
         })
       }, 100);
@@ -215,6 +203,7 @@
         let htmlData = this.query('.text-edit').innerHTML
         
         const data = result['data']
+        xiyuLike = data['xiyuLike']
         // console.log(htmlData)
         // 先进行基础审查
         if (data['regexp'] && data['regexp'].length > 0) {
@@ -253,6 +242,9 @@
     autoFix: function () {
       console.log(this.data)
       this.data.activeDom.innerText = this.data.infoData.relation || this.data.infoData.text
+    },
+    autoFixXiYu: function (ind) {
+      this.data.activeDom.innerText = this.data.autoFixArr[ind].text
     },
     clear: function () {
       this.data.activeDom.outerHTML = this.data.activeDom.innerText
@@ -344,7 +336,9 @@
 .error.nrsh, .regexp-like.nrsh, .chengyu-like.nrsh {
   background-color: red;
   color: white;
+  border-bottom: none;
   border-radius: 3px;
+  
 }
 .check {
   display: flex;
@@ -418,8 +412,16 @@
   box-shadow: 1px 1px 4px #ccc;
 }
 .fix-button {
-  background-color: darkkhaki;
-  
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: #009fe9;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 1px 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #d2c1c1;
 }
 .clear-button {
   background-color: teal;
@@ -428,7 +430,7 @@
   background-color: transparent;
   border-bottom: 2px solid #7bb582;
 }
-.nrsh.XiYu {
+.XiYu {
   background-color: transparent;
   border-bottom: 2px solid #b5b539;
 }
@@ -448,8 +450,16 @@
   background-color: seashell;
   font-size: 14px;
   line-height: 22px;
-  cursor: pointer;
   border: 1px solid #ccc;
+  position: relative;
+  .tips {
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+    color: #333;
+    line-height: 16px;
+    font-size: 12px;
+    padding-top: 5px;
+  }
 }
 .info-show {
   margin: 10px;
@@ -468,8 +478,9 @@
 .like-num {
   border-bottom: 1px solid #ccc;
   margin-bottom: 5px;
-  color: mediumseagreen;
+  color: orangered;
   padding-bottom: 5px;
+  font-weight: bold;
 }
 .loading {
   position: absolute;

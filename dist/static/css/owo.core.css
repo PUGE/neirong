@@ -143,6 +143,7 @@ li {
 .check-page .chengyu-like.nrsh {
   background-color: red;
   color: white;
+  border-bottom: none;
   border-radius: 3px;
 }
 
@@ -227,7 +228,16 @@ li {
 }
 
 .check-page .fix-button {
-  background-color: darkkhaki;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: #009fe9;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 1px 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #d2c1c1;
 }
 
 .check-page .clear-button {
@@ -239,7 +249,7 @@ li {
   border-bottom: 2px solid #7bb582;
 }
 
-.check-page .nrsh.XiYu {
+.check-page .XiYu {
   background-color: transparent;
   border-bottom: 2px solid #b5b539;
 }
@@ -261,8 +271,17 @@ li {
   background-color: seashell;
   font-size: 14px;
   line-height: 22px;
-  cursor: pointer;
   border: 1px solid #ccc;
+  position: relative;
+}
+
+.check-page .auto-fix-button .tips {
+  border-top: 1px solid #ccc;
+  margin-top: 5px;
+  color: #333;
+  line-height: 16px;
+  font-size: 12px;
+  padding-top: 5px;
 }
 
 .check-page .info-show {
@@ -285,8 +304,9 @@ li {
 .check-page .like-num {
   border-bottom: 1px solid #ccc;
   margin-bottom: 5px;
-  color: mediumseagreen;
+  color: orangered;
   padding-bottom: 5px;
+  font-weight: bold;
 }
 
 .check-page .loading {

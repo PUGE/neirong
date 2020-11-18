@@ -2,6 +2,7 @@ const serverIP = 'http://49.232.216.171:8006/'
 // const serverIP = 'http://127.0.0.1:8006/'
 let findList = {}
 let findListArr = []
+let xiyuLike = []
 function getErrorTypeText (errorCode) {
   switch (errorCode) {
     case 'Polity':
@@ -26,7 +27,7 @@ function getErrorTypeText (errorCode) {
       return '广告'
       break;
     case 'XiYu':
-      return '/重要句子'
+      return '重点句子'
       break;
     default:
       return errorCode
@@ -113,14 +114,26 @@ function networkHandle (htmlData, data) {
 
 function regexpHandle (htmlData, data) {
   data.forEach(item => {
-    if (!findList[item['like']]) {
-      findList[item['like']] = item
+    const likeStr = item['like']
+    if (!findList[likeStr]) {
+      findList[likeStr] = item
       findListArr.push(item)
-      if (item['likeNumber'] != 100) {
-        item.type = '疑似错误'
-        htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh regexp regexp-like">${item['like']}</span>`)
+      if (item['type'] == 'XiYu') {
+        let isRight = false
+        xiyuLike[likeStr].forEach(element => {
+          if (element.likeNumber == 100) {
+            isRight = true
+          }
+        })
+        if (isRight) {
+          htmlData = htmlData.replace(new RegExp(likeStr, "gm"), `<span data-ind="${findListArr.length}" class="nrsh XiYu ">${likeStr}</span>`)
+        } else {
+          item.typeName = '相似习语'
+          htmlData = htmlData.replace(new RegExp(likeStr, "gm"), `<span data-ind="${findListArr.length}" class="nrsh XiYu error">${likeStr}</span>`)
+        }
       } else {
-        htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh regexp XiYu">${item['like']}</span>`)
+        item.typeName = '疑似错误'
+        htmlData = htmlData.replace(new RegExp(likeStr, "gm"), `<span data-ind="${findListArr.length}" class="nrsh regexp regexp-like">${likeStr}</span>`)
       }
     }
   })

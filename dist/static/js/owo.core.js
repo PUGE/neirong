@@ -1,4 +1,4 @@
-// Wed Nov 18 2020 16:59:38 GMT+0800 (GMT+08:00)
+// Wed Nov 18 2020 23:22:31 GMT+0800 (GMT+08:00)
 var owo = {tool: {},state: {},};
 /* 方法合集 */
 var _owo = {
@@ -521,6 +521,61 @@ function handleEvent (moudleScript, enterDom) {
   if(!_owo._event_if(tempDom, moudleScript)) return
   
   
+  
+  if (moudleScript['forList']) {
+    // 处理o-for
+    for (var key in moudleScript['forList']) {
+      var forItem = moudleScript['forList'][key];
+      var forDomList = tempDom.querySelectorAll('[otemp-for="' + forItem['for'] + '"]')
+      if (forDomList.length > 0) {
+        forDomList[0].outerHTML = forItem.template
+        for (var domIndex = 1; domIndex < forDomList.length; domIndex++) {
+          forDomList[domIndex].remove()
+        }
+      }
+    }
+  }
+  // 先处理o-for
+  _owo.recursion(tempDom, function (tempDom) {
+    
+    // dd
+    if(!_owo._event_if(tempDom, moudleScript)) return true
+    
+    var forValue = tempDom.getAttribute('o-for')
+    if (forValue) {
+      // console.log(new Function('a', 'b', 'return a + b'))
+      var forEle = shaheRun.apply(moudleScript, [forValue])
+      // 如果o-for不存在则隐藏dom
+      if (!forEle || forEle.length == 0) return
+      if (!moudleScript['forList']) moudleScript['forList'] = []
+      
+      moudleScript['forList'].push({
+        "for": forValue,
+        "children": forEle.length,
+        "template": tempDom.outerHTML
+      })
+
+      tempDom.removeAttribute("o-for")
+      var tempNode = tempDom.cloneNode(true)
+      var outHtml = ''
+      
+      for (var key in forEle) {
+        tempNode.setAttribute('otemp-for', forValue)
+        var temp = tempNode.outerHTML
+        var value = forEle[key];
+        var tempCopy = temp
+        // 获取模板插值
+        var varList = _owo.cutStringArray(tempCopy, '{', '}')
+        varList.forEach(element => {
+          var forValue = new Function('value', 'key', 'return ' + element)
+          // 默认变量
+          tempCopy = tempCopy.replace('{' + element + '}', forValue.apply(moudleScript, [value, key]))
+        })
+        outHtml += tempCopy
+      }
+      tempDom.outerHTML = outHtml + ''
+    }
+  })
   
   _owo.recursion(tempDom, function (childrenDom) {
     if (childrenDom.hasAttribute('o-for')) return true
