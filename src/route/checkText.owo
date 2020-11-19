@@ -60,7 +60,7 @@
           //-   .title.clear(o-if="this.data.infoData.severity")
           //-     span 关键词重要度：
           //-     .block-show(o-value="this.data.infoData.severity")
-          .fix-box(o-if="this.data.autoFixArr.length > 0")
+          .fix-box(o-if="this.data.autoFixArr.length >= 0")
             .title.clear
               span 与下列关键词构成类似:
             .info-text 提示：点击下方关键词可自动替换
@@ -71,7 +71,7 @@
               .fix-button(o-tap="autoFixXiYu({key})")
                 span.icon &#xe607;
                 span 一键修正
-          .word-box(o-if="this.data.infoData.type != 'XiYu'")
+          .word-box(o-if="this.data.autoFixArr.length == 0")
             .fix-box.card(o-if="this.data.infoData.relation")
               .title.clear
                 span 正确的文字可能为?
@@ -192,6 +192,8 @@
             // 对习语进行特殊处理
             if (this.data.infoData.type == 'XiYu') {
               this.data.autoFixArr = xiyuLike[likeStr]
+            } else if (this.data.infoData.type == 'article') {
+              this.data.autoFixArr = this.data.infoData.itemArr
             } else {
               this.data.autoFixArr = []
             }
@@ -199,9 +201,9 @@
             // 对数据进行可视化处理
             this.data.infoData.typeName = getErrorTypeText(this.data.infoData.type)
             this.data.infoData.major = (this.data.infoData.major == 1 || this.data.infoData.major == '是') ? '是':'否'
-            if (typeof this.data.infoData.pinyin == 'string') {
-              this.data.infoData.pinyin = this.data.infoData.pinyin.split('|')
-            }
+            // if (typeof this.data.infoData.pinyin == 'string') {
+            //   this.data.infoData.pinyin = this.data.infoData.pinyin.split('|')
+            // }
             setTimeout(() => {
               this.handleEvent(this, this.query('.info-right'))
               setTimeout(() => {

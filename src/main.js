@@ -64,6 +64,9 @@ function getErrorTypeText (errorCode) {
     case 'XiYu':
       return '重点句子'
       break;
+    case 'article':
+      return '习语原文'
+      break;
     default:
       return errorCode
       break;
@@ -189,20 +192,36 @@ function regexpHandle (htmlData, data) {
   return htmlData
 }
 
+// 排列函数
+function compare(property) {
+  return function(obj1,obj2){
+      var value1 = obj1[property];
+      var value2 = obj2[property];
+      return value2 - value1;     // 降序
+  }
+}
+
 function articleHandle(htmlData, articleArr) {
-  // console.log(data)
+  
   articleArr.forEach(articleItem => {
-    articleItem['data'].forEach(item => {
-      findListArr.push(item)
-      item['tips'] = articleItem['tips']
-      findList[item['text']] = item
-      if (item.likeNumber == 100) {
-        htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, `nrsh article`, item['xuexi'])
-      } else {
-        console.log(item)
-        htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, `nrsh article error`, item['xuexi'])
+    for (const likeText in articleItem['data']) {
+      let itemArr = articleItem['data'][likeText]
+      // findListArr.push(item)
+      // item['type'] = 'article'
+      // item['tips'] = articleItem['tips']
+      itemArr = itemArr.sort(compare("likeNumber"))
+      findList[likeText] = {
+        type: "article",
+        itemArr: itemArr,
+        like: likeText,
+        tips: articleItem.tips
       }
-    })
+      if (itemArr[0].likeNumber == 100) {
+        htmlData = nrReplaceAll(htmlData, likeText, findListArr.length, `nrsh article`, '')
+      } else {
+        htmlData = nrReplaceAll(htmlData, likeText, findListArr.length, `nrsh article error`, '')
+      }
+    }
   })
   return htmlData
 }
