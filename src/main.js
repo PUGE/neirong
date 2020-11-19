@@ -3,6 +3,41 @@ const serverIP = 'http://49.232.216.171:8006/'
 let findList = {}
 let findListArr = []
 let xiyuLike = []
+let nrshID = 0
+
+function nrReplaceAll(str, text, findListArrLen, classStr, xuexiStr){
+  let returnData = ''
+  let strCutArr = str.split(text)
+  
+  for (let index = 0; index < strCutArr.length; index++) {
+    const element = strCutArr[index];
+    nrshID ++
+    if (index != strCutArr.length && index != 0) {
+      if (xuexiStr) {
+        xuexiArr = xuexiStr.split('|')
+        const last = strCutArr[index - 1]
+        const next = strCutArr[index]
+        // 智能学习忽略
+        if (last && xuexiArr.includes((last[last.length - 1] + text))) {
+          console.log('智能学习忽略')
+          returnData += text
+        } else if (next && xuexiArr.includes((text + next[0]))) {
+          
+          console.log('智能学习忽略')
+          returnData += text
+        } else {
+          returnData += `<span nrsh-id="${nrshID}" data-ind="${findListArrLen}" class="${classStr}">${text}</span>`
+        }
+      } else {
+        returnData += `<span nrsh-id="${nrshID}" data-ind="${findListArrLen}" class="${classStr}">${text}</span>`
+      }
+    }
+    returnData += element
+  }
+  return returnData;
+}
+
+
 function getErrorTypeText (errorCode) {
   switch (errorCode) {
     case 'Polity':
@@ -43,7 +78,7 @@ function chengyuBaseHandle (htmlData, data) {
       item.type = '正确成语'
       item.tips = `<h2 style="font-size: 20px;">${item['text']}</h2><h2 style="font-size: 20px;">[${item['pinyin2']}]</h2><p>释义：${item['interpretation']}</p><p>出处：${item['source']}</p><p>示例：${item['example']}</p>`
       // 如果词的类型为政治词语，不一致为错误，其他类型不一致为对应类型
-      htmlData = htmlData.replace(new RegExp(item['text'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh chengyu chengyu-base">${item['text']}</span>`)
+      htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, 'nrsh chengyu chengyu-base', item['xuexi'])
     }
   })
   return htmlData
@@ -59,7 +94,21 @@ function chengyuPinyinHandle (htmlData, data) {
       item.type = '错误成语'
       item.tips = `<h2 style="font-size: 20px;">${item['text']}</h2><h2 style="font-size: 20px;">[${item['pinyin2']}]</h2><p>释义：${item['interpretation']}</p><p>出处：${item['source']}</p><p>示例：${item['example']}</p>`
       // 如果词的类型为政治词语，不一致为错误，其他类型不一致为对应类型
-      htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh chengyu chengyu-like">${item['like']}</span>`)
+      htmlData = nrReplaceAll(htmlData, item['like'], findListArr.length, 'nrsh chengyu chengyu-like', item['xuexi'])
+    }
+  })
+  return htmlData
+}
+
+function regularHandle (htmlData, data) {
+  data.forEach(item => {
+    if (!findList[item['text']]) {
+      findList[item['text']] = item
+      findListArr.push(item)
+      item.type = '自定义错误'
+      
+      // 如果词的类型为政治词语，不一致为错误，其他类型不一致为对应类型
+      htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, 'nrsh regular error', item['xuexi'])
     }
   })
   return htmlData
@@ -72,9 +121,9 @@ function baseHandle (htmlData, data) {
       findList[item['text']] = item
       findListArr.push(item)
       if (item.type === 'Standard') {
-        htmlData = htmlData.replace(new RegExp(item['text'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh base Standard">${item['text']}</span>`)
+        htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, 'nrsh base Standard', item['xuexi'])
       } else {
-        htmlData = htmlData.replace(new RegExp(item['text'],"gm"), `<span data-ind="${findListArr.length}" class="nrsh base ${item.type}">${item['text']}</span>`)
+        htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, `nrsh base ${item.type}`, item['xuexi'])
       }
     }
   })
@@ -89,9 +138,9 @@ function pinyinHandle (htmlData, data) {
       findListArr.push(item)
       // 如果词的类型为政治词语，不一致为错误，其他类型不一致为对应类型
       if (item.type === 'Polity') {
-        htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh like error">${item['like']}</span>`)
+        htmlData = nrReplaceAll(htmlData, item['like'], findListArr.length, `nrsh like error`, item['xuexi'])
       } else {
-        htmlData = htmlData.replace(new RegExp(item['like'], "gm"), `<span data-ind="${findListArr.length}" class="nrsh like ${item.type}">${item['like']}</span>`)
+        htmlData = nrReplaceAll(htmlData, item['like'], findListArr.length, `nrsh like ${item.type}`, item['xuexi'])
       }
     }
   })
@@ -104,7 +153,7 @@ function networkHandle (htmlData, data) {
     if (!findList[item['HitInfo']]) {
       findList[item['HitInfo']] = item
       findListArr.push(item)
-      htmlData = htmlData.replace(new RegExp(item['HitInfo'],"gm"), `<span data-ind="${findListArr.length}" class="nrsh">${item['HitInfo']}</span>`)
+      htmlData = nrReplaceAll(htmlData, item['HitInfo'], findListArr.length, `nrsh`, item['xuexi'])
     } else {
       console.log(`${item['HitInfo']} 已被找出，跳过词语!`)
     }
@@ -126,16 +175,34 @@ function regexpHandle (htmlData, data) {
           }
         })
         if (isRight) {
-          htmlData = htmlData.replace(new RegExp(likeStr, "gm"), `<span data-ind="${findListArr.length}" class="nrsh XiYu ">${likeStr}</span>`)
+          htmlData = nrReplaceAll(htmlData, likeStr, findListArr.length, `nrsh XiYu`, item['xuexi'])
         } else {
           item.typeName = '相似习语'
-          htmlData = htmlData.replace(new RegExp(likeStr, "gm"), `<span data-ind="${findListArr.length}" class="nrsh XiYu error">${likeStr}</span>`)
+          htmlData = nrReplaceAll(htmlData, likeStr, findListArr.length, `nrsh XiYu error`, item['xuexi'])
         }
       } else {
         item.typeName = '疑似错误'
-        htmlData = htmlData.replace(new RegExp(likeStr, "gm"), `<span data-ind="${findListArr.length}" class="nrsh regexp regexp-like">${likeStr}</span>`)
+        htmlData = nrReplaceAll(htmlData, likeStr, findListArr.length, `nrsh regexp regexp-like`, item['xuexi'])
       }
     }
+  })
+  return htmlData
+}
+
+function articleHandle(htmlData, articleArr) {
+  // console.log(data)
+  articleArr.forEach(articleItem => {
+    articleItem['data'].forEach(item => {
+      findListArr.push(item)
+      item['tips'] = articleItem['tips']
+      findList[item['text']] = item
+      if (item.likeNumber == 100) {
+        htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, `nrsh article`, item['xuexi'])
+      } else {
+        console.log(item)
+        htmlData = nrReplaceAll(htmlData, item['text'], findListArr.length, `nrsh article error`, item['xuexi'])
+      }
+    })
   })
   return htmlData
 }

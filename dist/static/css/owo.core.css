@@ -105,8 +105,6 @@ li {
   height: 40px;
   cursor: pointer;
   font-size: 18px;
-  position: absolute;
-  bottom: 0;
 }
 
 .check-page .nrsh {
@@ -167,6 +165,8 @@ li {
 
 .check-page .info-right {
   display: none;
+  height: 100%;
+  overflow: hidden;
 }
 
 .check-page .info-right .card {
@@ -242,6 +242,10 @@ li {
 
 .check-page .clear-button {
   background-color: teal;
+}
+
+.check-page .exclude-button {
+  background-color: chocolate;
 }
 
 .check-page .chengyu-base {
@@ -325,6 +329,21 @@ li {
   top: 0;
   bottom: 0;
   margin: auto;
+}
+
+.check-page .arror-box {
+  height: calc(100% - 40px);
+  overflow: auto;
+}
+
+.check-page .check-right {
+  height: 100%;
+  overflow: hidden;
+}
+
+.check-page .article {
+  background-color: transparent;
+  border-bottom: 2px solid #9687d0;
 }
 .word-box {
   height: 100%;

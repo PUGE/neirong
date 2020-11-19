@@ -30,103 +30,135 @@
 
       p 洗金瓶 金瓶子 洗金子 习斤平 李克勤 锦秀山河 姗姗来迟 李x强 李xx 李33强 张克强 李xxxxx克强 王宝强 李/克/强 老李新买的手机仅500克很强！
       p 王洋 汪洋 台独 态度 台堵 全国政协 全国正邪 邪不压正 正邪不两立 总书记 宗书记 同书记 书记处书记 武汉病毒 新馆病毒 新冠病毒
+      p 亡羊这个词和重要人名疑似会被标记出来 亡羊补牢这个词因为学习了词语情景而不会被标记出来 换一种语境的亡羊又会被标出来
       p 习近平说过“发展决不能以牺牲人的生命为代价，这必须作为一条不可逾越的红线”还是“发展决不能以牺牲人的生命为代价，这必须得作为一条不可逾越的红线”反正肯定没有说过“发展能以牺牲人的生命为代价，这不用作为一条不可逾越的红线”。
       p 努力让人民群众在每一个司法案件中感受到公平正义 
+      p 自定义规则匹配:习xx
     .right-bar
       .info-right
-        .top-title-bar 关键词详情
-        .card
-          .title.clear
-            span.block 关键词标签：
-          .block-show-box.clear
-            .block-show(o-value="this.data.infoData.typeName")
-        //- .card
-        //-   .title.clear
-        //-     span.block 关键词拼音：
-        //-   .block-show-box.clear
-        //-     span.pinyin-show(o-for="this.data.infoData.pinyin") {value}
-        .card
-          .title.clear
-            span 重点关键词：
-            .block-show(o-value="this.data.infoData.major")
-        .card
-          .title.clear(o-if="this.data.infoData.vague")
-            span 模糊匹配级别：
-            .block-show(o-value="this.data.infoData.vague")
-        //- .card
-        //-   .title.clear(o-if="this.data.infoData.severity")
-        //-     span 关键词重要度：
-        //-     .block-show(o-value="this.data.infoData.severity")
-        .fix-box(o-if="this.data.autoFixArr.length > 0")
-          .title.clear
-            span 与下列关键词构成类似:
-          .info-text 提示：点击下方关键词可自动替换
-          .auto-fix-button(o-for="this.data.autoFixArr")
-            .like-num 关键词相似度：{value.likeNumber}
-            .auto-fix {value.text}
-            .tips {value.tips}
-            .fix-button(o-tap="autoFixXiYu({key})")
-              span.icon &#xe607;
-              span 一键修正
-        .fix-box.card(o-if="this.data.infoData.relation")
-          .title.clear
-            span 正确的文字可能为?
-          .auto-fix-button(o-value="this.data.infoData.relation" o-tap="autoFix")
-        .card(o-if="this.data.infoData.type != 'XiYu' && this.data.infoData.tips")
-          .title.clear
-            span.block 其他信息:
-          .info-show(o-value="this.data.infoData.tips")
-        .clear-box
-          .clear-button.button-item(o-tap="clear") 清除此关键词标记
-        .type-box
+        .arror-box
+          .top-title-bar 关键词详情
+          .card
+            .title.clear
+              span.block 关键词标签：
+            .block-show-box.clear
+              .block-show(o-value="this.data.infoData.typeName")
+          //- .card
+          //-   .title.clear
+          //-     span.block 关键词拼音：
+          //-   .block-show-box.clear
+          //-     span.pinyin-show(o-for="this.data.infoData.pinyin") {value}
+          .card
+            .title.clear
+              span 重点关键词：
+              .block-show(o-value="this.data.infoData.major")
+          .card
+            .title.clear(o-if="this.data.infoData.vague")
+              span 模糊匹配级别：
+              .block-show(o-value="this.data.infoData.vague")
+          //- .card
+          //-   .title.clear(o-if="this.data.infoData.severity")
+          //-     span 关键词重要度：
+          //-     .block-show(o-value="this.data.infoData.severity")
+          .fix-box(o-if="this.data.autoFixArr.length > 0")
+            .title.clear
+              span 与下列关键词构成类似:
+            .info-text 提示：点击下方关键词可自动替换
+            .auto-fix-button(o-for="this.data.autoFixArr")
+              .like-num 关键词相似度：{value.likeNumber}
+              .auto-fix {value.text}
+              .tips {value.tips}
+              .fix-button(o-tap="autoFixXiYu({key})")
+                span.icon &#xe607;
+                span 一键修正
+          .word-box(o-if="this.data.infoData.type != 'XiYu'")
+            .fix-box.card(o-if="this.data.infoData.relation")
+              .title.clear
+                span 正确的文字可能为?
+              .auto-fix-button(o-value="this.data.infoData.relation" o-tap="autoFix")
+            .fix-box.card(o-if="this.data.infoData.like")
+              .title.clear
+                span 正确的文字可能为?
+              .auto-fix-button(o-value="this.data.infoData.text" o-tap="autoFix")
+            .card(o-if="this.data.infoData.tips")
+              .title.clear
+                span.block 其他信息:
+              .info-show(o-value="this.data.infoData.tips")
+            .exclude-box(o-if="this.data.infoData.relation || this.data.infoData.like")
+              .exclude-button.button-item(o-tap="exclude") 排除此错误情况
+            .clear-box
+              .clear-button.button-item(o-tap="clear") 清除此关键词标记
+          .type-box
         .button(o-tap="hideInfoRight") 重新审核
       .check-right
-        .top-title-bar 审查选项
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
-          span 启用关键词匹配
-        .check-box
-          input(type="checkbox" checked disabled="true")
-          span 启用习语匹配
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.pinyin")
-          span 启用拼音纠错
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.yange")
-          span 启用严格模式
-        //- .check-box
-        //-   input(type="checkbox" o-value="this.data.sendData.network")
-        //-   span 启用云词库匹配
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.chengyuBase")
-          span 启用成语匹配
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.chengyuPinyin")
-          span 启用成语纠错
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.mohu")
-          span 启用模糊纠错
-        .check-box
-          input(type="checkbox" o-value="this.data.sendData.xiyu")
-          span 启用习语纠错
-        .input-box
-          span 相似度百分比
-          input(type="number" o-value="this.data.sendData.likeAlertNumber")
+        .arror-box
+          .top-title-bar 审查选项
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
+            span 启用关键词匹配
+          .check-box
+            input(type="checkbox" checked disabled="true")
+            span 启用习语匹配
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.pinyin")
+            span 启用拼音纠错
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.yange")
+            span 启用严格模式
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.network")
+            span 启用云词库匹配
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.chengyuBase")
+            span 启用成语匹配
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.chengyuPinyin")
+            span 启用成语纠错
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.mohu")
+            span 启用模糊纠错
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.xiyu")
+            span 启用习语纠错
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.regular")
+            span 启用规则纠错
+          .check-box
+            input(type="checkbox" o-value="this.data.sendData.article")
+            span 启用文章匹配
+          .input-box
+            span 相似度百分比
+            input(type="number" o-value="this.data.sendData.likeAlertNumber")
         .button(o-tap="check") 智能审核
 </template>
 
 <script>
   module.exports = {
     data: {
+      // sendData: {
+      //   network: false,
+      //   pinyin: true,
+      //   base: true,
+      //   yange: false,
+      //   chengyuBase: true,
+      //   chengyuPinyin: true,
+      //   mohu: true,
+      //   xiyu: true,
+      //   regular: true,
+      //   article: false,
+      //   likeAlertNumber: 60
+      // },
       sendData: {
         network: false,
-        pinyin: true,
-        base: true,
+        pinyin: false,
+        base: false,
         yange: false,
-        chengyuBase: true,
-        chengyuPinyin: true,
-        mohu: true,
-        xiyu: true,
+        chengyuBase: false,
+        chengyuPinyin: false,
+        mohu: false,
+        xiyu: false,
+        regular: false,
+        article: true,
         likeAlertNumber: 60
       },
       autoFixArr: [],
@@ -201,10 +233,14 @@
         body: JSON.stringify({"config": this.data.sendData,"content": value})
       }).then(response => response.json()).then(result => {
         let htmlData = this.query('.text-edit').innerHTML
-        
+        nrshID = 0
         const data = result['data']
         xiyuLike = data['xiyuLike']
         // console.log(htmlData)
+        if (data['article']) {
+          console.log('使用文章匹配!')
+          htmlData = articleHandle(htmlData, data['article'])
+        }
         // 先进行基础审查
         if (data['regexp'] && data['regexp'].length > 0) {
           console.log('使用正则纠错!')
@@ -223,6 +259,10 @@
         if (data['chengyuBase']) {
           console.log('使用成语匹配!')
           htmlData = chengyuBaseHandle(htmlData, data['chengyuBase'])
+        }
+        if (data['regular']) {
+          console.log('使用自定义规则匹配!')
+          htmlData = regularHandle(htmlData, data['regular'])
         }
         if (data['chengyuPinyin'] && data['chengyuPinyin'].length > 0) {
           console.log('使用成语拼音纠错!')
@@ -256,6 +296,35 @@
       //   let code = e.keyCode
       //   console.log(code)
       // }
+    },
+    exclude: function () {
+      const outStr = this.data.activeDom.outerHTML
+      const innerStr = this.data.activeDom.innerText
+      const parentNode = this.data.activeDom.parentElement || this.data.activeDom.parentNode
+      const htmlData = parentNode.innerHTML
+      const strIndex = htmlData.indexOf(outStr)
+      // console.log(parentNode.innerHTML)
+      // console.log(this.data)
+      const startStr = htmlData.substr(strIndex - 1, 1)
+      const endStr = htmlData.substr(strIndex + outStr.length, 1)
+      if (confirm(`确认要学习“${innerStr}”在此情景的用法为正确吗，学习后类似情景将不会报错!`)) {
+        // 错误学习
+        fetch(serverIP + "xuexi", {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            "xuexi": [startStr + innerStr, innerStr + endStr],
+            "id": this.data.infoData.id
+          })
+        }).then(response => response.json()).then(result => {
+          if (result.err == 0) {
+            alert('已经学习关键词使用环境!')
+          }
+        })
+      }
+      
     }
   }
 </script>
@@ -305,8 +374,6 @@
   height: 40px;
   cursor: pointer;
   font-size: 18px;
-  position: absolute;
-  bottom: 0;
 }
 .nrsh {
   background-color: #ccc;
@@ -357,6 +424,8 @@
 }
 .info-right {
   display: none;
+  height: 100%;
+  overflow: hidden;
   .card {
     border-bottom: 1px dashed #ddd;
     background-color: white;
@@ -425,6 +494,9 @@
 }
 .clear-button {
   background-color: teal;
+}
+.exclude-button {
+  background-color: chocolate;
 }
 .chengyu-base {
   background-color: transparent;
@@ -497,5 +569,17 @@
     bottom: 0;
     margin: auto;
   }
+}
+.arror-box {
+  height: calc(100% - 40px);
+  overflow: auto;
+}
+.check-right {
+  height: 100%;
+  overflow: hidden;
+}
+.article {
+  background-color: transparent;
+  border-bottom: 2px solid #9687d0;
 }
 </style>
