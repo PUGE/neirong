@@ -202,26 +202,31 @@ function compare(property) {
 }
 
 function articleHandle(htmlData, articleArr) {
-  
+  let temp = {}
   articleArr.forEach(articleItem => {
     for (const likeText in articleItem['data']) {
       let itemArr = articleItem['data'][likeText]
-      // findListArr.push(item)
-      // item['type'] = 'article'
-      // item['tips'] = articleItem['tips']
+      if (!temp[likeText]) temp[likeText] = []
+      temp[likeText] = temp[likeText].concat(itemArr)
+      
+    }
+  })
+  for (const likeText in temp) {
+    if (temp.hasOwnProperty(likeText)) {
+      let itemArr = temp[likeText];
       itemArr = itemArr.sort(compare("likeNumber"))
       findList[likeText] = {
         type: "article",
         itemArr: itemArr,
-        like: likeText,
-        tips: articleItem.tips
+        like: likeText
       }
+      console.log(itemArr)
       if (itemArr[0].likeNumber == 100) {
         htmlData = nrReplaceAll(htmlData, likeText, findListArr.length, `nrsh article`, '')
       } else {
         htmlData = nrReplaceAll(htmlData, likeText, findListArr.length, `nrsh article error`, '')
       }
     }
-  })
+  }
   return htmlData
 }

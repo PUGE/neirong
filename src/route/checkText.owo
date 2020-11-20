@@ -135,32 +135,32 @@
 <script>
   module.exports = {
     data: {
-      // sendData: {
-      //   network: false,
-      //   pinyin: true,
-      //   base: true,
-      //   yange: false,
-      //   chengyuBase: true,
-      //   chengyuPinyin: true,
-      //   mohu: true,
-      //   xiyu: true,
-      //   regular: true,
-      //   article: false,
-      //   likeAlertNumber: 60
-      // },
       sendData: {
         network: false,
-        pinyin: false,
-        base: false,
+        pinyin: true,
+        base: true,
         yange: false,
-        chengyuBase: false,
-        chengyuPinyin: false,
-        mohu: false,
-        xiyu: false,
-        regular: false,
-        article: true,
+        chengyuBase: true,
+        chengyuPinyin: true,
+        mohu: true,
+        xiyu: true,
+        regular: true,
+        article: false,
         likeAlertNumber: 60
       },
+      // sendData: {
+      //   network: false,
+      //   pinyin: false,
+      //   base: false,
+      //   yange: false,
+      //   chengyuBase: false,
+      //   chengyuPinyin: false,
+      //   mohu: false,
+      //   xiyu: false,
+      //   regular: false,
+      //   article: true,
+      //   likeAlertNumber: 60
+      // },
       autoFixArr: [],
       isSwitchRight: false,
       infoData: {},
@@ -522,8 +522,8 @@
   padding: 10px;
   border-radius: 5px;
   background-color: seashell;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 16px;
   border: 1px solid #ccc;
   position: relative;
   .tips {
