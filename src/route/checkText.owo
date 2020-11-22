@@ -215,6 +215,19 @@
       }, 100);
       
     },
+    articleCheck: function (value) {
+      fetch(serverIP + "articleCheck", {
+        method: 'POST',
+        body: JSON.stringify({"config": this.data.sendData,"content": value})
+      }).then(response => response.json()).then(result => {
+        this.query('.loading').style.display = 'none'
+        if (result.err == 0) {
+          alert('任务已提交!')
+        } else {
+          alert(result.message)
+        }
+      })
+    },
     check: function () {
       this.query('.loading').style.display = 'block'
       // 先清理自己的标记
@@ -229,7 +242,12 @@
         return
       }
       // console.log(value)
-
+      if (this.data.sendData['article']) {
+        console.log('使用文章匹配!')
+        this.articleCheck(value)
+        return
+        // htmlData = articleHandle(htmlData, data['article'])
+      }
       fetch(serverIP + "check", {
         method: 'POST',
         body: JSON.stringify({"config": this.data.sendData,"content": value})
@@ -239,10 +257,6 @@
         const data = result['data']
         xiyuLike = data['xiyuLike']
         // console.log(htmlData)
-        if (data['article']) {
-          console.log('使用文章匹配!')
-          htmlData = articleHandle(htmlData, data['article'])
-        }
         // 先进行基础审查
         if (data['regexp'] && data['regexp'].length > 0) {
           console.log('使用正则纠错!')
