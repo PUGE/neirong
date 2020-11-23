@@ -12,7 +12,7 @@
         .type-item.Polity.active(o-tap="getData('Polity')") 关键词
         .type-item.Standard(o-tap="getData('Standard')") 错误表述
         .type-item.XiYu(o-tap="getData('XiYu')") 习语/重要句子
-        .type-item.regular(o-tap="getData('regular')") 规则匹配
+        //- .type-item.regular(o-tap="getData('regular')") 规则匹配
         //- .type-item.Porn(o-tap="getData('Porn')") 色情
         //- .type-item.Abuse(o-tap="getData('Abuse')") 粗俗
         //- .type-item.Terror(o-tap="getData('Terror')") 恐怖
@@ -28,7 +28,7 @@
             option(value ="Polity") 关键词
             option(value ="Standard") 错误表述
             option(value ="XiYu") 习语/重要句子
-            option(value ="regular") 规则匹配
+            //- option(value ="regular") 规则匹配
             //- option(value ="Porn") 色情
             //- option(value ="Abuse") 粗俗
             //- option(value ="Terror") 恐怖

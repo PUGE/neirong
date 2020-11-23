@@ -2,7 +2,7 @@
 .home
   .conn
     .left
-      .logo 内容审核系统
+      .logo 内容辅助审核系统
       .menu-box
         .menu-box-item(go="/view-content=checkText" o-class-active="this.view.content._activeName == 'checkText'")
           .icon &#xe74b;
