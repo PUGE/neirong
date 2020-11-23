@@ -195,7 +195,7 @@
           result['data'].forEach(element => {
             switch (element['state']) {
               case '0':
-                element['state'] = '等待分配服务器'
+                element['state'] = '排队等待处理'
                 break;
               case '1':
                 element['state'] = '正在分析文章'
