@@ -43,6 +43,7 @@
             .title.clear
               span 重点关键词：
               .block-show(o-value="this.data.infoData.major")
+              
           .card
             .title.clear(o-if="this.data.infoData.vague")
               span 模糊匹配级别：
@@ -84,6 +85,12 @@
       .check-right
         .arror-box
           .top-title-bar 审查进度
+          .article-box
+            .article-list(o-for="this.data.articleList" o-tap="getneirong({value.id})")
+              .article-item ID：{value.id}
+              .article-item 进度：{value.progress}%
+              .article-item 提交时间：{value.startTime}
+              .article-item 处理状态：{value.state}
         .button(o-tap="articleCheck") 提交审查
 </template>
 
@@ -93,7 +100,8 @@
       autoFixArr: [],
       isSwitchRight: false,
       infoData: {},
-      activeDom: null
+      activeDom: null,
+      articleList: []
     },
     showInfoRight: function () {
       this.query('.info-right').style.display = 'block'
@@ -145,6 +153,7 @@
       
     },
     articleCheck: function () {
+      this.query('.loading').style.display = 'block'
       const value = this.query('.text-edit').innerText
       if (value == '') {
         owo.tool.remind('检查文本不能为空!', 2000)
@@ -156,7 +165,7 @@
       }).then(response => response.json()).then(result => {
         this.query('.loading').style.display = 'none'
         if (result.err == 0) {
-          alert('任务已提交!')
+          alert('任务已提交,此次任务的ID为：' + result.id)
         } else {
           alert(result.message)
         }
@@ -174,12 +183,46 @@
       this.data.activeDom.outerHTML = this.data.activeDom.innerText
       this.hideInfoRight()
     },
+    getNewData: function () {
+      this.query('.loading').style.display = 'block'
+      fetch(serverIP + "getArticleList", {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(response => response.json()).then(result => {
+        if (result.err == 0) {
+          result['data'].forEach(element => {
+            switch (element['state']) {
+              case '0':
+                element['state'] = '等待分配服务器'
+                break;
+              case '1':
+                element['state'] = '正在分析文章'
+                break;
+              case '2':
+                element['state'] = '已完成'
+                break;
+              default:
+                break;
+            }
+            element['startTime'] = transformTime(element['startTime'] * 1000)
+          });
+          this.data.articleList = result['data']
+          setTimeout(() => {
+            this.handleEvent(this, this.query('.article-box'))
+            this.query('.loading').style.display = 'none'
+          }, 0);
+        }
+      })
+    },
     created: function () {
       // 快捷键监测
       // this.$el.onkeydown = function (e) {
       //   let code = e.keyCode
       //   console.log(code)
       // }
+      this.getNewData()
     },
     exclude: function () {
       const outStr = this.data.activeDom.outerHTML
@@ -208,7 +251,34 @@
           }
         })
       }
-      
+    },
+    getneirong: function (id) {
+      this.query('.loading').style.display = 'block'
+      fetch(serverIP + "getArticleData?id=" + id, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(response => response.json()).then(res => {
+        if (res.err == 0) {
+          if (res.data.state != '2') {
+            alert('此任务服务器尚未处理完成，请稍后查看')
+            this.query('.loading').style.display = 'none'
+            return
+          }
+          const result = res.data.result
+          let htmlData = articleHandle(res.data.text, JSON.parse(result))
+          htmlData = htmlData.replaceAll(`
+`, '<br>')
+          console.log(htmlData)
+          this.query('.text-edit').innerHTML = htmlData
+          setTimeout(() => {
+            this.reHandleEvent()
+            this.handleEvent(this, this.query('.article-box'))
+            this.query('.loading').style.display = 'none'
+          }, 0);
+        }
+      })
     }
   }
 </script>
@@ -465,5 +535,15 @@
 .article {
   background-color: transparent;
   border-bottom: 2px solid #9687d0;
+}
+.article-list {
+  width: 85%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px auto;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #ddd;
 }
 </style>

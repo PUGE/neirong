@@ -179,7 +179,6 @@
       setTimeout(() => {
         this.queryAll('.nrsh').forEach(element => {
           element.addEventListener("click", (e) => {
-            
             // console.log(element)
             // 生成关键词标签
             this.data.infoData = findList[element.innerText]
@@ -194,7 +193,7 @@
             } else {
               this.data.autoFixArr = []
             }
-            console.log(this.data.autoFixArr)
+            // console.log(this.data.autoFixArr)
             // 对数据进行可视化处理
             this.data.infoData.typeName = getErrorTypeText(this.data.infoData.type)
             this.data.infoData.major = (this.data.infoData.major == 1 || this.data.infoData.major == '是') ? '是':'否'

@@ -843,6 +843,17 @@ li {
   background-color: transparent;
   border-bottom: 2px solid #9687d0;
 }
+
+.check-page .article-list {
+  width: 85%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px auto;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #ddd;
+}
 .conn {
   display: flex;
   width: 100%;
