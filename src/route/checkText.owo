@@ -60,7 +60,7 @@
           //-   .title.clear(o-if="this.data.infoData.severity")
           //-     span 关键词重要度：
           //-     .block-show(o-value="this.data.infoData.severity")
-          .fix-box(o-if="this.data.autoFixArr.length >= 0")
+          .fix-box(o-if="this.data.autoFixArr.length > 0")
             .title.clear
               span 与下列关键词构成类似:
             .info-text 提示：点击下方关键词可自动替换
@@ -123,9 +123,6 @@
           .check-box
             input(type="checkbox" o-value="this.data.sendData.regular")
             span 启用规则纠错
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.article")
-            span 启用文章匹配
           .input-box
             span 相似度百分比
             input(type="number" o-value="this.data.sendData.likeAlertNumber")

@@ -1,0 +1,469 @@
+<template lang="pug">
+.check-page
+  .loading
+    img(src="@|loading.svg|")
+  .check
+    .text-edit(contenteditable="true")
+      p 各位工商界朋友，
+      p 女士们，先生们，朋友们：
+      p 在全球共抗新冠肺炎疫情、探索世界经济复苏道路的重要时刻，很高兴通过视频方式同大家见面。
+      p 人类正处在一个特殊的历史时期。新冠肺炎疫情全球大流行，推动世界百年未有之大变局加速演进。世界经济深度衰退，全球产业链、供应链遭受冲击，治理赤字、信任赤字、发展赤字、和平赤字仍在扩大。单边主义、保护主义、霸凌行径上升，经济全球化遭遇逆流，加剧了世界经济中的风险和不确定性。
+      p 与此同时，和平与发展的时代主题没有改变，合作应对挑战是国际社会唯一选择。这场疫情再次说明，人类命运休戚与共，各国利益紧密相连，世界是不可分割的命运共同体。无论是赢得全球抗疫最终胜利，还是推动世界经济复苏，国际社会必须团结协作，共同应对危机考验。各国要守望相助、同舟共济，弘扬伙伴精神，密切政策沟通和协调，全面深化抗疫国际合作，坚持建设开放型世界经济，争取尽早战胜疫情，努力实现世界经济强劲、可持续、平衡、包容增长。
+      p 今年以来，面对突如其来的疫情，中国坚持人民至上、生命至上，14亿人民上下一心，全国抗疫斗争取得重大战略成果。我们统筹疫情防控和经济社会发展工作，抓紧恢复生产生活秩序。前三季度，中国经济增长实现由负转正。这一成果来之不易，充分展现了中国经济的强大韧性和旺盛活力。中国经济发展稳中向好、长期向好的基本面没有变，我们完全有信心、有能力保持经济平稳运行，如期实现全面建成小康社会、打赢脱贫攻坚战的目标。
+      p 不久前，中共十九届五中全会审议通过了关于制定第十四个五年规划的建议，提出全面建成小康社会奋斗目标将如期实现，明年中国将开启全面建设社会主义现代化国家新征程，我们将科学把握新发展阶段，坚定贯彻新发展理念，积极构建以国内大循环为主体、国内国际双循环相互促进的新发展格局。我们提出构建新发展格局，是立足中国自身发展阶段和发展条件，充分考虑经济全球化和外部环境变化所作出的战略抉择。
+      p 第一，我们将扭住扩大内需战略基点，畅通国民经济循环。近年来，中国市场和资源两头在外的发展模式已经悄然改变，外贸依存度由2006年的67%下降到2019年的近32%，经常项目顺差同国内生产总值比率由2007年的9.9%降至现在的不到1%。2008年国际金融危机发生以来，中国国内需求对经济增长的贡献率有7个年份超过100%，国内消费成为经济增长的主要动力。在推动经济双循环过程中，中国经济自主性和发展质量显著提升，构建新发展格局顺应了中国经济结构调整、推动高质量发展的内在需要。我们将继续深化供给侧结构性改革，在扩大内需上下更大功夫，使生产、分配、流通、消费更多依托国内市场，增强供给体系对国内需求的适配性，形成需求牵引供给、供给创造需求的更高水平动态平衡。
+      p 第二，我们将大力推动科技创新，打造经济发展新动能。当前，新一轮科技革命和产业变革加速发展，科技对提高社会生产力的贡献更加凸显。中国坚持把创新作为引领发展的第一动力，推进创新驱动发展战略，取得显著成就。随着中国进入新发展阶段，支撑发展的要素条件发生了深刻变化，必须实现依靠创新驱动的内涵型增长。我们将依托超大规模市场优势和完备产业体系，加速科技成果向现实生产力转化，打造科技、教育、产业、金融紧密融合的创新体系，不断提升产业链水平，为中国经济长远发展提供有力支撑。
+      p 第三，我们将持续深化改革，充分激发市场活力。中国改革开放40多年的实践表明，改革是解放和发展社会生产力的关键。随着中国进入新发展阶段，改革也面临新任务，我们将拿出更大勇气、更多举措破除深层次体制机制障碍，推进国家治理体系和治理能力现代化。我们将不断提高贯彻创新、协调、绿色、开放、共享新发展理念的能力和水平，转变发展方式，推动质量变革、效率变革、动力变革，加快现代化经济体系建设，加强产权和知识产权保护，建设高标准市场体系，完善公平竞争制度，让各类市场主体活力充分涌流。
+      p 女士们、先生们、朋友们！
+      p 开放是国家进步的前提，封闭必然导致落后。当今世界，经济全球化潮流不可逆转，任何国家都无法关起门来搞建设，中国也早已同世界经济和国际体系深度融合。我们绝不会走历史回头路，不会谋求“脱钩”或是搞封闭排他的“小圈子”。我们构建新发展格局，绝不是封闭的国内单循环，而是开放的、相互促进的国内国际双循环。
+      p ——在新发展格局下，中国市场潜力将充分激发，为世界各国创造更多需求。中国人均国内生产总值已经突破1万美元，有超过4亿中等收入人口，许多国际机构预计今年中国商品零售市场规模将达到6万亿美元。中国经济的不断发展，中国人民对美好生活的追求，将对来自世界各地更加多样化高品质的产品、技术、服务产生更多需求。尽管受到疫情冲击，中国货物贸易进口规模已基本恢复到去年同期水平。今年9月，在北京举办中国国际服务贸易交易会，吸引了148个国家和地区的2.2万家企业和机构线上线下参展参会。不久前，第三届中国国际进口博览会在上海成功举行，来自124个国家和地区的企业参展，展览面积进一步扩大，成交额进一步提升，达到726.2亿美元。我们将进一步降低关税和制度性成本，培育一批进口贸易促进创新示范区，扩大对各国高质量产品和服务进口。相信随着中国市场潜力不断激发，将为各国提供更广阔的市场机会，为世界经济稳定发展提供更强劲动力。
+      p ——在新发展格局下，中国开放的大门将进一步敞开，同世界各国共享发展机遇。对外开放是中国的基本国策，任何时候都不会动摇。今年以来，面对世界经济不稳定性不确定性明显增强，单边主义、保护主义蔓延，中国对外开放非但没有止步，而且推出了一系列扩大开放的政策措施，包括全面实施外商投资法及其实施条例、进一步缩减外商投资准入负面清单、稳步推动金融市场准入、出台海南自由贸易港建设总体方案、强化深圳和浦东的改革开放举措、深化服务贸易创新发展试点等。我愿重申，中国对外开放的决心坚定不移，对外开放的大门会越开越大。我们将继续推动贸易和投资自由化便利化，同更多国家商签高标准自由贸易协定，积极参与多双边区域投资贸易合作机制，打造更高水平的开放型经济。完善外商投资准入前国民待遇加负面清单管理制度，依法保护外资企业合法权益，有序扩大服务业对外开放，持续打造市场化、法治化、国际化营商环境。赋予自由贸易试验区更大改革自主权，建设对外开放新高地。与此同时，我们将继续坚定支持多边贸易体制，更加积极地参与全球经济治理体系改革，推动建立更加公平合理的国际经济治理体系。
+      p ——在新发展格局下，中国的对外合作将不断深化，同世界各国实现互利共赢。我们将更加积极地参与国际分工，更加有效地融入全球产业链、供应链、价值链，更加主动地扩大对外交流合作。凡是愿同中国合作的国家、地区、企业，我们都会积极开展合作。我们将继续高举开放合作大旗，坚持多边主义和共商共建共享原则，推动高质量共建“一带一路”，推进同各国、各地区发展战略和互联互通规划对接，加强政策、规则、标准融通，同各国不断深化基础设施建设、产业、经贸、科技创新、公共卫生、人文等领域务实合作，把“一带一路”打造成合作之路、健康之路、复苏之路、增长之路，加强绿色发展合作，为推动世界共同发展、构建人类命运共同体贡献力量。
+      p 女士们、先生们、朋友们！
+      p 亚太是我们的共同家园，维护亚太和平稳定、促进发展繁荣符合我们的共同利益。亚太各国既有人员密切往来之利，也有跨洋相望的地利之便。我们顺应市场规律，抓住经济全球化、区域经济一体化机遇，领风气之先，走在了世界经济增长的前列。亚太地区发展和区域经济合作深化，有其深刻的历史必然性，符合亚太各国人民愿望，也必将继续展现出强大生命力。
+      p 去年，我提出构建开放包容、创新增长、互联互通、合作共赢的亚太命运共同体。今年，在各方共同参与下，亚太经合组织制定出2020年后的宏伟愿景，为未来一个时期亚太经济合作提供了重要指引。我们要深化命运共同体意识，持续推进区域经济一体化，加快创新发展步伐，促进区域互联互通，实现包容和可持续发展，把愿景一步步转变为现实，为亚太人民造福。
+      p 亚太工商界是引领和推动经济增长的重要力量，你们是亚太发展和合作成就的贡献者和见证者，也是亚太未来发展的建设者和受益者。当今世界面临更为复杂多元的挑战，亚太合作也进入新的历史阶段。工商界需要更开阔的格局、更坚韧的企业家精神。相信这会给你们带来更广阔的发展空间。希望大家做开放发展的推动者，促进贸易和投资自由化便利化，维护亚太产业链、供应链安全稳定，推动亚太经济率先走向复苏、走向繁荣。希望大家做创新增长的探索者，大胆推动组织创新、技术创新、市场创新，使亚太成为科技“沃土”、创新“高地”。希望大家做互利共赢的合作者，深挖合作潜力，做大合作蛋糕，造福各国人民。希望大家做社会责任的践行者，积极参与国际抗疫合作，关注和帮扶弱势群体，为全球发展注入更多正能量。
+      p 女士们、先生们、朋友们！
+      p 疫情终将过去，胜利必将到来。让我们携起手来，风雨同舟、守望相助，坚持开放合作，畅通内外循环，共创共享亚太和世界更加美好的未来！
+    .right-bar
+      .info-right
+        .arror-box
+          .top-title-bar 关键词详情
+          .card
+            .title.clear
+              span.block 关键词标签：
+            .block-show-box.clear
+              .block-show(o-value="this.data.infoData.typeName")
+          //- .card
+          //-   .title.clear
+          //-     span.block 关键词拼音：
+          //-   .block-show-box.clear
+          //-     span.pinyin-show(o-for="this.data.infoData.pinyin") {value}
+          .card
+            .title.clear
+              span 重点关键词：
+              .block-show(o-value="this.data.infoData.major")
+          .card
+            .title.clear(o-if="this.data.infoData.vague")
+              span 模糊匹配级别：
+              .block-show(o-value="this.data.infoData.vague")
+          //- .card
+          //-   .title.clear(o-if="this.data.infoData.severity")
+          //-     span 关键词重要度：
+          //-     .block-show(o-value="this.data.infoData.severity")
+          .fix-box(o-if="this.data.autoFixArr.length >= 0")
+            .title.clear
+              span 与下列关键词构成类似:
+            .info-text 提示：点击下方关键词可自动替换
+            .auto-fix-button(o-for="this.data.autoFixArr")
+              .like-num 关键词相似度：{value.likeNumber}
+              .auto-fix {value.text}
+              .tips {value.tips}
+              .fix-button(o-tap="autoFixXiYu({key})")
+                span.icon &#xe607;
+                span 一键修正
+          .word-box(o-if="this.data.autoFixArr.length == 0")
+            .fix-box.card(o-if="this.data.infoData.relation")
+              .title.clear
+                span 正确的文字可能为?
+              .auto-fix-button(o-value="this.data.infoData.relation" o-tap="autoFix")
+            .fix-box.card(o-if="this.data.infoData.like")
+              .title.clear
+                span 正确的文字可能为?
+              .auto-fix-button(o-value="this.data.infoData.text" o-tap="autoFix")
+            .card(o-if="this.data.infoData.tips")
+              .title.clear
+                span.block 其他信息:
+              .info-show(o-value="this.data.infoData.tips")
+            .exclude-box(o-if="this.data.infoData.relation || this.data.infoData.like")
+              .exclude-button.button-item(o-tap="exclude") 排除此错误情况
+            .clear-box
+              .clear-button.button-item(o-tap="clear") 清除此关键词标记
+          .type-box
+        .button(o-tap="hideInfoRight") 重新审核
+      .check-right
+        .arror-box
+          .top-title-bar 审查进度
+        .button(o-tap="articleCheck") 提交审查
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      autoFixArr: [],
+      isSwitchRight: false,
+      infoData: {},
+      activeDom: null
+    },
+    showInfoRight: function () {
+      this.query('.info-right').style.display = 'block'
+      this.query('.check-right').style.display = 'none'
+    },
+    hideInfoRight: function (e) {
+      this.query('.check-right').style.display = 'block'
+      this.query('.info-right').style.display = 'none'
+    },
+    reHandleEvent: function () {
+      // 清理嵌套
+      this.queryAll('.nrsh .nrsh').forEach(element => {
+        element.outerHTML = element.innerText
+      });
+      setTimeout(() => {
+        this.queryAll('.nrsh').forEach(element => {
+          element.addEventListener("click", (e) => {
+            
+            // console.log(element)
+            // 生成关键词标签
+            this.data.infoData = findList[element.innerText]
+            this.data.activeDom = element
+            const likeStr = this.data.infoData['like'] || this.data.infoData['text']
+            console.log(likeStr)
+            // 对习语进行特殊处理
+            if (this.data.infoData.type == 'XiYu') {
+              this.data.autoFixArr = xiyuLike[likeStr]
+            } else if (this.data.infoData.type == 'article') {
+              this.data.autoFixArr = this.data.infoData.itemArr
+            } else {
+              this.data.autoFixArr = []
+            }
+            console.log(this.data.autoFixArr)
+            // 对数据进行可视化处理
+            this.data.infoData.typeName = getErrorTypeText(this.data.infoData.type)
+            this.data.infoData.major = (this.data.infoData.major == 1 || this.data.infoData.major == '是') ? '是':'否'
+            // if (typeof this.data.infoData.pinyin == 'string') {
+            //   this.data.infoData.pinyin = this.data.infoData.pinyin.split('|')
+            // }
+            setTimeout(() => {
+              this.handleEvent(this, this.query('.info-right'))
+              setTimeout(() => {
+                this.showInfoRight()
+              }, 100);
+            }, 100);
+          }, false)
+        })
+      }, 100);
+      
+    },
+    articleCheck: function () {
+      const value = this.query('.text-edit').innerText
+      if (value == '') {
+        owo.tool.remind('检查文本不能为空!', 2000)
+        return
+      }
+      fetch(serverIP + "articleCheck", {
+        method: 'POST',
+        body: JSON.stringify({"config": {article: true},"content": value})
+      }).then(response => response.json()).then(result => {
+        this.query('.loading').style.display = 'none'
+        if (result.err == 0) {
+          alert('任务已提交!')
+        } else {
+          alert(result.message)
+        }
+      })
+    },
+    // 智能修复
+    autoFix: function () {
+      console.log(this.data)
+      this.data.activeDom.innerText = this.data.infoData.relation || this.data.infoData.text
+    },
+    autoFixXiYu: function (ind) {
+      this.data.activeDom.innerText = this.data.autoFixArr[ind].text
+    },
+    clear: function () {
+      this.data.activeDom.outerHTML = this.data.activeDom.innerText
+      this.hideInfoRight()
+    },
+    created: function () {
+      // 快捷键监测
+      // this.$el.onkeydown = function (e) {
+      //   let code = e.keyCode
+      //   console.log(code)
+      // }
+    },
+    exclude: function () {
+      const outStr = this.data.activeDom.outerHTML
+      const innerStr = this.data.activeDom.innerText
+      const parentNode = this.data.activeDom.parentElement || this.data.activeDom.parentNode
+      const htmlData = parentNode.innerHTML
+      const strIndex = htmlData.indexOf(outStr)
+      // console.log(parentNode.innerHTML)
+      // console.log(this.data)
+      const startStr = htmlData.substr(strIndex - 1, 1)
+      const endStr = htmlData.substr(strIndex + outStr.length, 1)
+      if (confirm(`确认要学习“${innerStr}”在此情景的用法为正确吗，学习后类似情景将不会报错!`)) {
+        // 错误学习
+        fetch(serverIP + "xuexi", {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            "xuexi": [startStr + innerStr, innerStr + endStr],
+            "id": this.data.infoData.id
+          })
+        }).then(response => response.json()).then(result => {
+          if (result.err == 0) {
+            alert('已经学习关键词使用环境!')
+          }
+        })
+      }
+      
+    }
+  }
+</script>
+
+
+<style lang="less">
+.check-page {
+  height: 100%;
+}
+.text-edit, textarea {
+  width: calc(100% - 270px);
+  height: calc(100% - 20px);
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 20px;
+  overflow: auto;
+  white-space: normal;
+  line-height: 34px;
+  p {
+    text-indent: 2em;
+    margin-top: 5px;
+  }
+}
+.fl {
+  background-color: aliceblue;
+}
+.right-bar {
+  height: 100%;
+  width: 250px;
+  position: relative;
+  background-color: #f7f8fa;
+  border-left: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.conn-box {
+  height: calc(100% - 41px);
+  overflow: auto;
+}
+.button {
+  background-color: #009fe9;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  display: block;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.nrsh {
+  background-color: #ccc;
+  cursor: pointer;
+  display: inline;
+}
+// 相似
+.nrsh.like {
+  background-color: chocolate;
+  color: white;
+  border-radius: 3px;
+}
+.nrsh.Polity {
+  background-color: yellow;
+  border-radius: 3px;
+}
+.nrsh.Abuse {
+  background-color: cadetblue;
+  color: white;
+  border-radius: 3px;
+}
+.nrsh.Standard {
+  background-color: salmon;
+  border-radius: 3px;
+  color: white;
+}
+.error.nrsh, .regexp-like.nrsh, .chengyu-like.nrsh {
+  background-color: red;
+  color: white;
+  border-bottom: none;
+  border-radius: 3px;
+  
+}
+.check {
+  display: flex;
+  height: 100%;
+}
+.check-box {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  display: flex;
+  input {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+  }
+}
+.info-right {
+  display: none;
+  height: 100%;
+  overflow: hidden;
+  .card {
+    border-bottom: 1px dashed #ddd;
+    background-color: white;
+    margin-bottom: 5px;
+  }
+  .title {
+    line-height: 35px;
+    padding: 0 10px;
+    position: relative;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    span {
+      display: inline-block;
+    }
+    .block {
+      display: block;
+    }
+    .block-show {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      min-width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  .block-show {
+    display: inline-block;
+    background-color: darkgoldenrod;
+    padding: 0 10px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 5px;
+    color: white;
+    margin: 5px;
+  }
+}
+.block-show-box {
+}
+.button-item {
+  width: 200px;
+  display: block;
+  margin: 10px auto;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px #ccc;
+}
+.fix-button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: #009fe9;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 1px 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #d2c1c1;
+}
+.clear-button {
+  background-color: teal;
+}
+.exclude-button {
+  background-color: chocolate;
+}
+.chengyu-base {
+  background-color: transparent;
+  border-bottom: 2px solid #7bb582;
+}
+.XiYu {
+  background-color: transparent;
+  border-bottom: 2px solid #b5b539;
+}
+.top-title-bar {
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+.auto-fix-button {
+  margin: 10px;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: seashell;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  position: relative;
+  .tips {
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+    color: #333;
+    line-height: 16px;
+    font-size: 12px;
+    padding-top: 5px;
+  }
+}
+.info-show {
+  margin: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  max-height: 400px;
+  overflow: auto;
+}
+.info-text {
+  margin: 0 10px;
+  color: #666;
+}
+.pinyin-show {
+  display: inline;
+}
+.like-num {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  color: orangered;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 9;
+  display: none;
+  img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+.arror-box {
+  height: calc(100% - 40px);
+  overflow: auto;
+}
+.check-right {
+  height: 100%;
+  overflow: hidden;
+}
+.article {
+  background-color: transparent;
+  border-bottom: 2px solid #9687d0;
+}
+</style>

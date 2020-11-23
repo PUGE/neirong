@@ -6,10 +6,13 @@
       .menu-box
         .menu-box-item(go="/view-content=checkText" o-class-active="this.view.content._activeName == 'checkText'")
           .icon &#xe74b;
-          span 内容智能审查
+          span 关键词审查
         .menu-box-item(go="/view-content=word" o-class-active="this.view.content._activeName == 'word'")
           .icon &#xe601;
           span 关键词管理
+        .menu-box-item(go="/view-content=article" o-class-active="this.view.content._activeName == 'article'")
+          .icon &#xe74b;
+          span 文章审查
         .menu-box-item(go="/view-content=checkUrl" o-class-active="this.view.content._activeName == 'checkUrl'")
           .icon &#xe755;
           span 网址内容检查
@@ -21,6 +24,7 @@
       .router-item(route="word" src="./src/route/word.owo")
       .router-item(route="checkUrl" src="./src/route/checkUrl.owo")
       .router-item(route="diff" src="./src/route/diff.owo")
+      .router-item(route="article" src="./src/route/article.owo")
 </template>
 
 <script>
