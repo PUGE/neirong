@@ -11,8 +11,11 @@
           .icon &#xe601;
           span 关键词管理
         .menu-box-item(go="/view-content=article" o-class-active="this.view.content._activeName == 'article'")
-          .icon &#xe74b;
+          .icon &#xe6f3;
           span 习语原文审查
+        .menu-box-item(go="/view-content=articleDB" o-class-active="this.view.content._activeName == 'articleDB'")
+          .icon &#xe6cf;
+          span 习语原文管理
         .menu-box-item(go="/view-content=checkUrl" o-class-active="this.view.content._activeName == 'checkUrl'")
           .icon &#xe755;
           span 网址内容检查
@@ -25,6 +28,7 @@
       .router-item(route="checkUrl" src="./src/route/checkUrl.owo")
       .router-item(route="diff" src="./src/route/diff.owo")
       .router-item(route="article" src="./src/route/article.owo")
+      .router-item(route="articleDB" src="./src/route/articleDB.owo")
 </template>
 
 <script>
@@ -75,14 +79,14 @@
     width: 45px;
     height: 45px;
     color: white;
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
     line-height: 45px;
   }
   span {
     color: #ccc;
     font-size: 16px;
-    padding-left: 10px;
+    padding-left: 5px;
   }
   .active {
     background-color: teal;

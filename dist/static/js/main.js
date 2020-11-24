@@ -208,7 +208,6 @@ function articleHandle(htmlData, articleArr) {
       let itemArr = articleItem['data'][likeText]
       if (!temp[likeText]) temp[likeText] = []
       temp[likeText] = temp[likeText].concat(itemArr)
-      
     }
   })
   for (const likeText in temp) {

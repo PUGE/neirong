@@ -865,6 +865,35 @@ li {
   cursor: pointer;
   box-shadow: 1px 1px 5px #ddd;
 }
+.article-db {
+  display: flex;
+}
+
+.article-db .left {
+  width: 240px;
+  padding: 0 5px;
+  height: 100%;
+  overflow: auto;
+}
+
+.article-db .left-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  cursor: pointer;
+  line-height: 24px;
+}
+
+.article-db .left-item a {
+  font-weight: bold;
+  color: #333;
+}
+
+.article-db .right {
+  width: calc(100% - 270px);
+  padding: 10px;
+  font-size: 18px;
+  overflow: auto;
+}
 .conn {
   display: flex;
   width: 100%;
@@ -904,7 +933,7 @@ li {
   width: 45px;
   height: 45px;
   color: white;
-  font-size: 30px;
+  font-size: 28px;
   text-align: center;
   line-height: 45px;
 }
@@ -912,7 +941,7 @@ li {
 .menu-box span {
   color: #ccc;
   font-size: 16px;
-  padding-left: 10px;
+  padding-left: 5px;
 }
 
 .menu-box .active {

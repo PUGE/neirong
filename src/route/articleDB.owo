@@ -1,0 +1,68 @@
+<template lang="pug">
+.article-db
+  .left
+    .left-item(o-for="this.data.list" o-tap="getInfo({value.id})") {value.tips}
+  .right
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      list: []
+    },
+    created: function () {
+      fetch(serverIP + `getArticle`, {
+        method: 'GET',
+        redirect: 'follow'
+      }).then(response => response.json()).then(result => {
+        console.log(result)
+        if (result.err == 0) {
+          this.data.list = result.data
+          setTimeout(() => {
+            this.handleEvent(this, this.query('.left'))
+          }, 0);
+        }
+      }).catch(error => console.log('error', error));
+    },
+    getInfo: function (id) {
+      console.log(id)
+      fetch(serverIP + `getArticleItem?id=${id}`, {
+        method: 'GET',
+        redirect: 'follow'
+      }).then(response => response.json()).then(result => {
+        console.log(result)
+        if (result.err == 0) {
+          this.query('.right').innerText = result.data.text
+        }
+      }).catch(error => console.log('error', error));
+    }
+  }
+</script>
+
+<style lang="less">
+.article-db {
+  display: flex;
+}
+.left {
+  width: 240px;
+  padding: 0 5px;
+  height: 100%;
+  overflow: auto;
+}
+.left-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  cursor: pointer;
+  line-height: 24px;
+  a {
+    font-weight: bold;
+    color: #333;
+  }
+}
+.right {
+  width: calc(100% - 270px);
+  padding: 10px;
+  font-size: 18px;
+  overflow: auto;
+}
+</style>
