@@ -1,7 +1,7 @@
 <template lang="pug">
 .home
   .conn
-    .left
+    .left-menu
       .logo 内容辅助审核系统
       .menu-box
         .menu-box-item(go="/view-content=checkText" o-class-active="this.view.content._activeName == 'checkText'")
@@ -46,7 +46,7 @@
   width: 100%;
   height: 100%;
 }
-.left {
+.left-menu {
   width: 200px;
   background-color: #272f3e;
 }

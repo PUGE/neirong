@@ -35,7 +35,7 @@
             //- option(value ="Ad") 广告
         .word-edit-item
           .title 关键词
-          .title-info 提示：关键词输入框请输入正确的关键词，如果是错误的表述请在关键词类型中选择错误表述类型，如果是习语或者一短句子请在关键词类型中选择习语，
+          .title-info 提示：关键词输入框<span class="red">只能添加正确的关键词</span>，程序会自动生成各类错误情况，如有错误情况识别不出来可联系电话:3671或QQ:100284685修正
           input(type="text" o-value="this.data.edit.text")
         .word-edit-item(o-if="this.data.edit.type == 'Standard' || this.data.edit.type == 'regular'")
           .title 对应的正确表述
@@ -293,9 +293,9 @@ textarea {
   color: #333;
 }
 .title-info {
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
-  line-height: 20px;
+  line-height: 24px;
   padding: 0 5px;
 }
 .type-bar {
@@ -323,5 +323,8 @@ textarea {
 }
 table {
   width: 100%;
+}
+.red {
+  color: red;
 }
 </style>

@@ -458,9 +458,9 @@ li {
 }
 
 .word-box .title-info {
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
-  line-height: 20px;
+  line-height: 24px;
   padding: 0 5px;
 }
 
@@ -493,63 +493,74 @@ li {
 .word-box table {
   width: 100%;
 }
-.check-url .query-bar {
-  display: flex;
+
+.word-box .red {
+  color: red;
+}
+.download .right {
+  position: absolute;
+  right: 50px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 900px;
 }
 
-.check-url .query-bar input {
-  border: none;
-  background-color: gainsboro;
-  width: calc(100% - 120px);
-  padding: 0 10px;
+.download .right img {
+  width: 100%;
 }
 
-.check-url .query-bar .search-button {
-  height: 40px;
-  width: 100px;
-  text-align: center;
-  line-height: 40px;
+.download .left {
+  position: absolute;
+  left: 100px;
+  width: 400px;
+  line-height: 30px;
+  color: #333;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 515px;
+}
+
+.download .left h2 {
+  font-size: 32px;
+  line-height: 44px;
+  margin-bottom: 10px;
+}
+
+.download .left h3 {
+  text-indent: 2em;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.download .left h5 {
+  color: #666;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.download .left a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.download .button {
   background-color: #009fe9;
   color: white;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.check-url .history li {
-  line-height: 40px;
-  border-bottom: 1px solid #ddd;
-  margin: 0 10px;
-}
-
-.check-url .history li span {
-  background-color: steelblue;
-  color: white;
-  padding: 3px 10px;
-  border-radius: 3px;
-}
-
-.check-url .history {
-  height: calc(100% - 300px);
-}
-
-.check-url .log-box {
-  height: 260px;
-  background-color: #f9e1e1;
-}
-
-.check-url .title {
+  width: 180px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 5px;
   font-size: 16px;
-  font-weight: bold;
-  line-height: 35px;
-  margin: 0 10px;
-  border-bottom: 1px solid #ccc;
+  box-shadow: 1px 1px 4px #7d8dc5;
+  margin-top: 20px;
 }
 
-.check-url .log {
-  height: 205px;
-  overflow: auto;
-  padding: 10px;
-  line-height: 22px;
+.download .button a {
+  color: white;
 }
 
 .check-page {
@@ -860,7 +871,7 @@ li {
   height: 100%;
 }
 
-.left {
+.left-menu {
   width: 200px;
   background-color: #272f3e;
 }

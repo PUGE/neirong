@@ -113,7 +113,7 @@
 			"server": true,
 			"autoReload": true,
 			"remoteDebug": false,
-			"title": "测试预览页面"
+			"title": "内容辅助审核系统"
 		},
 		"build": {
 			"debug": false,
