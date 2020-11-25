@@ -19,11 +19,12 @@
   <meta name="catalogs" content="{TAG_83943_TAG}" />
 
   <!-- 页面主样式文件 -->
-  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.r4kew53f9fg.css">
+  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.v9zk8v8ccoa.css">
 
   <!-- 附属css文件 -->
   <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
-  <link rel="stylesheet" href="./static/css/ace-diff.min.css" charset="utf-8">
+  <link rel="stylesheet" href="./static/css/codemirror.min.css.css" charset="utf-8">
+  <link rel="stylesheet" href="./static/css/mergely.css" charset="utf-8">
 
 </head>
 
@@ -282,7 +283,7 @@
           </div>
           <img class="right" src="./static/resource/pc.png">
         </div>
-        <div class="acediff router-item" route="diff"></div>
+        <div class="acediff router-item" id="acediff" route="diff"></div>
         <div class="check-page router-item" route="article">
           <div class="loading">
             <img src="./static/resource/loading.svg">
@@ -411,7 +412,7 @@
   </div>
 
   <!-- 框架script文件 -->
-  <script src="./static/js/owo.core.r4kew53f9fg.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/owo.core.v9zk8v8ccoa.js" type="text/javascript" charset="UTF-8"></script>
   <script type="text/javascript" charset="UTF-8">
     owo.script = {
       "page": {
@@ -828,13 +829,16 @@
             "_name": "checkUrl"
           }, {
             "created": function created() {
-              var aceDiffer = new AceDiff({
-                element: '.acediff',
-                left: {
-                  content: "\u5DE6\u4FA7\u6587\u672C\u6846\n          \n\u5728\u8FD9\u91CC\u8F93\u5165\u6587\u672C1\n\n\u5373\u53EF\u5BF9\u6BD4\u4E24\u7BC7\u6587\u672C\u7684\u4E0D\u540C"
+              $('#acediff').mergely({
+                license: 'lgpl',
+                cmsettings: {
+                  readOnly: false
                 },
-                right: {
-                  content: "\u53F3\u4FA7\u6587\u672C\u6846\n\n\u53F3\u9762\u8F93\u5165\u6587\u672C2\n\n\u5373\u53EF\u5BF9\u6BD4\u4E24\u7BC7\u6587\u672C\u7684\u4E0D\u540C"
+                lhs: function lhs(setValue) {
+                  setValue("\u5DE6\u4FA7\u6587\u7AE0 \u5185\u5BB9\n\u4E0D\u4E00\u81F4\u7684\u5730\u65B9\u4F1A\u6807\u6CE8\u51FA\u6765");
+                },
+                rhs: function rhs(setValue) {
+                  setValue("\u53F3\u4FA7\u6587\u7AE0 \u5185\u5BB9\n\u4E0D\u4E00\u81F4\u7684\u5730\u65B9\u4F1A\u6807\u6CE8\u51FA\u6765");
                 }
               });
             },
@@ -1124,8 +1128,9 @@
   </script>
 
   <script src="./static/js/main.js" type="text/javascript" charset="UTF-8"></script>
-  <script src="./static/js/ace.js.js" type="text/javascript" charset="UTF-8"></script>
-  <script src="./static/js/ace-diff.min.js.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/jquery.min.js.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/codemirror.min.js.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/mergely.js.js" type="text/javascript" charset="UTF-8"></script>
 
   <script src="./static/js/remind.js" type="text/javascript" charset="UTF-8"></script>
 </body>

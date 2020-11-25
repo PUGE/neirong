@@ -71,12 +71,16 @@
 			"src": "./owo_modules/remind.js"
 		},
 		{
-			"name": "ace.js",
-			"src": "./src/ace.js"
+			"name": "jquery.min.js",
+			"src": "./src/jquery.min.js"
 		},
 		{
-			"name": "ace-diff.min.js",
-			"src": "./src/ace-diff.min.js"
+			"name": "codemirror.min.js",
+			"src": "./src/codemirror.min.js"
+		},
+		{
+			"name": "mergely.js",
+			"src": "./src/mergely.js"
 		}
 	],
 	"styleList": [
@@ -86,8 +90,12 @@
 			"resource": true
 		},
 		{
-			"name": "ace-diff.min",
-			"src": "./src/ace-diff.min.css"
+			"name": "codemirror.min.css",
+			"src": "./src/codemirror.min.css"
+		},
+		{
+			"name": "mergely",
+			"src": "./src/mergely.css"
 		}
 	],
 	"pageList": [
