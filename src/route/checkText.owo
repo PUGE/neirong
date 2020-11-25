@@ -412,6 +412,10 @@
   border-radius: 3px;
   color: white;
 }
+.Terror {
+  background-color: dimgrey;
+  color: white;
+}
 .error.nrsh, .regexp-like.nrsh, .chengyu-like.nrsh {
   background-color: red;
   color: white;

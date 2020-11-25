@@ -136,6 +136,11 @@ li {
   color: white;
 }
 
+.check-page .Terror {
+  background-color: dimgrey;
+  color: white;
+}
+
 .check-page .error.nrsh,
 .check-page .regexp-like.nrsh,
 .check-page .chengyu-like.nrsh {
