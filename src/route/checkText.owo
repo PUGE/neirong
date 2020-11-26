@@ -93,39 +93,51 @@
       .check-right
         .arror-box
           .top-title-bar 审查选项
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
-            span 启用关键词匹配
-          .check-box
-            input(type="checkbox" checked disabled="true")
-            span 启用习语匹配
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.pinyin")
-            span 启用拼音纠错
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.yange")
-            span 启用严格模式
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.network")
-            span 启用云词库匹配
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.chengyuBase")
-            span 启用成语匹配
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.chengyuPinyin")
-            span 启用成语纠错
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.mohu")
-            span 启用模糊纠错
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.xiyu")
-            span 启用习语纠错
-          .check-box
-            input(type="checkbox" o-value="this.data.sendData.regular")
-            span 启用规则纠错
-          .input-box
-            span 相似度百分比
-            input(type="number" o-value="this.data.sendData.likeAlertNumber")
+          .card-box
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.base" disabled="true")
+              span 启用关键词匹配
+          .card-box 
+            .check-box
+              input(type="checkbox" checked disabled="true")
+              span 启用习语匹配
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.xiyu")
+              span 启用习语纠错
+            .line
+            .input-box
+              span 相似度百分比
+              input(type="number" o-value="this.data.sendData.likeAlertNumber")
+          .card-box
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.pinyin")
+              span 启用拼音纠错
+          .card-box
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.chengyuBase")
+              span 启用成语匹配
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.chengyuPinyin")
+              span 启用成语纠错
+          .card-box
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.mohu")
+              span 启用模糊纠错
+          .card-box
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.regular")
+              span 启用规则纠错
+          .card-box
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.yange")
+              span 启用严格模式
+            .check-box
+              input(type="checkbox" o-value="this.data.sendData.network")
+              span 启用云词库匹配
+          
+          
+          
+          
         .button(o-tap="check") 智能审核
 </template>
 
@@ -432,6 +444,7 @@
   line-height: 40px;
   font-size: 16px;
   display: flex;
+  color: #666;
   input {
     width: 20px;
     height: 20px;
@@ -597,5 +610,29 @@
 .article {
   background-color: transparent;
   border-bottom: 2px solid #9687d0;
+}
+.card-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  margin: 10px 5px;
+  .line {
+    border-bottom: 1px solid #ddd;
+  }
+}
+.input-box {
+  display: flex;
+  margin: 0 9px;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  align-items: center;
+  input {
+    width: 50px;
+    text-align: center;
+    height: 20px;
+  }
 }
 </style>

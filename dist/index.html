@@ -19,7 +19,7 @@
   <meta name="catalogs" content="{TAG_83943_TAG}" />
 
   <!-- 页面主样式文件 -->
-  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.kaboflw8kwo.css">
+  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.uf6fh87zn.css">
 
   <!-- 附属css文件 -->
   <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
@@ -171,49 +171,64 @@
               <div class="check-right">
                 <div class="arror-box">
                   <div class="top-title-bar">审查选项</div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.base" disabled="true">
-                    <span>启用关键词匹配</span>
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.base" disabled="true">
+                      <span>启用关键词匹配</span>
+                    </div>
                   </div>
-                  <div class="check-box">
-                    <input type="checkbox" checked="checked" disabled="true">
-                    <span>启用习语匹配</span>
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" checked="checked" disabled="true">
+                      <span>启用习语匹配</span>
+                    </div>
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.xiyu">
+                      <span>启用习语纠错</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="input-box">
+                      <span>相似度百分比</span>
+                      <input type="number" o-value="this.data.sendData.likeAlertNumber">
+                    </div>
                   </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.pinyin">
-                    <span>启用拼音纠错</span>
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.pinyin">
+                      <span>启用拼音纠错</span>
+                    </div>
                   </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.yange">
-                    <span>启用严格模式</span>
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.chengyuBase">
+                      <span>启用成语匹配</span>
+                    </div>
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.chengyuPinyin">
+                      <span>启用成语纠错</span>
+                    </div>
                   </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.network">
-                    <span>启用云词库匹配</span>
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.mohu">
+                      <span>启用模糊纠错</span>
+                    </div>
                   </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.chengyuBase">
-                    <span>启用成语匹配</span>
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.regular">
+                      <span>启用规则纠错</span>
+                    </div>
                   </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.chengyuPinyin">
-                    <span>启用成语纠错</span>
-                  </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.mohu">
-                    <span>启用模糊纠错</span>
-                  </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.xiyu">
-                    <span>启用习语纠错</span>
-                  </div>
-                  <div class="check-box">
-                    <input type="checkbox" o-value="this.data.sendData.regular">
-                    <span>启用规则纠错</span>
-                  </div>
-                  <div class="input-box">
-                    <span>相似度百分比</span>
-                    <input type="number" o-value="this.data.sendData.likeAlertNumber">
+                  <div class="card-box">
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.yange">
+                      <span>启用严格模式</span>
+                    </div>
+                    <div class="check-box">
+                      <input type="checkbox" o-value="this.data.sendData.network">
+                      <span>启用云词库匹配</span>
+                    </div>
                   </div>
                 </div>
                 <div class="button" o-tap="check">智能审核</div>
@@ -412,7 +427,7 @@
   </div>
 
   <!-- 框架script文件 -->
-  <script src="./static/js/owo.core.kaboflw8kwo.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/owo.core.uf6fh87zn.js" type="text/javascript" charset="UTF-8"></script>
   <script type="text/javascript" charset="UTF-8">
     owo.script = {
       "page": {
