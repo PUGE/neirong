@@ -13,7 +13,7 @@ function nrReplaceAll(str, text, findListArrLen, classStr, xuexiStr){
     const element = strCutArr[index];
     nrshID ++
     if (index != strCutArr.length && index != 0) {
-      if (xuexiStr) {
+      if (!owo.script.page.view.content.checkText.data.sendData.yange && xuexiStr) {
         xuexiArr = xuexiStr.split('|')
         const last = strCutArr[index - 1]
         const next = strCutArr[index]
@@ -163,6 +163,30 @@ function networkHandle (htmlData, data) {
   })
   return htmlData
 }
+
+function jinjuHandle (htmlData, data) {
+  data.forEach(item => {
+    const likeStr = item['like']
+    if (!findList[likeStr]) {
+      findList[likeStr] = item
+      findListArr.push(item)
+      let isRight = false
+      xiyuLike[likeStr].forEach(element => {
+        if (element.likeNumber == 100) {
+          isRight = true
+        }
+      })
+      if (isRight) {
+        htmlData = nrReplaceAll(htmlData, likeStr, findListArr.length, `nrsh XiYu`, item['xuexi'])
+      } else {
+        item.typeName = '相似习语'
+        htmlData = nrReplaceAll(htmlData, likeStr, findListArr.length, `nrsh XiYu error`, item['xuexi'])
+      }
+    }
+  })
+  return htmlData
+}
+
 
 function regexpHandle (htmlData, data) {
   data.forEach(item => {

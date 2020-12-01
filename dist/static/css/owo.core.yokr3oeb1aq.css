@@ -122,6 +122,7 @@ li {
 .check-page .nrsh.Polity {
   background-color: yellow;
   border-radius: 3px;
+  color: black;
 }
 
 .check-page .nrsh.Abuse {
@@ -522,6 +523,457 @@ li {
 .word-box .type-bar .active {
   background-color: burlywood;
   color: white;
+}
+
+.word-box table {
+  width: 100%;
+}
+
+.word-box .red {
+  color: red;
+}
+.check-page {
+  height: 100%;
+}
+
+.check-page .text-edit,
+.check-page textarea {
+  width: calc(100% - 270px);
+  height: calc(100% - 20px);
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 20px;
+  overflow: auto;
+  white-space: normal;
+  line-height: 34px;
+}
+
+.check-page .text-edit p,
+.check-page textarea p {
+  text-indent: 2em;
+  margin-top: 5px;
+}
+
+.check-page .fl {
+  background-color: aliceblue;
+}
+
+.check-page .right-bar {
+  height: 100%;
+  width: 250px;
+  position: relative;
+  background-color: #f7f8fa;
+  border-left: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.check-page .conn-box {
+  height: calc(100% - 41px);
+  overflow: auto;
+}
+
+.check-page .button {
+  background-color: #009fe9;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  display: block;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.check-page .nrsh {
+  background-color: #ccc;
+  cursor: pointer;
+  display: inline;
+}
+
+.check-page .nrsh.like {
+  background-color: chocolate;
+  color: white;
+  border-radius: 3px;
+}
+
+.check-page .nrsh.Polity {
+  background-color: yellow;
+  border-radius: 3px;
+}
+
+.check-page .nrsh.Abuse {
+  background-color: cadetblue;
+  color: white;
+  border-radius: 3px;
+}
+
+.check-page .nrsh.Standard {
+  background-color: salmon;
+  border-radius: 3px;
+  color: white;
+}
+
+.check-page .Terror {
+  background-color: dimgrey;
+  color: white;
+}
+
+.check-page .error.nrsh,
+.check-page .regexp-like.nrsh,
+.check-page .chengyu-like.nrsh {
+  background-color: red;
+  color: white;
+  border-bottom: none;
+  border-radius: 3px;
+}
+
+.check-page .check {
+  display: flex;
+  height: 100%;
+}
+
+.check-page .check-box {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  display: flex;
+  color: #666;
+}
+
+.check-page .check-box input {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+
+.check-page .info-right {
+  display: none;
+  height: 100%;
+  overflow: hidden;
+}
+
+.check-page .info-right .card {
+  border-bottom: 1px dashed #ddd;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.check-page .info-right .title {
+  line-height: 35px;
+  padding: 0 10px;
+  position: relative;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.check-page .info-right .title span {
+  display: inline-block;
+}
+
+.check-page .info-right .title .block {
+  display: block;
+}
+
+.check-page .info-right .title .block-show {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.check-page .info-right .block-show {
+  display: inline-block;
+  background-color: darkgoldenrod;
+  padding: 0 10px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 5px;
+  color: white;
+  margin: 5px;
+}
+
+.check-page .button-item {
+  width: 200px;
+  display: block;
+  margin: 10px auto;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px #ccc;
+}
+
+.check-page .fix-button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: #009fe9;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 1px 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #d2c1c1;
+}
+
+.check-page .clear-button {
+  background-color: teal;
+}
+
+.check-page .exclude-button {
+  background-color: chocolate;
+}
+
+.check-page .chengyu-base {
+  background-color: transparent;
+  border-bottom: 2px solid #7bb582;
+}
+
+.check-page .XiYu {
+  background-color: transparent;
+  border-bottom: 2px solid #b5b539;
+}
+
+.check-page .top-title-bar {
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.check-page .auto-fix-button {
+  margin: 10px;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: seashell;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+.check-page .auto-fix-button .tips {
+  border-top: 1px solid #ccc;
+  margin-top: 5px;
+  color: #333;
+  line-height: 16px;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.check-page .info-show {
+  margin: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.check-page .info-text {
+  margin: 0 10px;
+  color: #666;
+}
+
+.check-page .pinyin-show {
+  display: inline;
+}
+
+.check-page .like-num {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  color: orangered;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.check-page .loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 9;
+  display: none;
+}
+
+.check-page .loading img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.check-page .arror-box {
+  height: calc(100% - 40px);
+  overflow: auto;
+}
+
+.check-page .check-right {
+  height: 100%;
+  overflow: hidden;
+}
+
+.check-page .article {
+  background-color: transparent;
+  border-bottom: 2px solid #9687d0;
+}
+
+.check-page .card-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  margin: 10px 5px;
+}
+
+.check-page .card-box .line {
+  border-bottom: 1px solid #ddd;
+}
+
+.check-page .input-box {
+  display: flex;
+  margin: 0 9px;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  align-items: center;
+}
+
+.check-page .input-box input {
+  width: 50px;
+  text-align: center;
+  height: 20px;
+}
+.word-box {
+  height: 100%;
+}
+
+.word-box .db-left-bar {
+  width: 200px;
+  background-color: #efd9d9;
+  height: 100%;
+}
+
+.word-box .db-left-bar .db-item {
+  display: flex;
+  line-height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.word-box .db-left-bar .db-item .icon {
+  width: 45px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.word-box .word {
+  display: flex;
+  height: 100%;
+}
+
+.word-box .right-bar {
+  width: 250px;
+  height: 100%;
+  overflow: auto;
+  background-color: whitesmoke;
+  border-left: 1px solid #ccc;
+}
+
+.word-box .right-bar input[type="text"],
+.word-box .right-bar select {
+  height: 35px;
+  width: 100%;
+  border: 1px solid #ccc;
+  outline: none;
+  border-left: none;
+  border-right: none;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.word-box .right-bar textarea {
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.word-box .cent-bar {
+  width: calc(100% - 251px);
+}
+
+.word-box .cent-bar .table-box {
+  width: 100%;
+  height: calc(100% - 30px);
+  overflow: auto;
+}
+
+.word-box .cent-bar .pagination-box {
+  height: 30px;
+  background-color: lavenderblush;
+}
+
+.word-box th {
+  line-height: 22px;
+}
+
+.word-box td span {
+  margin: 0 5px;
+  background-color: #009fe9;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.word-box textarea {
+  width: 100%;
+  height: 200px;
+  display: block;
+  background-color: azure;
+}
+
+.word-box .button {
+  background-color: #009fe9;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  box-shadow: 1px 1px 3px #9c7f7f;
+  cursor: pointer;
+}
+
+.word-box .title {
+  line-height: 35px;
+  font-size: 16px;
+  padding: 0 5px;
+  color: #333;
+}
+
+.word-box .title-info {
+  font-size: 14px;
+  color: #999;
+  line-height: 24px;
+  padding: 0 5px;
 }
 
 .word-box table {

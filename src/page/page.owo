@@ -10,6 +10,12 @@
         .menu-box-item(go="/view-content=word" o-class-active="this.view.content._activeName == 'word'")
           .icon &#xe601;
           span 关键词管理
+        .menu-box-item(go="/view-content=checkSentence" o-class-active="this.view.content._activeName == 'checkSentence'")
+          .icon &#xe6f7;
+          span 习语金句审查
+        .menu-box-item(go="/view-content=sentence" o-class-active="this.view.content._activeName == 'sentence'")
+          .icon &#xe603;
+          span 习语金句管理
         .menu-box-item(go="/view-content=article" o-class-active="this.view.content._activeName == 'article'")
           .icon &#xe6f3;
           span 习语原文审查
@@ -25,6 +31,8 @@
     view.router.conn-box.right.clear(name="content")
       .router-item(route="checkText" src="./src/route/checkText.owo")
       .router-item(route="word" src="./src/route/word.owo")
+      .router-item(route="checkSentence" src="./src/route/checkSentence.owo")
+      .router-item(route="sentence" src="./src/route/sentence.owo")
       .router-item(route="checkUrl" src="./src/route/checkUrl.owo")
       .router-item(route="diff" src="./src/route/diff.owo")
       .router-item(route="article" src="./src/route/article.owo")

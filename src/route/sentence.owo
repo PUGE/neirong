@@ -7,49 +7,19 @@
     //-     .icon &#xe61b;
     //-     span 关键词数据库
     .cent-bar
-      .type-bar
-        .labe 关键词分类：
-        .type-item.Polity.active(o-tap="getData('Polity')") 关键词
-        .type-item.Standard(o-tap="getData('Standard')") 错误表述
-        //- .type-item.regular(o-tap="getData('regular')") 规则匹配
-        //- .type-item.Porn(o-tap="getData('Porn')") 色情
-        //- .type-item.Abuse(o-tap="getData('Abuse')") 粗俗
-        //- .type-item.Terror(o-tap="getData('Terror')") 恐怖
-        //- .type-item.Ad(o-tap="getData('Ad')") 广告
       .table-box
       .pagination-box
     .right-bar
       .word-edit-box
         .word-edit-item
-          .title 关键词类型
-          .title-info 提示：请选择关键词对应的类型，分类错误会造成识别不到或识别错误。
-          select(o-change="typeChange")
-            option(value ="Polity") 关键词
-            option(value ="Standard") 错误表述
-            //- option(value ="regular") 规则匹配
-            //- option(value ="Porn") 色情
-            //- option(value ="Abuse") 粗俗
-            //- option(value ="Terror") 恐怖
-            //- option(value ="Ad") 广告
-        .word-edit-item
-          .title 关键词
+          .title 金句
           .title-info 提示：关键词输入框<span class="red">只能添加正确的关键词</span>，程序会自动生成各类错误情况，如有错误情况识别不出来可联系电话:3671或QQ:100284685修正
           input(type="text" o-value="this.data.edit.text")
-        .word-edit-item(o-if="this.data.edit.type == 'Standard' || this.data.edit.type == 'regular'")
-          .title 对应的正确表述
-          .title-info 提示：这里填写关键词的正确表述，例如关键词输入框里填入“武汉肺炎”这里填入“新型冠状病毒肺炎”会在文本检测到“武汉肺炎”相关文字时提示错误表述并可一键替换为“新型冠状病毒肺炎”。
-          input(type="text" o-value="this.data.edit.relation")
-        .word-edit-item
-          .title 重要性
-          .title-info 提示：重要性选择会影响词语的识别力度，标记为普通的词语如果不是勾选严格模式会智能忽略掉相似度低的匹配以减少误报率，过多的使用重要标识会提高误报率，建议只对重点关键词使用。
-          select(o-value="this.data.edit.major")
-            option(value ="0") 一般
-            option(value ="1") 重要
         .word-edit-item
           .title 提示信息
           .title-info 提示：提示信息是选填项，填写后在点击这个关键词时将会显示预先写好的关键信息，支持显示图片，文字，视频等内容。
           textarea(o-value="this.data.edit.tips")
-        .button(o-tap="addWord") 添加关键词
+        .button(o-tap="addWord") 添加习语金句
 </template>
 
 <script>
@@ -66,34 +36,19 @@
       activeTableName: '',
       edit: {
         text: '',
-        type: 'Polity',
+        type: 'XiYu',
         major: "0",
         tips: '',
         relation: ''
       },
-      selectType: 'Polity'
+      selectType: 'XiYu'
     },
     created: function () {
-      this.getData(this.data.selectType, 'word')
+      this.getData()
     },
-    typeChange: function (value) {
-      console.log(this.$target.value)
-      this.data.edit.type = this.$target.value
-      setTimeout(() => {
-        this.handleEvent(this, this.query('.right-bar'))
-      }, 100);
-    },
-    getData: function (type, name) {
-      if (!name) name = this.data.activeTableName
-      else this.data.activeTableName = name
-      
-      this.queryAll('.type-bar .type-item').forEach(element => {
-        element.classList.remove('active')
-      });
-      this.query(`.type-bar .${type}`).classList.add('active')
-      this.data.selectType = type
+    getData: function () {
       const get18n = this.data.get18n
-      fetch(serverIP + `getData?name=${name}&type=${type}`, {
+      fetch(serverIP + `getJinju`, {
         method: 'GET',
         redirect: 'follow'
       }).then(response => response.json()).then(result => {
@@ -142,7 +97,7 @@
     },
     delete: function (id, name) {
       if (confirm(`确定删除关键词“${name}”吗？`)) {
-        fetch(serverIP + `delete?name=${this.data.activeTableName}&id=${id}`, {
+        fetch(serverIP + `delete?name=jinju&id=${id}`, {
           method: 'GET'
         }).then(response => response.json()).then(result => {
           if (result.err == 0) {
@@ -168,7 +123,7 @@
         alert('小于8个字的习语请添加至政治分类!')
         return
       }
-      fetch(serverIP + `addWord`, {
+      fetch(serverIP + `addJinJu`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
@@ -182,12 +137,10 @@
           owo.tool.remind('关键词添加成功!', 2000)
           this.data.edit = {
             text: '',
-            type: this.data.edit.type,
-            major: "0",
-            tips: this.data.edit.tips,
-            relation: ''
+            tips: this.data.edit.tips
           }
           this.handleEvent(this, this.query('.info-right'))
+          this.getData()
         }
       }).catch(error => console.log('error', error));
     }
@@ -248,7 +201,7 @@
   width: calc(100% - 251px);
   .table-box {
     width: 100%;
-    height: calc(100% - 70px);
+    height: calc(100% - 30px);
     overflow: auto;
   }
   .pagination-box {
@@ -295,29 +248,6 @@ textarea {
   color: #999;
   line-height: 24px;
   padding: 0 5px;
-}
-.type-bar {
-  display: flex;
-  height: 40px;
-  line-height: 40px;
-  border-bottom: 1px solid #ccc;
-  box-sizing: border-box;
-  padding: 0 10px;
-  .type-item {
-    text-align: center;
-    background-color: gainsboro;
-    height: 30px;
-    line-height: 30px;
-    margin: 5px;
-    border-radius: 5px;
-    padding: 0 15px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .active {
-    background-color: burlywood;
-    color: white;
-  }
 }
 table {
   width: 100%;
