@@ -19,7 +19,7 @@
   <meta name="catalogs" content="{TAG_83943_TAG}" />
 
   <!-- 页面主样式文件 -->
-  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.yokr3oeb1aq.css">
+  <link charset="utf-8" rel="stylesheet" href="./static/css/owo.core.nlmllpjcyx.css">
 
   <!-- 附属css文件 -->
   <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
@@ -529,16 +529,28 @@
             <img src="./static/resource/loading.svg">
           </div>
           <div class="left">
-            <div class="left-item" o-for="this.data.list" o-tap="getInfo({value.id})">{value.tips}</div>
+            <div class="item-box">
+              <div class="left-item" o-for="this.data.list" o-tap="getInfo({value.id})">{value.tips}</div>
+            </div>
+            <div class="add-new" o-tap="addNew">添加新文章</div>
           </div>
-          <div class="right"></div>
+          <div class="right">
+            <div class="right-conn" contenteditable="true"></div>
+            <div class="bottom-bar">
+              <input class="text-input" type="text">
+              <div class="save-button" o-tap="save">
+                <div class="icon"></div>
+                <span>保存更改</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- 框架script文件 -->
-  <script src="./static/js/owo.core.yokr3oeb1aq.js" type="text/javascript" charset="UTF-8"></script>
+  <script src="./static/js/owo.core.nlmllpjcyx.js" type="text/javascript" charset="UTF-8"></script>
   <script type="text/javascript" charset="UTF-8">
     owo.script = {
       "page": {
@@ -1464,7 +1476,8 @@
             "_name": "article"
           }, {
             "data": {
-              "list": []
+              "list": [],
+              "activeIndex": null
             },
             "created": function created() {
               var _this18 = this;
@@ -1494,6 +1507,7 @@
             "getInfo": function getInfo(id) {
               var _this19 = this;
 
+              this.data.activeIndex = id;
               this.query('.loading').style.display = 'block';
               console.log(id);
               fetch(serverIP + ("getArticleItem?id=" + id), {
@@ -1505,13 +1519,41 @@
                 console.log(result);
 
                 if (result.err == 0) {
-                  _this19.query('.right').innerText = result.data.text;
+                  _this19.query('.text-input').value = result.data.tips;
+                  _this19.query('.right-conn').innerText = result.data.text;
                 }
 
                 _this19.query('.loading').style.display = 'none';
               })["catch"](function(error) {
                 return console.log('error', error);
               });
+            },
+            "save": function save(word) {
+              var conn = this.query('.right-conn').innerText;
+              fetch(serverIP + (this.data.activeIndex ? "articleUpdata" : "addArticle"), {
+                method: 'POST',
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  "id": this.data.activeIndex,
+                  "text": conn,
+                  "tips": this.query('.text-input').value
+                })
+              }).then(function(response) {
+                return response.json();
+              }).then(function(result) {
+                if (result.err == 0) {
+                  alert('更新成功!');
+                } else {
+                  alert(result.message);
+                }
+              });
+            },
+            "addNew": function addNew() {
+              this.data.activeIndex = null;
+              this.query('.text-input').value = '';
+              this.query('.right-conn').innerText = '';
             },
             "prop": {
               "route": "articleDB"

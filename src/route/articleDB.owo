@@ -3,14 +3,23 @@
   .loading
     img(src="@|loading.svg|")
   .left
-    .left-item(o-for="this.data.list" o-tap="getInfo({value.id})") {value.tips}
+    .item-box
+      .left-item(o-for="this.data.list" o-tap="getInfo({value.id})") {value.tips}
+    .add-new(o-tap="addNew") 添加新文章
   .right
+    .right-conn(contenteditable="true")
+    .bottom-bar
+      input.text-input(type="text")
+      .save-button(o-tap="save")
+        .icon &#xea6f;
+        span 保存更改
 </template>
 
 <script>
   module.exports = {
     data: {
-      list: []
+      list: [],
+      activeIndex: null,
     },
     created: function () {
       this.query('.loading').style.display = 'block'
@@ -29,6 +38,7 @@
       }).catch(error => console.log('error', error));
     },
     getInfo: function (id) {
+      this.data.activeIndex = id
       this.query('.loading').style.display = 'block'
       console.log(id)
       fetch(serverIP + `getArticleItem?id=${id}`, {
@@ -37,10 +47,38 @@
       }).then(response => response.json()).then(result => {
         console.log(result)
         if (result.err == 0) {
-          this.query('.right').innerText = result.data.text
+          this.query('.text-input').value = result.data.tips
+          this.query('.right-conn').innerText = result.data.text
         }
         this.query('.loading').style.display = 'none'
       }).catch(error => console.log('error', error));
+    },
+    save: function (word) {
+      const conn = this.query('.right-conn').innerText
+      fetch(serverIP + (this.data.activeIndex ? "articleUpdata" : "addArticle"), {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "id": this.data.activeIndex,
+          "text": conn,
+          "tips": this.query('.text-input').value
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        if (result.err == 0) {
+          alert('更新成功!');
+        } else {
+          alert(result.message);
+        }
+      });
+    },
+    addNew: function () {
+      this.data.activeIndex = null
+      this.query('.text-input').value = ''
+      this.query('.right-conn').innerText = ''
     }
   }
 </script>
@@ -50,26 +88,47 @@
   display: flex;
 }
 .left {
-  width: 240px;
-  padding: 0 5px;
+  width: 250px;
+  
   height: 100%;
   overflow: auto;
+  .item-box {
+    padding: 0 10px;
+    height: calc(100% - 40px);
+    overflow: auto;
+  }
 }
 .left-item {
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
   cursor: pointer;
-  line-height: 24px;
+  line-height: 20px;
+  color: #666;
+  font-size: 12px;
   a {
     font-weight: bold;
     color: #333;
+    font-size: 14px;
   }
 }
 .right {
-  width: calc(100% - 270px);
-  padding: 10px;
+  width: calc(100% - 250px);
+  
   font-size: 18px;
   overflow: auto;
+  .right-conn {
+    padding: 10px;
+    height: calc(100% - 60px);
+    overflow: auto;
+    outline: none;
+  }
+  .bottom-bar {
+    width: 100%;
+    height: 40px;
+    box-shadow: 0px 0px 7px #ada6a6;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 .loading {
   position: absolute;
@@ -86,5 +145,34 @@
     bottom: 0;
     margin: auto;
   }
+}
+.add-new {
+  height: 40px;
+  text-align: center;
+  background-color: #009fe9;
+  line-height: 40px;
+  color: white;
+  cursor: pointer;
+}
+.save-button {
+  display: flex;
+  background-color: #009fe9;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  width: 120px;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  .icon {
+    font-size: 20px;
+    margin: 0 5px;
+  }
+}
+.text-input {
+  width: calc(100% - 120px);
+  border: none;
 }
 </style>
